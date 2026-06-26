@@ -30,11 +30,11 @@ export const HERO = {
   ctas: {
     primary: {
       label: "Report an Issue",
-      href: "#report",
+      href: "/report",
     },
     secondary: {
       label: "Explore Live Map",
-      href: "#map",
+      href: "/map",
     },
   },
 } as const

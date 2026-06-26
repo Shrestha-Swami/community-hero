@@ -7,8 +7,9 @@ export const SITE = {
 
 export const NAV_LINKS = [
   { href: "/", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#get-involved", label: "Get Involved" },
+  { href: "/report", label: "Report Issue" },
+  { href: "/dashboard", label: "Dashboard" },
+  { href: "/reports", label: "My Reports" },
 ] as const
 
 export const FOOTER_LINKS = [

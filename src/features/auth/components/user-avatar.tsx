@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { ChevronDown, LogOut, LayoutDashboard, FileText } from "lucide-react"
+import { ChevronDown, LogOut, LayoutDashboard, FileText, MapPin } from "lucide-react"
 import { cn } from "@/lib/utils"
 import type { User } from "firebase/auth"
 
@@ -59,6 +59,14 @@ export function UserAvatar({ user, onLogout }: UserAvatarProps) {
           >
             <LayoutDashboard className="size-4" />
             Dashboard
+          </Link>
+          <Link
+            href="/report"
+            className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-foreground hover:bg-muted"
+            onClick={() => setOpen(false)}
+          >
+            <MapPin className="size-4" />
+            Report Issue
           </Link>
           <Link
             href="/reports"

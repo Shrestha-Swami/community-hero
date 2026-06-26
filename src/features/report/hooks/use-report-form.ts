@@ -1,7 +1,14 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import type { Category, ReportPayload } from "../types";
+
+import type {
+  Category,
+  ReportLocation,
+  ReportPayload,
+} from "../types";
+
+import type { VisionAnalysis } from "@/ai/agents/vision";
 
 export function useReportForm(initial?: Partial<ReportPayload>) {
   const [description, setDescription] = useState(
@@ -16,11 +23,16 @@ export function useReportForm(initial?: Partial<ReportPayload>) {
     initial?.media ?? null
   );
 
-  const [location, setLocation] = useState<string | null>(
+  const [location, setLocation] = useState<ReportLocation | null>(
     initial?.location ?? null
   );
 
   const [submitting, setSubmitting] = useState(false);
+
+  // AI Analysis
+  const [analysis, setAnalysis] = useState<VisionAnalysis | null>(null);
+
+  const [analyzing, setAnalyzing] = useState(false);
 
   const reset = useCallback(() => {
     setDescription("");
@@ -28,10 +40,13 @@ export function useReportForm(initial?: Partial<ReportPayload>) {
     setMedia(null);
     setLocation(null);
     setSubmitting(false);
+    setAnalysis(null);
+    setAnalyzing(false);
   }, []);
 
   const setMediaFile = useCallback((file: File | null) => {
     setMedia(file);
+    setAnalysis(null);
   }, []);
 
   const submit = useCallback(
@@ -44,14 +59,20 @@ export function useReportForm(initial?: Partial<ReportPayload>) {
         const payload: ReportPayload = {
           description,
           category,
+
           media,
+
           mediaType: media
             ? media.type.startsWith("video")
               ? "video"
               : "image"
             : null,
+
           mimeType: media?.type ?? null,
+
           location,
+
+          aiAnalysis: analysis,
         };
 
         await onSubmit(payload);
@@ -59,7 +80,7 @@ export function useReportForm(initial?: Partial<ReportPayload>) {
         setSubmitting(false);
       }
     },
-    [description, category, media, location]
+    [description, category, media, location, analysis]
   );
 
   return {
@@ -79,5 +100,11 @@ export function useReportForm(initial?: Partial<ReportPayload>) {
 
     submit,
     reset,
+
+    analysis,
+    setAnalysis,
+
+    analyzing,
+    setAnalyzing,
   };
 }

@@ -1,3 +1,5 @@
+import type { VisionAnalysis } from "@/ai/agents/vision";
+
 export type Category =
   | "Roads"
   | "Garbage"
@@ -6,6 +8,23 @@ export type Category =
   | "Traffic"
   | "Safety"
   | "Other";
+
+export type ReportStatus =
+  | "Pending"
+  | "Verified"
+  | "Assigned"
+  | "In Progress"
+  | "Resolved";
+
+export interface ReportLocation {
+  latitude: number;
+  longitude: number;
+  accuracy: number;
+  address: string;
+  city: string;
+  state: string;
+  country: string;
+}
 
 export interface AIAnalysis {
   category: string;
@@ -20,23 +39,31 @@ export interface ReportPayload {
   description: string;
   category: Category;
 
-  media: File | null;
+  media?: File | null;
+
   mediaType: "image" | "video" | null;
+
   mimeType: string | null;
 
-  location?: string | null;
+  location?: ReportLocation | null;
+
+  aiAnalysis?: VisionAnalysis | null;
 }
 
 export interface Report {
   id?: string;
 
-  media?: File | null;
+  description: string;
+
+  category: Category;
+
   mediaType?: "image" | "video";
 
-  description: string;
-  category: string;
+  location?: ReportLocation;
 
-  location?: string;
+  status: ReportStatus;
 
-  aiAnalysis?: AIAnalysis;
+  aiAnalysis?: VisionAnalysis | null;
+
+  createdAt?: Date | null;
 }
