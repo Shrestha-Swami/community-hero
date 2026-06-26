@@ -5,7 +5,7 @@
   "tsx": true,
   "tailwind": {
     "config": "",
-    "css": "app/globals.css",
+    "css": "src/app/globals.css",
     "baseColor": "neutral",
     "cssVariables": true,
     "prefix": ""
@@ -17,7 +17,14 @@
     "utils": "@/lib/utils",
     "ui": "@/components/ui",
     "lib": "@/lib",
-    "hooks": "@/hooks"
+    "hooks": "@/hooks",
+    "constants": "@/constants",
+    "types": "@/types",
+    "features": "@/features",
+    "ai": "@/ai",
+    "google": "@/google",
+    "firebase": "@/firebase",
+    "config": "@/config"
   },
   "menuColor": "default",
   "menuAccent": "subtle",
