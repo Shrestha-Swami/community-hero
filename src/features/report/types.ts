@@ -5,14 +5,7 @@ export type Category =
   | "Water"
   | "Traffic"
   | "Safety"
-  | "Other"
-
-export interface ReportPayload {
-  description: string
-  category: Category
-  image?: File | null
-  location?: string | null
-}
+  | "Other";
 
 export interface AIAnalysis {
   category: string;
@@ -23,12 +16,27 @@ export interface AIAnalysis {
   confidence: number;
 }
 
+export interface ReportPayload {
+  description: string;
+  category: Category;
+
+  media: File | null;
+  mediaType: "image" | "video" | null;
+  mimeType: string | null;
+
+  location?: string | null;
+}
+
 export interface Report {
   id?: string;
-  image?: File;
+
+  media?: File | null;
+  mediaType?: "image" | "video";
+
   description: string;
   category: string;
+
   location?: string;
+
   aiAnalysis?: AIAnalysis;
 }
-// report feature types.
