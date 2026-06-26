@@ -7,6 +7,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { NAV_LINKS, SITE } from "@/constants"
 import { cn } from "@/lib/utils"
+import { AuthControls } from "@/features/auth/components/auth-controls"
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -38,9 +39,7 @@ export function Navbar() {
         </ul>
 
         <div className="hidden md:block">
-          <Button asChild size="sm">
-            <Link href="#get-involved">Join the mission</Link>
-          </Button>
+          <AuthControls />
         </div>
 
         <Button
@@ -77,11 +76,7 @@ export function Navbar() {
             </li>
           ))}
           <li className="pt-2">
-            <Button asChild className="w-full">
-              <Link href="#get-involved" onClick={() => setMobileOpen(false)}>
-                Join the mission
-              </Link>
-            </Button>
+            <AuthControls />
           </li>
         </ul>
       </div>
