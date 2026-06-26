@@ -1,6 +1,8 @@
 ﻿import {
   addDoc,
   collection,
+  doc,
+  getDoc,
   getDocs,
   orderBy,
   query,
@@ -15,6 +17,7 @@ import type {
   ReportLocation,
   ReportPayload,
   ReportStatus,
+  TrackingHistoryEntry,
 } from "../types";
 
 const INITIAL_STATUS: ReportStatus = "Pending";
@@ -68,6 +71,18 @@ export async function fetchUserReports() {
   return snapshot.docs.map((doc) => {
     const data = doc.data();
 
+    const statusHistory = Array.isArray(data.statusHistory)
+      ? (data.statusHistory as unknown[]).map((entry) => {
+          const raw = entry as Record<string, any>;
+
+          return {
+            status: raw.status as ReportStatus,
+            description: typeof raw.description === "string" ? raw.description : undefined,
+            timestamp: raw.timestamp?.toDate?.() ?? null,
+          } as TrackingHistoryEntry;
+        })
+      : null;
+
     return {
       id: doc.id,
       description: data.description,
@@ -77,6 +92,50 @@ export async function fetchUserReports() {
       location: data.location as ReportLocation | undefined,
       aiAnalysis: data.aiAnalysis ?? null,
       createdAt: data.createdAt?.toDate?.() ?? null,
+      updatedAt: data.updatedAt?.toDate?.() ?? null,
+      statusHistory,
     };
   });
+}
+
+export async function fetchReportById(reportId: string) {
+  const user = auth.currentUser;
+
+  if (!user) {
+    throw new Error("User must be logged in.");
+  }
+
+  const reportRef = doc(db, "reports", reportId);
+  const snapshot = await getDoc(reportRef);
+
+  if (!snapshot.exists()) {
+    throw new Error("Report not found.");
+  }
+
+  const data = snapshot.data();
+
+  const statusHistory = Array.isArray(data.statusHistory)
+    ? (data.statusHistory as unknown[]).map((entry) => {
+        const raw = entry as Record<string, any>;
+
+        return {
+          status: raw.status as ReportStatus,
+          description: typeof raw.description === "string" ? raw.description : undefined,
+          timestamp: raw.timestamp?.toDate?.() ?? null,
+        } as TrackingHistoryEntry;
+      })
+    : null;
+
+  return {
+    id: snapshot.id,
+    description: data.description,
+    category: data.category as Category,
+    status: data.status as ReportStatus,
+    mediaType: data.mediaType as "image" | "video" | undefined,
+    location: data.location as ReportLocation | undefined,
+    aiAnalysis: data.aiAnalysis ?? null,
+    createdAt: data.createdAt?.toDate?.() ?? null,
+    updatedAt: data.updatedAt?.toDate?.() ?? null,
+    statusHistory,
+  };
 }

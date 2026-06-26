@@ -6,6 +6,7 @@ import { Clock3, FileText, Sparkles, TrendingUp } from "lucide-react";
 import { AuthGuard } from "@/components/auth/AuthGuard";
 import { SectionTitle } from "@/components/common/section-title";
 import { fetchUserReports } from "@/features/report/services/report.service";
+import { ReportCard } from "@/features/report/components/ReportCard";
 import type { Report } from "@/features/report/types";
 
 function formatDate(date?: Date | null) {
@@ -112,31 +113,7 @@ export default function DashboardPage() {
           ) : (
             <div className="mt-6 space-y-4">
               {reports.slice(0, 5).map((report) => (
-                <div
-                  key={report.id}
-                  className="rounded-3xl border border-border bg-card p-5"
-                >
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    <div>
-                      <p className="text-sm font-medium text-muted-foreground">
-                        {report.category}
-                      </p>
-                      <p className="mt-1 text-base font-semibold text-foreground">
-                        {report.description || "No description provided."}
-                      </p>
-                    </div>
-                    <span className="rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary-foreground">
-                      {report.status}
-                    </span>
-                  </div>
-
-                  <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
-                    <span>{report.mediaType ? report.mediaType : "No media"}</span>
-                    <span>•</span>
-                    <span>{formatDate(report.createdAt)}</span>
-                    {report.aiAnalysis ? <span>• AI suggested {report.aiAnalysis.department}</span> : null}
-                  </div>
-                </div>
+                <ReportCard key={report.id} report={report} />
               ))}
             </div>
           )}

@@ -6,6 +6,7 @@ import { FileText, MapPin, ShieldCheck, Sparkles } from "lucide-react";
 import { AuthGuard } from "@/components/auth/AuthGuard";
 import { SectionTitle } from "@/components/common/section-title";
 import { fetchUserReports } from "@/features/report/services/report.service";
+import { ReportCard } from "@/features/report/components/ReportCard";
 import type { Report } from "@/features/report/types";
 
 function formatDate(date?: Date | null) {
@@ -61,45 +62,7 @@ export default function ReportsPage() {
           ) : (
             <div className="space-y-4">
               {reports.map((report) => (
-                <article
-                  key={report.id}
-                  className="rounded-3xl border border-border bg-card p-5"
-                >
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    <div>
-                      <p className="text-sm font-semibold text-foreground">{report.category}</p>
-                      <p className="mt-1 text-base text-muted-foreground">
-                        {report.description || "No description provided."}
-                      </p>
-                    </div>
-                    <span className="rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary-foreground">
-                      {report.status}
-                    </span>
-                  </div>
-
-                  <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <MapPin className="size-4" />
-                      <span>{report.location?.address ?? "Location not set"}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Sparkles className="size-4" />
-                      <span>{report.mediaType ? report.mediaType : "No media"}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <ShieldCheck className="size-4" />
-                      <span>{formatDate(report.createdAt)}</span>
-                    </div>
-                  </div>
-
-                  {report.aiAnalysis ? (
-                    <div className="mt-4 rounded-2xl bg-slate-950/5 p-4 text-sm text-muted-foreground">
-                      <p className="font-medium text-foreground">AI Insights</p>
-                      <p className="mt-2">Suggested department: {report.aiAnalysis.department}</p>
-                      <p>Severity: {report.aiAnalysis.severity}</p>
-                    </div>
-                  ) : null}
-                </article>
+                <ReportCard key={report.id} report={report} />
               ))}
             </div>
           )}

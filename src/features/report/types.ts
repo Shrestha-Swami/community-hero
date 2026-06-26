@@ -30,7 +30,7 @@ export interface AIAnalysis {
   category: string;
   severity: "Low" | "Medium" | "High";
   priorityScore: number;
-  suggestedDepartment: string;
+  department: string;
   summary: string;
   confidence: number;
 }
@@ -50,6 +50,12 @@ export interface ReportPayload {
   aiAnalysis?: VisionAnalysis | null;
 }
 
+export interface TrackingHistoryEntry {
+  status: ReportStatus;
+  description?: string;
+  timestamp?: Date | null;
+}
+
 export interface Report {
   id?: string;
 
@@ -66,4 +72,8 @@ export interface Report {
   aiAnalysis?: VisionAnalysis | null;
 
   createdAt?: Date | null;
+
+  updatedAt?: Date | null;
+
+  statusHistory?: TrackingHistoryEntry[] | null;
 }

@@ -49,25 +49,54 @@ export function getStatusColor(status: TrackingStatus) {
 }
 
 export function formatTimeline(report: ReportTrackingData): TrackingTimelineItem[] {
-  const currentIndex = TRACKING_STATUSES.indexOf(report.status);
-  const baseDate = report.createdAt ? new Date(report.createdAt) : new Date();
+  const history = report.statusHistory ?? [];
 
-  return TRACKING_STATUSES.map((status, index) => {
+  if (history.length === 0) {
+    const createdTimestamp = report.createdAt ? formatTimestamp(new Date(report.createdAt)) : "";
+
+    const timeline: TrackingTimelineItem[] = [
+      {
+        status: "Pending",
+        description: STATUS_DESCRIPTIONS.Pending,
+        timestamp: createdTimestamp,
+        state: report.status === "Pending" ? "current" : "complete",
+      },
+    ];
+
+    if (report.status !== "Pending") {
+      timeline.push({
+        status: report.status,
+        description: STATUS_DESCRIPTIONS[report.status],
+        timestamp: report.updatedAt ? formatTimestamp(new Date(report.updatedAt)) : createdTimestamp,
+        state: "current",
+      });
+    }
+
+    return timeline;
+  }
+
+  const sortedHistory = [...history].sort((a, b) => {
+    const aTime = a.timestamp ? new Date(a.timestamp).getTime() : 0;
+    const bTime = b.timestamp ? new Date(b.timestamp).getTime() : 0;
+    return aTime - bTime;
+  });
+
+  const currentIndex = TRACKING_STATUSES.indexOf(report.status);
+
+  return sortedHistory.map((entry) => {
+    const status = entry.status;
+    const statusIndex = TRACKING_STATUSES.indexOf(status);
     const state: TrackingTimelineItem["state"] =
-      index < currentIndex
+      statusIndex < currentIndex
         ? "complete"
-        : index === currentIndex
+        : status === report.status
         ? "current"
         : "pending";
 
-    const timestamp = state === "pending"
-      ? ""
-      : formatTimestamp(new Date(baseDate.getTime() + index * 15 * 60 * 1000));
-
     return {
       status,
-      description: STATUS_DESCRIPTIONS[status],
-      timestamp,
+      description: entry.description ?? STATUS_DESCRIPTIONS[status],
+      timestamp: entry.timestamp ? formatTimestamp(new Date(entry.timestamp)) : "",
       state,
     };
   });

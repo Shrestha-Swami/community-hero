@@ -10,6 +10,12 @@ export const TRACKING_STATUSES: TrackingStatus[] = [
   "Resolved",
 ];
 
+export interface TrackingHistoryEntry {
+  status: TrackingStatus;
+  description?: string;
+  timestamp?: Date | null;
+}
+
 export interface TrackingTimelineItem {
   status: TrackingStatus;
   description: string;
@@ -20,6 +26,8 @@ export interface TrackingTimelineItem {
 export interface ReportTrackingData {
   status: TrackingStatus;
   createdAt?: Date | null;
+  updatedAt?: Date | null;
+  statusHistory?: TrackingHistoryEntry[] | null;
 }
 
 export interface ReportTrackingResult {
