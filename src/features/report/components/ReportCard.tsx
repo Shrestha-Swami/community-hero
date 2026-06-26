@@ -23,27 +23,27 @@ export function ReportCard({ report }: ReportCardProps) {
   return (
     <Link
       href={report.id ? `/report/${report.id}` : "/reports"}
-      className="block rounded-3xl border border-border bg-card p-5 transition hover:border-primary/40 hover:shadow-lg"
+      className="block rounded-3xl border border-border bg-card p-4 sm:p-5 transition hover:border-primary/40 hover:shadow-lg w-full max-w-none min-w-0 overflow-hidden break-words"
     >
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-        <div className="min-w-0 flex-1">
-          <p className="text-sm font-semibold text-muted-foreground">{report.category}</p>
-          <p className="mt-2 text-base font-semibold text-foreground truncate">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between min-w-0 w-full">
+        <div className="min-w-0 flex-1 break-words">
+          <p className="text-xs sm:text-sm font-semibold text-muted-foreground">{report.category}</p>
+          <p className="mt-1.5 text-sm sm:text-base font-semibold text-foreground break-words">
             {report.description || "No description provided."}
           </p>
-          <div className="mt-3 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-            <span>Last updated: {formatDate(report.updatedAt)}</span>
-            <span>•</span>
-            <span>{report.aiAnalysis?.department ?? "Department not assigned"}</span>
+          <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs sm:text-sm text-muted-foreground break-words min-w-0">
+            <span className="shrink-0">Last updated: {formatDate(report.updatedAt)}</span>
+            <span className="shrink-0 hidden xs:inline">•</span>
+            <span className="break-words min-w-0">{report.aiAnalysis?.department ?? "Department not assigned"}</span>
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 shrink-0 self-start sm:self-auto">
           <StatusBadge status={report.status} />
         </div>
       </div>
 
-      <div className="mt-5">
+      <div className="mt-4 w-full min-w-0 overflow-hidden">
         <ReportProgress status={report.status} />
       </div>
     </Link>

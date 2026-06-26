@@ -13,28 +13,74 @@ export function ReportProgress({ status }: ReportProgressProps) {
   const currentIndex = TRACKING_STATUSES.indexOf(status);
 
   return (
-    <div className="space-y-4 rounded-3xl border border-border bg-background p-5 shadow-sm">
+    <div className="space-y-4 rounded-3xl border border-border bg-background p-4 sm:p-5 shadow-sm min-w-0 w-full overflow-hidden">
       <div className="flex items-center justify-between gap-4">
-        <div>
-          <p className="text-sm font-semibold">Report Progress</p>
-          <p className="text-xs text-muted-foreground">
+        <div className="min-w-0">
+          <p className="text-sm font-semibold truncate">Report Progress</p>
+          <p className="text-xs text-muted-foreground truncate">
             Track the current stage of your report.
           </p>
         </div>
-        <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
+        <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-700 shrink-0">
           {progressPercentage}%
         </span>
       </div>
 
-      <div className="rounded-full bg-slate-200 h-2 overflow-hidden">
+      <div className="rounded-full bg-slate-200 h-2 overflow-hidden w-full">
         <div
           className="h-2 rounded-full bg-emerald-500 transition-all duration-300"
           style={{ width: `${progressPercentage}%` }}
         />
       </div>
 
-      <div className="overflow-x-auto">
-        <div className="flex min-w-[520px] items-start gap-4">
+      {/* Mobile Vertical Stepper (< 768px) */}
+      <div className="flex flex-col gap-3 md:hidden mt-4 pl-1">
+        {TRACKING_STATUSES.map((step, index) => {
+          const isComplete = index < currentIndex;
+          const isCurrent = index === currentIndex;
+
+          return (
+            <div key={step} className="flex items-center gap-3 relative">
+              {/* Connecting line between circles */}
+              {index < TRACKING_STATUSES.length - 1 && (
+                <div
+                  className={`absolute left-[15px] top-8 bottom-[-12px] w-0.5 ${
+                    index < currentIndex ? "bg-emerald-500" : "bg-slate-200"
+                  }`}
+                />
+              )}
+              <div
+                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition z-10 ${
+                  isComplete
+                    ? "border-emerald-500 bg-emerald-500 text-white"
+                    : isCurrent
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-slate-200 bg-slate-100 text-slate-500"
+                }`}
+              >
+                {isComplete ? (
+                  <CheckCircle className="h-4 w-4" />
+                ) : (
+                  <span className="text-xs font-semibold">{index + 1}</span>
+                )}
+              </div>
+              <div className="flex-1 min-w-0 text-left">
+                <span
+                  className={`text-sm font-medium ${
+                    isCurrent ? "text-foreground font-semibold" : "text-muted-foreground"
+                  }`}
+                >
+                  {step}
+                </span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Desktop Horizontal Stepper (>= 768px) */}
+      <div className="hidden md:block overflow-x-auto w-full">
+        <div className="flex min-w-[520px] items-start gap-4 py-2">
           {TRACKING_STATUSES.map((step, index) => {
             const isComplete = index < currentIndex;
             const isCurrent = index === currentIndex;

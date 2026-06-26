@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FileText, MapPin, ShieldCheck, Sparkles } from "lucide-react";
 
 import { AuthGuard } from "@/components/auth/AuthGuard";
-import { SectionTitle } from "@/components/common/section-title";
+import { SectionTitle, ErrorCard } from "@/components/common";
+import { useAuth } from "@/features/auth/hooks/use-auth";
 import { fetchUserReports } from "@/features/report/services/report.service";
 import { ReportCard } from "@/features/report/components/ReportCard";
 import type { Report } from "@/features/report/types";
@@ -19,41 +19,54 @@ function formatDate(date?: Date | null) {
 }
 
 export default function ReportsPage() {
+  const { user, loading: authLoading } = useAuth();
   const [reports, setReports] = useState<Report[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    if (authLoading) return;
+
+    if (!user) {
+      setLoading(false);
+      return;
+    }
+
     async function loadReports() {
       try {
         setLoading(true);
+        setError(null);
         const data = await fetchUserReports();
         setReports(data);
-      } catch (err) {
+      } catch (err: any) {
         console.error(err);
-        setError("Unable to load your reports. Please try again later.");
+        setError(err?.message === "User must be logged in." ? "Please log in to view your reports." : "Unable to load your reports. Please try again later.");
       } finally {
         setLoading(false);
       }
     }
 
     loadReports();
-  }, []);
+  }, [authLoading, user]);
+
+  const isPageLoading = authLoading || loading;
 
   return (
     <AuthGuard>
-      <main className="mx-auto max-w-5xl px-4 py-8">
+      <main className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 w-full min-w-0 overflow-x-hidden">
         <SectionTitle
           title="My Reports"
           subtitle="Report history"
           description="Browse every issue you submitted and check status updates from the community review process."
         />
 
-        <section className="mt-8 rounded-3xl border border-border bg-background p-6">
-          {loading ? (
+        <section className="mt-8 rounded-3xl border border-border bg-background p-4 sm:p-6 min-w-0 w-full overflow-hidden">
+          {isPageLoading ? (
             <p className="text-sm text-muted-foreground">Loading your reports…</p>
           ) : error ? (
-            <p className="text-sm text-destructive">{error}</p>
+            <div className="mt-2">
+              <ErrorCard message={error} />
+            </div>
           ) : reports.length === 0 ? (
             <div className="space-y-4 text-sm text-muted-foreground">
               <p>You haven't submitted any reports yet.</p>
