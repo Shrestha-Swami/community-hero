@@ -20,6 +20,14 @@ import { useAuth } from "@/features/auth/hooks/use-auth";
 import { subscribeToUserReports } from "@/features/report/services/report.service";
 import { ReportCard } from "@/features/report/components/ReportCard";
 import type { Report } from "@/features/report/types";
+import { cn } from "@/lib/utils";
+import { Flame, Award, Medal, Trophy, ShieldAlert, Lock } from "lucide-react";
+import { useGamification } from "@/features/gamification/context/GamificationContext";
+import { getLevelProgress } from "@/features/gamification/services/gamification.service";
+import { BADGES } from "@/features/gamification/constants";
+import { Leaderboard } from "@/features/gamification/components/Leaderboard";
+import { db } from "@/firebase";
+import { collection, query, where, getCountFromServer } from "firebase/firestore";
 
 function formatDate(date?: Date | null) {
   if (!date) return "—";
@@ -35,6 +43,28 @@ export default function DashboardPage() {
   const [reports, setReports] = useState<Report[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  
+  const { profile, loading: gamificationLoading } = useGamification();
+  const [rank, setRank] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (!profile) return;
+
+    async function fetchRank(points: number) {
+      try {
+        const rankQuery = query(
+          collection(db, "users"),
+          where("heroPoints", ">", points)
+        );
+        const snapshot = await getCountFromServer(rankQuery);
+        setRank(snapshot.data().count + 1);
+      } catch (err) {
+        console.error("Error fetching rank:", err);
+      }
+    }
+
+    fetchRank(profile.heroPoints);
+  }, [profile?.heroPoints]);
 
   useEffect(() => {
     if (authLoading) return;
@@ -112,7 +142,7 @@ export default function DashboardPage() {
     };
   }, [reports]);
 
-  const isPageLoading = authLoading || loading;
+  const isPageLoading = authLoading || loading || gamificationLoading;
 
   return (
     <AuthGuard>
@@ -122,6 +152,98 @@ export default function DashboardPage() {
           subtitle="Your civic impact"
           description="Review your latest submissions, track status, and see how your reports are moving through the community process."
         />
+
+        {/* Gamification Summary Cards */}
+        {profile && (
+          <div className="mt-8 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+            {/* Hero Level & Points */}
+            <div className="group rounded-3xl border border-border bg-gradient-to-br from-indigo-500/10 via-transparent to-transparent p-5 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-indigo-500/40 min-w-0 w-full overflow-hidden">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-wider text-indigo-500 truncate">
+                    {profile.heroLevel}
+                  </p>
+                  <p className="mt-1 text-2xl font-bold">{profile.heroPoints} pts</p>
+                </div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 dark:bg-indigo-950/20 text-indigo-500">
+                  <Trophy className="size-5" />
+                </div>
+              </div>
+              
+              {/* Level Progress */}
+              {(() => {
+                const prog = getLevelProgress(profile.heroPoints);
+                return (
+                  <div className="mt-4 space-y-1.5">
+                    <div className="flex justify-between text-[10px] text-muted-foreground">
+                      <span>Progress to Next Level</span>
+                      <span>{prog.progressPercent}%</span>
+                    </div>
+                    <div className="rounded-full bg-slate-200 dark:bg-slate-800 h-1.5 overflow-hidden w-full">
+                      <div
+                        className="h-1.5 rounded-full bg-indigo-500 transition-all duration-300"
+                        style={{ width: `${prog.progressPercent}%` }}
+                      />
+                    </div>
+                    {prog.nextLevel && (
+                      <p className="text-[10px] text-muted-foreground truncate">
+                        {prog.pointsRequired} pts until {prog.nextLevel}
+                      </p>
+                    )}
+                  </div>
+                );
+              })()}
+            </div>
+
+            {/* Streak */}
+            <div className="group rounded-3xl border border-border bg-gradient-to-br from-amber-500/10 via-transparent to-transparent p-5 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-amber-500/40 min-w-0 w-full overflow-hidden">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-muted-foreground">Daily Streak</p>
+                  <p className="mt-1 text-2xl font-bold">{profile.streak} Days</p>
+                </div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 dark:bg-amber-950/20 text-amber-500 shrink-0">
+                  <Flame className="size-5" />
+                </div>
+              </div>
+              <p className="mt-4 text-xs text-muted-foreground/80">
+                Log in daily to maintain your streak!
+              </p>
+            </div>
+
+            {/* Badges Earned */}
+            <div className="group rounded-3xl border border-border bg-gradient-to-br from-emerald-500/10 via-transparent to-transparent p-5 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-emerald-500/40 min-w-0 w-full overflow-hidden">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-muted-foreground">Badges Earned</p>
+                  <p className="mt-1 text-2xl font-bold">{profile.badges.length}</p>
+                </div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 dark:bg-emerald-950/20 text-emerald-500 shrink-0">
+                  <Award className="size-5" />
+                </div>
+              </div>
+              <p className="mt-4 text-xs text-muted-foreground/80">
+                Unlock achievements to earn points!
+              </p>
+            </div>
+
+            {/* Leaderboard Position */}
+            <div className="group rounded-3xl border border-border bg-gradient-to-br from-purple-500/10 via-transparent to-transparent p-5 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-purple-500/40 min-w-0 w-full overflow-hidden">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-muted-foreground">City Rank</p>
+                  <p className="mt-1 text-2xl font-bold">#{rank ?? "—"}</p>
+                </div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-50 dark:bg-purple-950/20 text-purple-500 shrink-0">
+                  <Medal className="size-5" />
+                </div>
+              </div>
+              <p className="mt-4 text-xs text-muted-foreground/80">
+                Your position on the global board
+              </p>
+            </div>
+          </div>
+        )}
 
         {/* Status Summary Cards */}
         <div className="mt-8 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
@@ -348,6 +470,61 @@ export default function DashboardPage() {
             </div>
           )}
         </section>
+
+        {/* Gamification Details Section */}
+        {profile && (
+          <div className="mt-10 grid gap-6 grid-cols-1 lg:grid-cols-3">
+            {/* Badges Gallery */}
+            <section className="lg:col-span-2 rounded-3xl border border-border bg-background p-5 sm:p-6 min-w-0 w-full overflow-hidden">
+              <div className="mb-6">
+                <h2 className="text-xl font-semibold">Civic Badges</h2>
+                <p className="text-sm text-muted-foreground">
+                  Earn badges by contributing to community cleanups and report tracking.
+                </p>
+              </div>
+
+              <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                {BADGES.map((badge) => {
+                  const isUnlocked = profile.badges.includes(badge.id);
+                  return (
+                    <div
+                      key={badge.id}
+                      className={cn(
+                        "flex items-start gap-3 rounded-2xl border p-4 transition-all duration-300",
+                        isUnlocked
+                          ? "border-emerald-500/30 bg-emerald-500/5 shadow-xs"
+                          : "border-border bg-background opacity-60 grayscale"
+                      )}
+                    >
+                      <div className="text-3xl shrink-0">{badge.icon}</div>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-1.5 justify-between">
+                          <span className="font-semibold text-xs text-foreground truncate">
+                            {badge.name}
+                          </span>
+                          {!isUnlocked && <Lock className="h-3 w-3 text-muted-foreground shrink-0" />}
+                        </div>
+                        <p className="mt-1 text-[10px] text-muted-foreground leading-normal line-clamp-2">
+                          {badge.description}
+                        </p>
+                        {isUnlocked && (
+                          <span className="mt-2 inline-flex items-center text-[9px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded-full">
+                            +{badge.pointsAwarded} pts
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+
+            {/* Leaderboard Widget */}
+            <aside className="lg:col-span-1">
+              <Leaderboard />
+            </aside>
+          </div>
+        )}
       </main>
     </AuthGuard>
   );

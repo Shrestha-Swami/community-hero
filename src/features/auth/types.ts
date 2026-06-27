@@ -5,11 +5,12 @@ export interface UserProfile {
     photoURL: string;
     heroPoints: number;
     heroLevel:
-      | "Volunteer"
-      | "Community Helper"
+      | "Community Starter"
+      | "Civic Volunteer"
+      | "Community Guardian"
+      | "City Hero"
       | "Civic Champion"
-      | "City Guardian"
-      | "Community Hero";
+      | "Community Legend";
     reportsSubmitted: number;
     reportsVerified: number;
     streak: number;

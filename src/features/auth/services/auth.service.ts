@@ -45,6 +45,7 @@ import {
       reportsVerified: 0,
 
       streak: DEFAULT_STREAK,
+      lastActiveDate: null,
 
       badges: [],
 
