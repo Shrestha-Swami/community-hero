@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { doc, onSnapshot } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
 
-import { auth, db } from "@/firebase";
+import { db } from "@/firebase";
+import { useAuth } from "@/features/auth/hooks/use-auth";
 import type { Report, Category, ReportLocation, ReportStatus, TrackingHistoryEntry } from "@/features/report/types";
 
 export function useLiveReport(reportId: string) {
@@ -12,116 +12,98 @@ export function useLiveReport(reportId: string) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const { user, loading: authLoading } = useAuth();
+
   useEffect(() => {
+    if (authLoading) return;
+
     if (!reportId) {
-      setLoading(false);
       setReport(null);
+      setLoading(false);
       return;
     }
 
-    let unsubscribeSnapshot: (() => void) | null = null;
+    setLoading(true);
+    setError(null);
 
-    const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
-      // Clean up previous snapshot listener on auth change
-      if (unsubscribeSnapshot) {
-        unsubscribeSnapshot();
-        unsubscribeSnapshot = null;
-      }
+    const docRef = doc(db, "reports", reportId);
 
-      if (!user) {
-        setError("User must be logged in.");
-        setReport(null);
-        setLoading(false);
-        return;
-      }
-
-      setLoading(true);
-      setError(null);
-
-      const docRef = doc(db, "reports", reportId);
-
-      unsubscribeSnapshot = onSnapshot(
-        docRef,
-        (snapshot) => {
-          if (!snapshot.exists()) {
-            setError("Report not found");
-            setReport(null);
-            setLoading(false);
-            return;
-          }
-
-          try {
-            const data = snapshot.data();
-
-            const statusHistory = Array.isArray(data.statusHistory)
-              ? (data.statusHistory as unknown[]).map((entry) => {
-                  const raw = entry as Record<string, any>;
-
-                  const timestamp = raw.timestamp
-                    ? (typeof raw.timestamp.toDate === "function"
-                        ? raw.timestamp.toDate()
-                        : new Date(raw.timestamp))
-                    : null;
-
-                  return {
-                    status: raw.status as ReportStatus,
-                    description: typeof raw.description === "string" ? raw.description : undefined,
-                    timestamp,
-                  } as TrackingHistoryEntry;
-                })
-              : null;
-
-            const createdAt = data.createdAt
-              ? (typeof data.createdAt.toDate === "function"
-                  ? data.createdAt.toDate()
-                  : new Date(data.createdAt))
-              : null;
-
-            const updatedAt = data.updatedAt
-              ? (typeof data.updatedAt.toDate === "function"
-                  ? data.updatedAt.toDate()
-                  : new Date(data.updatedAt))
-              : null;
-
-            const reportData: Report = {
-              id: snapshot.id,
-              description: data.description,
-              category: data.category as Category,
-              status: data.status as ReportStatus,
-              mediaType: data.mediaType as "image" | "video" | undefined,
-              location: data.location as ReportLocation | undefined,
-              aiAnalysis: data.aiAnalysis ?? null,
-              createdAt,
-              updatedAt,
-              statusHistory,
-            };
-
-            setReport(reportData);
-            setError(null);
-          } catch (err) {
-            console.error("Error parsing report details:", err);
-            setError("Failed to parse report details.");
-            setReport(null);
-          } finally {
-            setLoading(false);
-          }
-        },
-        (err) => {
-          console.error("Error listening to report:", err);
-          setError("Unable to load report details. Please try again later.");
+    const unsubscribe = onSnapshot(
+      docRef,
+      (snapshot) => {
+        if (!snapshot.exists()) {
+          setError("Report not found");
           setReport(null);
           setLoading(false);
+          return;
         }
-      );
-    });
 
-    return () => {
-      unsubscribeAuth();
-      if (unsubscribeSnapshot) {
-        unsubscribeSnapshot();
+        try {
+          const data = snapshot.data();
+
+          const statusHistory = Array.isArray(data.statusHistory)
+            ? (data.statusHistory as unknown[]).map((entry) => {
+                const raw = entry as Record<string, any>;
+
+                const timestamp = raw.timestamp
+                  ? (typeof raw.timestamp.toDate === "function"
+                      ? raw.timestamp.toDate()
+                      : new Date(raw.timestamp))
+                  : null;
+
+                return {
+                  status: raw.status as ReportStatus,
+                  description: typeof raw.description === "string" ? raw.description : undefined,
+                  timestamp,
+                } as TrackingHistoryEntry;
+              })
+            : null;
+
+          const createdAt = data.createdAt
+            ? (typeof data.createdAt.toDate === "function"
+                ? data.createdAt.toDate()
+                : new Date(data.createdAt))
+            : null;
+
+          const updatedAt = data.updatedAt
+            ? (typeof data.updatedAt.toDate === "function"
+                ? data.updatedAt.toDate()
+                : new Date(data.updatedAt))
+            : null;
+
+          const reportData: Report = {
+            id: snapshot.id,
+            description: data.description,
+            category: data.category as Category,
+            status: data.status as ReportStatus,
+            mediaType: data.mediaType as "image" | "video" | undefined,
+            location: data.location as ReportLocation | undefined,
+            aiAnalysis: data.aiAnalysis ?? null,
+            createdAt,
+            updatedAt,
+            statusHistory,
+          };
+
+          setReport(reportData);
+          setError(null);
+        } catch (err) {
+          console.error("Error parsing report details:", err);
+          setError("Failed to parse report details.");
+          setReport(null);
+        } finally {
+          setLoading(false);
+        }
+      },
+      (err) => {
+        console.error("Error listening to report:", err);
+        setError("Unable to load report details. Please try again later.");
+        setReport(null);
+        setLoading(false);
       }
-    };
-  }, [reportId]);
+    );
+
+    return () => unsubscribe();
+  }, [user?.uid, authLoading, reportId]);
 
   return { report, loading, error };
 }

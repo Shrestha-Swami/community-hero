@@ -28,7 +28,7 @@ export function getReportProgress(status: TrackingStatus) {
     return 0;
   }
 
-  return Math.round((index / (TRACKING_STATUSES.length - 1)) * 100);
+  return (index + 1) * 20;
 }
 
 export function getStatusColor(status: TrackingStatus) {

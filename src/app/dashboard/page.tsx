@@ -17,7 +17,7 @@ import {
 import { AuthGuard } from "@/components/auth/AuthGuard";
 import { SectionTitle, ErrorCard } from "@/components/common";
 import { useAuth } from "@/features/auth/hooks/use-auth";
-import { fetchUserReports } from "@/features/report/services/report.service";
+import { subscribeToUserReports } from "@/features/report/services/report.service";
 import { ReportCard } from "@/features/report/components/ReportCard";
 import type { Report } from "@/features/report/types";
 
@@ -40,26 +40,34 @@ export default function DashboardPage() {
     if (authLoading) return;
 
     if (!user) {
+      setReports([]);
       setLoading(false);
       return;
     }
 
-    async function loadReports() {
-      try {
-        setLoading(true);
-        setError(null);
-        const data = await fetchUserReports();
+    setLoading(true);
+    setError(null);
+
+    const unsubscribe = subscribeToUserReports(
+      user.uid,
+      (data) => {
         setReports(data);
-      } catch (err: any) {
-        console.error(err);
-        setError(err?.message === "User must be logged in." ? "Please log in to view your reports." : "Unable to load your reports. Please try again later.");
-      } finally {
+        setLoading(false);
+      },
+      (err: any) => {
+        console.error("Dashboard reports subscription error:", err);
+        setReports([]);
+        setError(
+          err?.message === "User must be logged in."
+            ? "Please log in to view your reports."
+            : "Unable to load your reports. Please try again later."
+        );
         setLoading(false);
       }
-    }
+    );
 
-    loadReports();
-  }, [authLoading, user]);
+    return () => unsubscribe();
+  }, [user?.uid, authLoading]);
 
   const stats = useMemo(() => {
     const total = reports.length;

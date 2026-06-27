@@ -4,7 +4,6 @@ import { use } from "react";
 import { AlertCircle, ArrowLeft, MapPin, Sparkles } from "lucide-react";
 import Link from "next/link";
 
-import { AuthGuard } from "@/components/auth/AuthGuard";
 import { SectionTitle, ErrorCard } from "@/components/common";
 import { useAuth } from "@/features/auth/hooks/use-auth";
 import { StatusBadge, ReportProgress, Timeline, useLiveReport } from "@/features/tracking";
@@ -261,30 +260,28 @@ export default function ReportDetailPage({ params }: { params: Promise<{ id: str
   const { user, loading: authLoading } = useAuth();
 
   return (
-    <AuthGuard>
-      <main className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 w-full min-w-0 overflow-x-hidden">
-        <div className="mb-6 flex items-center gap-3 text-sm text-muted-foreground">
-          <Link
-            href="/reports"
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-2 transition hover:bg-muted"
-          >
-            <ArrowLeft className="size-4 animate-in fade-in shrink-0" />
-            Back to reports
-          </Link>
-        </div>
+    <main className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 w-full min-w-0 overflow-x-hidden">
+      <div className="mb-6 flex items-center gap-3 text-sm text-muted-foreground">
+        <Link
+          href="/reports"
+          className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-2 transition hover:bg-muted"
+        >
+          <ArrowLeft className="size-4 animate-in fade-in shrink-0" />
+          Back to reports
+        </Link>
+      </div>
 
-        <SectionTitle
-          title="Report Details"
-          subtitle="Live tracking"
-          description="Review the current status, analysis, timeline, and department assignment for this report."
-        />
+      <SectionTitle
+        title="Report Details"
+        subtitle="Live tracking"
+        description="Review the current status, analysis, timeline, and department assignment for this report."
+      />
 
-        {authLoading ? (
-          <ReportDetailSkeleton />
-        ) : (
-          <ReportDetailContent reportId={id} />
-        )}
-      </main>
-    </AuthGuard>
+      {authLoading ? (
+        <ReportDetailSkeleton />
+      ) : (
+        <ReportDetailContent reportId={id} />
+      )}
+    </main>
   );
 }

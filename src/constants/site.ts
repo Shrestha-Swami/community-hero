@@ -8,6 +8,7 @@ export const SITE = {
 export const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/report", label: "Report Issue" },
+  { href: "/map", label: "Live Map" },
   { href: "/dashboard", label: "Dashboard" },
   { href: "/reports", label: "My Reports" },
 ] as const
