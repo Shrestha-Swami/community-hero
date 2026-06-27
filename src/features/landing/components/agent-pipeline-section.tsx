@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 
+import { useTranslation } from "react-i18next"
 import { AGENT_PIPELINE } from "@/features/landing/constants"
 import { useInViewAnimation, useReducedMotionPreference } from "@/features/landing/hooks"
 import { staggerContainer } from "@/features/landing/utils"
@@ -14,6 +15,7 @@ import { SectionContainer, SectionShell } from "./section-shell"
 import { SectionHeading } from "./section-heading"
 
 export function AgentPipelineSection() {
+  const { t } = useTranslation()
   const { ref, isInView } = useInViewAnimation()
   const prefersReducedMotion = useReducedMotionPreference()
   const headingId = "agent-pipeline-heading"
@@ -27,9 +29,9 @@ export function AgentPipelineSection() {
       <SectionContainer ref={ref}>
         <SectionHeading
           id={headingId}
-          eyebrow={AGENT_PIPELINE.eyebrow}
-          title={AGENT_PIPELINE.title}
-          description={AGENT_PIPELINE.description}
+          eyebrow={t("landing.agents.eyebrow")}
+          title={t("landing.agents.title")}
+          description={t("landing.agents.description")}
           align="center"
           className="mx-auto"
         />
@@ -48,8 +50,8 @@ export function AgentPipelineSection() {
               <AgentPipelineItem
                 key={agent.id}
                 icon={agent.icon}
-                title={agent.title}
-                responsibility={agent.responsibility}
+                title={t(`landing.agents.list.${agent.id}.title`)}
+                responsibility={t(`landing.agents.list.${agent.id}.responsibility`)}
                 index={index}
               />
             ))}

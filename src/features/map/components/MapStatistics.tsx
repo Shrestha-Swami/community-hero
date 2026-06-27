@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 interface MapStatisticsProps {
   total: number;
   active: number;
@@ -13,24 +15,26 @@ export function MapStatistics({
   highPriority,
   loading,
 }: MapStatisticsProps) {
+  const { t } = useTranslation();
+
   const stats = [
     {
-      label: "Total Reports",
+      label: t("dashboard.stats.totalReports") || "Total Reports",
       value: total,
       color: "border-indigo-500/20 dark:border-indigo-400/10 hover:border-indigo-500/40",
     },
     {
-      label: "Active Issues",
+      label: t("dashboard.stats.inProgress") || "Active Issues",
       value: active,
       color: "border-amber-500/20 dark:border-amber-400/10 hover:border-amber-500/40",
     },
     {
-      label: "Resolved",
+      label: t("dashboard.stats.resolved") || "Resolved",
       value: resolved,
       color: "border-emerald-500/20 dark:border-emerald-400/10 hover:border-emerald-500/40",
     },
     {
-      label: "High Priority",
+      label: t("dashboard.performance.highPriority") || "High Priority",
       value: highPriority,
       color: "border-rose-500/20 dark:border-rose-400/10 hover:border-rose-500/40",
     },

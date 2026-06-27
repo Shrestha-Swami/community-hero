@@ -1,9 +1,21 @@
-import Link from "next/link"
+"use client"
 
+import Link from "next/link"
+import { useTranslation } from "react-i18next"
 import { FOOTER_LINKS, SITE } from "@/constants"
 
 export function Footer() {
   const year = new Date().getFullYear()
+  const { t } = useTranslation()
+
+  const getTranslationKey = (label: string) => {
+    switch (label) {
+      case "Privacy": return "footer.privacy"
+      case "Terms": return "footer.terms"
+      case "Contact": return "footer.contact"
+      default: return ""
+    }
+  }
 
   return (
     <footer className="mt-auto border-t border-border/60 bg-muted/30">
@@ -15,21 +27,24 @@ export function Footer() {
           </div>
 
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
-            {FOOTER_LINKS.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+            {FOOTER_LINKS.map((link) => {
+              const translationKey = getTranslationKey(link.label)
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 rounded-sm"
+                  >
+                    {translationKey ? t(translationKey) : link.label}
+                  </Link>
+                </li>
+              )
+            })}
           </ul>
         </div>
 
         <p className="text-xs text-muted-foreground">
-          &copy; {year} {SITE.name}.
+          {t("footer.copyright", { year })}
         </p>
       </div>
     </footer>

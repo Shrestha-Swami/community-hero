@@ -1,5 +1,6 @@
 "use client"
 
+import { useTranslation } from "react-i18next"
 import { motion } from "framer-motion"
 
 import { GlassPanel } from "@/components/common/glass-panel"
@@ -12,6 +13,7 @@ import { SectionContainer, SectionShell } from "./section-shell"
 import { SectionHeading } from "./section-heading"
 
 export function LiveTrackingSection() {
+  const { t } = useTranslation()
   const { ref, isInView } = useInViewAnimation()
   const prefersReducedMotion = useReducedMotionPreference()
   const headingId = "live-tracking-heading"
@@ -26,9 +28,9 @@ export function LiveTrackingSection() {
       <SectionContainer ref={ref}>
         <SectionHeading
           id={headingId}
-          eyebrow={LIVE_TRACKING.eyebrow}
-          title={LIVE_TRACKING.title}
-          description={LIVE_TRACKING.description}
+          eyebrow={t("landing.live_tracking.eyebrow")}
+          title={t("landing.live_tracking.title")}
+          description={t("landing.live_tracking.description")}
         />
 
         <motion.div
@@ -40,27 +42,27 @@ export function LiveTrackingSection() {
             <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
               <div>
                 <p className="text-xs font-medium uppercase tracking-wider text-emerald-600">
-                  {LIVE_TRACKING.sampleLabel}
+                  {t("landing.live_tracking.sampleLabel")}
                 </p>
-                <h3 className="mt-1 text-xl font-semibold text-slate-900 sm:text-2xl">
-                  {issue.category}
+                <h3 className="mt-1 text-xl font-semibold text-slate-900 sm:text-2xl dark:text-white">
+                  {t("landing.live_tracking.issue.category")}
                 </h3>
               </div>
-              <span className="rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-sm font-medium text-emerald-700">
-                {issue.ward}
+              <span className="rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-sm font-medium text-emerald-700 dark:border-emerald-800 dark:bg-emerald-950/20 dark:text-emerald-300">
+                {t("landing.live_tracking.issue.ward")}
               </span>
             </div>
 
             <div className="space-y-6">
               <div>
                 <div className="mb-2 flex items-center justify-between text-sm">
-                  <span className="font-medium text-slate-700">Progress</span>
+                  <span className="font-medium text-slate-700 dark:text-slate-300">{t("landing.live_tracking.labels.progress")}</span>
                   <span className="font-semibold text-emerald-600">
                     {issue.progress}%
                   </span>
                 </div>
                 <div
-                  className="h-3 overflow-hidden rounded-full bg-slate-100"
+                  className="h-3 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800"
                   role="progressbar"
                   aria-valuenow={issue.progress}
                   aria-valuemin={0}
@@ -75,11 +77,11 @@ export function LiveTrackingSection() {
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                <DashboardField label="Engineer Status" value={issue.engineerStatus} />
-                <DashboardField label="ETA" value={issue.eta} />
+                <DashboardField label={t("landing.live_tracking.labels.engineerStatus")} value={t("landing.live_tracking.issue.engineerStatus")} />
+                <DashboardField label={t("landing.live_tracking.labels.eta")} value={t("landing.live_tracking.issue.eta")} />
                 <DashboardField
-                  label="Community Verification"
-                  value={issue.verification}
+                  label={t("landing.live_tracking.labels.verification")}
+                  value={t("landing.live_tracking.issue.verification")}
                   className="sm:col-span-2 lg:col-span-1"
                 />
               </div>
@@ -103,14 +105,14 @@ function DashboardField({
   return (
     <div
       className={cn(
-        "rounded-xl border border-white/70 bg-white/40 p-4 backdrop-blur-sm",
+        "rounded-xl border border-white/70 bg-white/40 p-4 backdrop-blur-sm dark:border-white/10 dark:bg-white/5",
         className
       )}
     >
       <p className="text-xs font-medium uppercase tracking-wider text-slate-500">
         {label}
       </p>
-      <p className="mt-1 text-sm font-medium leading-relaxed text-slate-800">
+      <p className="mt-1 text-sm font-medium leading-relaxed text-slate-800 dark:text-slate-200">
         {value}
       </p>
     </div>

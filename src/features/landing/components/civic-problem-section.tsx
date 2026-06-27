@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 
+import { useTranslation } from "react-i18next"
 import { CIVIC_PROBLEM } from "@/features/landing/constants"
 import { useInViewAnimation, useReducedMotionPreference } from "@/features/landing/hooks"
 import { staggerContainer } from "@/features/landing/utils"
@@ -11,6 +12,7 @@ import { SectionContainer, SectionShell } from "./section-shell"
 import { SectionHeading } from "./section-heading"
 
 export function CivicProblemSection() {
+  const { t } = useTranslation()
   const { ref, isInView } = useInViewAnimation()
   const prefersReducedMotion = useReducedMotionPreference()
   const headingId = "civic-problem-heading"
@@ -24,9 +26,9 @@ export function CivicProblemSection() {
       <SectionContainer ref={ref}>
         <SectionHeading
           id={headingId}
-          eyebrow={CIVIC_PROBLEM.eyebrow}
-          title={CIVIC_PROBLEM.title}
-          description={CIVIC_PROBLEM.description}
+          eyebrow={t("landing.problem.eyebrow")}
+          title={t("landing.problem.title")}
+          description={t("landing.problem.description")}
         />
 
         <motion.div
@@ -39,8 +41,8 @@ export function CivicProblemSection() {
             <AnimatedCard
               key={card.id}
               icon={card.icon}
-              title={card.title}
-              description={card.description}
+              title={t(`landing.problem.cards.${card.id}.title`)}
+              description={t(`landing.problem.cards.${card.id}.description`)}
               index={index}
             />
           ))}

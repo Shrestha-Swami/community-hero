@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useTranslation } from "react-i18next";
 import { ErrorCard } from "@/components/common";
 import { SectionTitle } from "@/components/common/section-title";
 import { useLiveMap } from "@/features/map/hooks/use-live-map";
@@ -13,15 +14,20 @@ const LiveMap = dynamic(
   () => import("@/features/map/components/LiveMap").then((mod) => mod.LiveMap),
   {
     ssr: false,
-    loading: () => (
-      <div className="h-[400px] sm:h-[550px] w-full rounded-[2rem] bg-muted/20 animate-pulse flex items-center justify-center border border-border">
-        <p className="text-muted-foreground text-sm font-medium">Loading interactive map…</p>
-      </div>
-    ),
+    loading: () => {
+      // Inline use of hook would fail here, but translation dictionary is loaded, we can use a basic translation or text.
+      // Better to return a simple loading indicator that is translated inside the page component, but for the loader:
+      return (
+        <div className="h-[400px] sm:h-[550px] w-full rounded-[2rem] bg-muted/20 animate-pulse flex items-center justify-center border border-border">
+          <p className="text-muted-foreground text-sm font-medium">Loading interactive map…</p>
+        </div>
+      );
+    },
   }
 );
 
 export default function MapPage() {
+  const { t } = useTranslation();
   const {
     filteredReports,
     loading,
@@ -37,9 +43,9 @@ export default function MapPage() {
   return (
     <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8 w-full">
       <SectionTitle
-        title="Live Community Map"
-        subtitle="Real-time reporting"
-        description="View and track ongoing civic issues across the community in real-time."
+        title={t("liveMap.title")}
+        subtitle={t("liveMap.subtitle")}
+        description={t("liveMap.description")}
       />
 
       <div className="mt-8">
@@ -72,14 +78,14 @@ export default function MapPage() {
             {/* Map Container */}
             {loading ? (
               <div className="h-[400px] sm:h-[550px] w-full rounded-[2rem] bg-muted/20 animate-pulse flex items-center justify-center border border-border">
-                <p className="text-muted-foreground text-sm font-medium">Connecting to Firestore…</p>
+                <p className="text-muted-foreground text-sm font-medium">{t("liveMap.connecting")}</p>
               </div>
             ) : filteredReports.length === 0 ? (
-              <div className="h-[400px] sm:h-[550px] w-full rounded-[2rem] border border-dashed border-muted bg-slate-950/5 p-6 flex items-center justify-center text-center">
+              <div className="h-[400px] sm:h-[550px] w-full rounded-[2rem] border border-dashed border-muted bg-slate-950/5 dark:bg-white/5 p-6 flex items-center justify-center text-center">
                 <div className="max-w-md space-y-3">
-                  <p className="text-lg font-semibold text-foreground">No civic reports available.</p>
+                  <p className="text-lg font-semibold text-foreground">{t("liveMap.empty.title")}</p>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    No active reports match the selected filters or contain geolocation details. Check back later or submit a new report.
+                    {t("liveMap.empty.description")}
                   </p>
                 </div>
               </div>

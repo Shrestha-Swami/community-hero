@@ -1,4 +1,7 @@
+"use client";
+
 import { ArrowRight, CheckCircle } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 import { TRACKING_STATUSES } from "../types";
 import { getReportProgress } from "../services/tracking.service";
@@ -11,22 +14,23 @@ interface ReportProgressProps {
 export function ReportProgress({ status }: ReportProgressProps) {
   const progressPercentage = getReportProgress(status);
   const currentIndex = TRACKING_STATUSES.indexOf(status);
+  const { t } = useTranslation();
 
   return (
     <div className="space-y-4 rounded-3xl border border-border bg-background p-4 sm:p-5 shadow-sm min-w-0 w-full overflow-hidden">
       <div className="flex items-center justify-between gap-4">
         <div className="min-w-0">
-          <p className="text-sm font-semibold truncate">Report Progress</p>
+          <p className="text-sm font-semibold truncate">{t("tracking.progress.title")}</p>
           <p className="text-xs text-muted-foreground truncate">
-            Track the current stage of your report.
+            {t("tracking.progress.description")}
           </p>
         </div>
-        <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-700 shrink-0">
+        <span className="rounded-full bg-slate-100 dark:bg-white/10 px-2.5 py-0.5 text-xs font-semibold text-slate-700 dark:text-slate-300 shrink-0">
           {progressPercentage}%
         </span>
       </div>
 
-      <div className="rounded-full bg-slate-200 h-2 overflow-hidden w-full">
+      <div className="rounded-full bg-slate-200 dark:bg-white/10 h-2 overflow-hidden w-full">
         <div
           className="h-2 rounded-full bg-emerald-500 transition-all duration-300"
           style={{ width: `${progressPercentage}%` }}
@@ -45,7 +49,7 @@ export function ReportProgress({ status }: ReportProgressProps) {
               {index < TRACKING_STATUSES.length - 1 && (
                 <div
                   className={`absolute left-[15px] top-8 bottom-[-12px] w-0.5 ${
-                    index < currentIndex ? "bg-emerald-500" : "bg-slate-200"
+                    index < currentIndex ? "bg-emerald-500" : "bg-slate-200 dark:bg-white/10"
                   }`}
                 />
               )}
@@ -55,11 +59,11 @@ export function ReportProgress({ status }: ReportProgressProps) {
                     ? "border-emerald-500 bg-emerald-500 text-white"
                     : isCurrent
                     ? "border-primary bg-primary text-primary-foreground"
-                    : "border-slate-200 bg-slate-100 text-slate-500"
+                    : "border-slate-200 bg-slate-100 dark:bg-white/5 text-slate-500"
                 }`}
               >
                 {isComplete ? (
-                  <CheckCircle className="h-4 w-4" />
+                  <CheckCircle className="h-4 w-4" aria-hidden="true" />
                 ) : (
                   <span className="text-xs font-semibold">{index + 1}</span>
                 )}
@@ -70,7 +74,7 @@ export function ReportProgress({ status }: ReportProgressProps) {
                     isCurrent ? "text-foreground font-semibold" : "text-muted-foreground"
                   }`}
                 >
-                  {step}
+                  {t(`tracking.status.${step}`) || step}
                 </span>
               </div>
             </div>
@@ -93,20 +97,20 @@ export function ReportProgress({ status }: ReportProgressProps) {
                       ? "border-emerald-500 bg-emerald-500 text-white"
                       : isCurrent
                       ? "border-primary bg-primary text-primary-foreground"
-                      : "border-slate-200 bg-slate-100 text-slate-500"
+                      : "border-slate-200 bg-slate-100 dark:bg-white/5 text-slate-500"
                   }`}
                 >
                   {isComplete ? (
-                    <CheckCircle className="h-4 w-4" />
+                    <CheckCircle className="h-4 w-4" aria-hidden="true" />
                   ) : (
                     <span className="text-sm font-semibold">{index + 1}</span>
                   )}
                 </div>
 
-                <p className="text-sm font-medium leading-tight">{step}</p>
+                <p className="text-sm font-medium leading-tight">{t(`tracking.status.${step}`) || step}</p>
 
                 {index < TRACKING_STATUSES.length - 1 ? (
-                  <div className="mt-4 flex h-6 w-full items-center justify-center">
+                  <div className="mt-4 flex h-6 w-full items-center justify-center" aria-hidden="true">
                     <ArrowRight className="h-4 w-4 text-slate-400" />
                   </div>
                 ) : null}

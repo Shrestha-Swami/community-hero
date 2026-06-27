@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { collection, query, orderBy, limit, onSnapshot } from "firebase/firestore";
 import { Medal, Trophy, Users } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { db } from "@/firebase";
 
 interface LeaderboardUser {
@@ -17,6 +18,7 @@ interface LeaderboardUser {
 export function Leaderboard() {
   const [users, setUsers] = useState<LeaderboardUser[]>([]);
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const q = query(
@@ -77,16 +79,16 @@ export function Leaderboard() {
     <div className="rounded-3xl border border-border bg-background p-5 shadow-sm min-w-0 w-full overflow-hidden">
       <div className="mb-5 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Users className="h-5 w-5 text-indigo-500" />
-          <h3 className="font-semibold text-lg">City Leaderboard</h3>
+          <Users className="h-5 w-5 text-indigo-500" aria-hidden="true" />
+          <h3 className="font-semibold text-lg text-foreground">{t("dashboard.leaderboard.title")}</h3>
         </div>
-        <span className="text-xs text-muted-foreground">Top 10 Heroes</span>
+        <span className="text-xs text-muted-foreground">{t("dashboard.leaderboard.subtitle")}</span>
       </div>
 
       {users.length === 0 ? (
-        <p className="text-sm text-muted-foreground">No heroes on the board yet.</p>
+        <p className="text-sm text-muted-foreground">{t("dashboard.leaderboard.empty")}</p>
       ) : (
-        <div className="space-y-2 max-h-[500px] overflow-y-auto pr-1">
+        <ol className="space-y-2 max-h-[500px] overflow-y-auto pr-1" role="list">
           {users.map((item, index) => {
             const isTop3 = index < 3;
             const rankColors = [
@@ -96,8 +98,9 @@ export function Leaderboard() {
             ];
 
             return (
-              <div
+              <li
                 key={item.uid}
+                role="listitem"
                 className="flex items-center justify-between p-3 rounded-2xl border border-border/40 hover:bg-slate-950/5 dark:hover:bg-slate-100/5 transition-all duration-200"
               >
                 {/* User info */}
@@ -105,11 +108,11 @@ export function Leaderboard() {
                   {/* Rank Indicator */}
                   <div className="w-8 shrink-0 flex justify-center">
                     {index === 0 ? (
-                      <Trophy className="h-5 w-5 text-amber-500" />
+                      <Trophy className="h-5 w-5 text-amber-500" aria-label="First Place" />
                     ) : index === 1 ? (
-                      <Medal className="h-5 w-5 text-slate-400" />
+                      <Medal className="h-5 w-5 text-slate-400" aria-label="Second Place" />
                     ) : index === 2 ? (
-                      <Medal className="h-5 w-5 text-orange-400" />
+                      <Medal className="h-5 w-5 text-orange-400" aria-label="Third Place" />
                     ) : (
                       <span className="text-sm font-semibold text-muted-foreground">
                         {index + 1}
@@ -136,7 +139,7 @@ export function Leaderboard() {
                       {item.displayName}
                     </p>
                     <p className="text-[10px] text-muted-foreground truncate uppercase font-bold tracking-wider">
-                      {item.heroLevel}
+                      {t(`badges.${item.heroLevel.toLowerCase().replace(" ", "_")}.name`, { defaultValue: item.heroLevel })}
                     </p>
                   </div>
                 </div>
@@ -145,16 +148,16 @@ export function Leaderboard() {
                 <div className="flex items-center gap-4 shrink-0 text-right">
                   <div className="text-xs text-muted-foreground">
                     <span className="font-bold text-foreground">{item.badges.length}</span>{" "}
-                    {item.badges.length === 1 ? "badge" : "badges"}
+                    {item.badges.length === 1 ? t("dashboard.gamification.badge") : t("dashboard.gamification.badges")}
                   </div>
                   <div className="rounded-xl bg-indigo-50 dark:bg-indigo-950/20 text-indigo-500 px-3 py-1 text-sm font-bold min-w-[70px] text-center border border-indigo-500/10">
-                    {item.heroPoints} pts
+                    {item.heroPoints} {t("dashboard.gamification.pts")}
                   </div>
                 </div>
-              </div>
+              </li>
             );
           })}
-        </div>
+        </ol>
       )}
     </div>
   );

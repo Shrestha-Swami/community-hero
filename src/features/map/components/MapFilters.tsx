@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import type { Category, ReportStatus } from "@/features/report/types";
 
 interface MapFiltersProps {
@@ -13,7 +14,9 @@ export function MapFilters({
   onSelectCategory,
   onSelectStatus,
 }: MapFiltersProps) {
-  const categories: (Category | "All")[] = [
+  const { t } = useTranslation();
+
+  const categories: Category[] = [
     "Roads",
     "Garbage",
     "Street Lights",
@@ -22,7 +25,7 @@ export function MapFilters({
     "Safety",
   ];
 
-  const statuses: (ReportStatus | "All")[] = [
+  const statuses: ReportStatus[] = [
     "Pending",
     "Assigned",
     "In Progress",
@@ -43,7 +46,7 @@ export function MapFilters({
             : "bg-background text-muted-foreground border-border hover:bg-slate-50 dark:hover:bg-slate-900"
         }`}
       >
-        All
+        {t("liveMap.filters.all") || "All"}
       </button>
 
       {/* Category Chips */}
@@ -59,7 +62,7 @@ export function MapFilters({
               : "bg-background text-muted-foreground border-border hover:bg-slate-50 dark:hover:bg-slate-900"
           }`}
         >
-          {cat}
+          {t("categories." + cat) || cat}
         </button>
       ))}
 
@@ -79,7 +82,7 @@ export function MapFilters({
               : "bg-background text-muted-foreground border-border hover:bg-slate-50 dark:hover:bg-slate-900"
           }`}
         >
-          {stat}
+          {t("tracking.status." + stat) || stat}
         </button>
       ))}
     </div>

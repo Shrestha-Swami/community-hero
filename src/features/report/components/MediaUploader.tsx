@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { toDataUrl } from "../utils/media";
 
 interface MediaUploaderProps {
@@ -12,6 +13,7 @@ export function MediaUploader({
   media,
   onChange,
 }: MediaUploaderProps) {
+  const { t } = useTranslation();
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -61,7 +63,7 @@ export function MediaUploader({
       >
         <div className="text-center">
           <p className="mb-2 text-sm text-muted-foreground">
-            Drag & drop an image or video here
+            {t("common.dragDrop")}
           </p>
 
           <p className="mb-4 text-xs text-muted-foreground">
@@ -74,7 +76,7 @@ export function MediaUploader({
               className="rounded-md bg-primary px-3 py-2 text-sm text-primary-foreground"
               onClick={() => inputRef.current?.click()}
             >
-              📁 Choose File
+              📁 {t("common.chooseFile")}
             </button>
 
             <button
@@ -82,7 +84,7 @@ export function MediaUploader({
               className="rounded-md bg-secondary px-3 py-2 text-sm text-secondary-foreground"
               onClick={() => inputRef.current?.click()}
             >
-              📷 Camera
+              📷 {t("common.camera")}
             </button>
           </div>
 
@@ -100,7 +102,7 @@ export function MediaUploader({
       {previewUrl && (
         <div className="mt-4">
           <p className="mb-2 text-sm text-muted-foreground">
-            Preview
+            {t("common.preview")}
           </p>
 
           {media?.type.startsWith("video") ? (
@@ -112,7 +114,7 @@ export function MediaUploader({
           ) : (
             <img
               src={previewUrl}
-              alt="Preview"
+              alt={t("common.preview")}
               className="max-h-64 w-full rounded-md object-contain"
             />
           )}
@@ -123,7 +125,7 @@ export function MediaUploader({
               className="text-sm text-destructive"
               onClick={() => handleFile(null)}
             >
-              Remove
+              {t("common.remove")}
             </button>
           </div>
         </div>

@@ -9,12 +9,14 @@ import { useReducedMotionPreference } from "@/features/landing/hooks"
 import type { HeroSectionProps } from "@/features/landing/types"
 import { fadeInUp, staggerContainer } from "@/features/landing/utils"
 import { cn } from "@/lib/utils"
+import { useTranslation } from "react-i18next"
 
 import { HeroBackground } from "./hero-background"
 import { HeroCtaGroup } from "./hero-cta-group"
 
 export function HeroSection({ className }: HeroSectionProps) {
   const prefersReducedMotion = useReducedMotionPreference()
+  const { t } = useTranslation()
 
   const motionProps = prefersReducedMotion
     ? {}
@@ -45,7 +47,7 @@ export function HeroSection({ className }: HeroSectionProps) {
                 <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
               </span>
               <span className="text-sm font-medium text-slate-600">
-                {HERO.eyebrow}
+                {t("landing.hero.eyebrow")}
               </span>
             </GlassPanel>
           </motion.div>
@@ -54,7 +56,7 @@ export function HeroSection({ className }: HeroSectionProps) {
             {...childMotionProps}
             className="mb-4 text-lg font-medium tracking-tight text-emerald-700 sm:text-xl"
           >
-            {HERO.tagline}
+            {t("landing.hero.tagline")}
           </motion.p>
 
           <motion.h1
@@ -62,9 +64,9 @@ export function HeroSection({ className }: HeroSectionProps) {
             {...childMotionProps}
             className="text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-7xl lg:leading-[1.08]"
           >
-            {HERO.headline.before}
+            {t("landing.hero.headline.before")}
             <span className="bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">
-              {HERO.headline.highlight}
+              {t("landing.hero.headline.highlight")}
             </span>
           </motion.h1>
 
@@ -72,13 +74,13 @@ export function HeroSection({ className }: HeroSectionProps) {
             {...childMotionProps}
             className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 sm:text-xl"
           >
-            {HERO.description}
+            {t("landing.hero.description")}
           </motion.p>
 
           <motion.div {...childMotionProps} className="mt-10">
             <HeroCtaGroup
-              primary={HERO.ctas.primary}
-              secondary={HERO.ctas.secondary}
+              primary={{ ...HERO.ctas.primary, label: t("landing.hero.ctas.primary") }}
+              secondary={{ ...HERO.ctas.secondary, label: t("landing.hero.ctas.secondary") }}
             />
           </motion.div>
 
@@ -89,7 +91,7 @@ export function HeroSection({ className }: HeroSectionProps) {
             {HERO_TRUST_BADGES.map((badge) => (
               <TrustBadge
                 key={badge.id}
-                label={badge.label}
+                label={t(`landing.hero.trust_badges.${badge.id}`)}
                 icon={badge.icon}
               />
             ))}

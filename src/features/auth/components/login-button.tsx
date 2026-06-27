@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { useTranslation } from "react-i18next"
 
 interface LoginButtonProps {
 	onLogin: () => Promise<unknown> | void
@@ -8,9 +9,10 @@ interface LoginButtonProps {
 }
 
 export function LoginButton({ onLogin, disabled }: LoginButtonProps) {
+	const { t } = useTranslation();
 	return (
 		<Button size="sm" type="button" onClick={onLogin} disabled={disabled}>
-			Become a Hero
+			{t("navbar.login")}
 		</Button>
 	)
 }

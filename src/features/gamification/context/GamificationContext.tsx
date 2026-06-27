@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState, useRef } from "react";
 import { doc, onSnapshot, updateDoc, Timestamp } from "firebase/firestore";
+import i18n from "i18next";
 
 import { db } from "@/firebase";
 import { useAuth } from "@/features/auth/hooks/use-auth";
@@ -26,6 +27,7 @@ interface UserProfileData {
   streak: number;
   badges: string[];
   lastActiveDate?: any;
+  preferredLanguage?: string;
 }
 
 interface GamificationContextType {
@@ -100,6 +102,22 @@ export function GamificationProvider({ children }: { children: React.ReactNode }
       unsubscribeReports();
     };
   }, [user?.uid, authLoading]);
+
+  // Handle language preference sync
+  useEffect(() => {
+    if (authLoading) return;
+
+    if (user) {
+      if (profile && profile.preferredLanguage && i18n.language !== profile.preferredLanguage) {
+        i18n.changeLanguage(profile.preferredLanguage);
+      }
+    } else {
+      const savedLang = localStorage.getItem("preferredLanguage") || "en";
+      if (i18n.language !== savedLang) {
+        i18n.changeLanguage(savedLang);
+      }
+    }
+  }, [user, authLoading, profile?.preferredLanguage]);
 
   useEffect(() => {
     if (!profile || !user) return;

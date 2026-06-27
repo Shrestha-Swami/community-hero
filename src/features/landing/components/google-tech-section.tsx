@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 
+import { useTranslation } from "react-i18next"
 import { GOOGLE_TECH } from "@/features/landing/constants"
 import { useInViewAnimation, useReducedMotionPreference } from "@/features/landing/hooks"
 import { staggerContainer } from "@/features/landing/utils"
@@ -11,6 +12,7 @@ import { SectionHeading } from "./section-heading"
 import { TechCard } from "./tech-card"
 
 export function GoogleTechSection() {
+  const { t } = useTranslation()
   const { ref, isInView } = useInViewAnimation()
   const prefersReducedMotion = useReducedMotionPreference()
   const headingId = "google-tech-heading"
@@ -24,9 +26,9 @@ export function GoogleTechSection() {
       <SectionContainer ref={ref}>
         <SectionHeading
           id={headingId}
-          eyebrow={GOOGLE_TECH.eyebrow}
-          title={GOOGLE_TECH.title}
-          description={GOOGLE_TECH.description}
+          eyebrow={t("landing.google.eyebrow")}
+          title={t("landing.google.title")}
+          description={t("landing.google.description")}
           align="center"
           className="mx-auto"
         />
@@ -41,8 +43,8 @@ export function GoogleTechSection() {
             <TechCard
               key={tech.id}
               icon={tech.icon}
-              title={tech.title}
-              description={tech.description}
+              title={t(`landing.google.technologies.${tech.id}.title`)}
+              description={t(`landing.google.technologies.${tech.id}.description`)}
               index={index}
             />
           ))}

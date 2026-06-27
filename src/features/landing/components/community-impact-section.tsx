@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 
+import { useTranslation } from "react-i18next"
 import { COMMUNITY_IMPACT } from "@/features/landing/constants"
 import { useInViewAnimation, useReducedMotionPreference } from "@/features/landing/hooks"
 import { staggerContainer } from "@/features/landing/utils"
@@ -11,6 +12,7 @@ import { SectionContainer, SectionShell } from "./section-shell"
 import { SectionHeading } from "./section-heading"
 
 export function CommunityImpactSection() {
+  const { t } = useTranslation()
   const { ref, isInView } = useInViewAnimation()
   const prefersReducedMotion = useReducedMotionPreference()
   const headingId = "community-impact-heading"
@@ -25,15 +27,15 @@ export function CommunityImpactSection() {
       <SectionContainer ref={ref}>
         <SectionHeading
           id={headingId}
-          eyebrow={COMMUNITY_IMPACT.eyebrow}
-          title={COMMUNITY_IMPACT.title}
-          description={COMMUNITY_IMPACT.description}
+          eyebrow={t("landing.impact.eyebrow")}
+          title={t("landing.impact.title")}
+          description={t("landing.impact.description")}
           align="center"
           className="mx-auto"
         />
 
         <p className="mb-10 text-center text-xs font-medium uppercase tracking-wider text-amber-600">
-          {COMMUNITY_IMPACT.demoLabel}
+          {t("landing.impact.demoLabel")}
         </p>
 
         <motion.div
@@ -49,7 +51,7 @@ export function CommunityImpactSection() {
               <AnimatedCounter
                 value={stat.value}
                 suffix={stat.suffix}
-                label={stat.label}
+                label={t(`landing.impact.stats.${stat.id}.label`)}
                 active={active}
               />
             </div>

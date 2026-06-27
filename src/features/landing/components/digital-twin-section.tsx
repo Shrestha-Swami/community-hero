@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 
+import { useTranslation } from "react-i18next"
 import { DIGITAL_TWIN } from "@/features/landing/constants"
 import { useInViewAnimation, useReducedMotionPreference } from "@/features/landing/hooks"
 import { staggerContainer } from "@/features/landing/utils"
@@ -11,6 +12,7 @@ import { SectionContainer, SectionShell } from "./section-shell"
 import { SectionHeading } from "./section-heading"
 
 export function DigitalTwinSection() {
+  const { t } = useTranslation()
   const { ref, isInView } = useInViewAnimation()
   const prefersReducedMotion = useReducedMotionPreference()
   const headingId = "digital-twin-heading"
@@ -24,15 +26,15 @@ export function DigitalTwinSection() {
       <SectionContainer ref={ref}>
         <SectionHeading
           id={headingId}
-          eyebrow={DIGITAL_TWIN.eyebrow}
-          title={DIGITAL_TWIN.title}
-          description={DIGITAL_TWIN.description}
+          eyebrow={t("landing.twin.eyebrow")}
+          title={t("landing.twin.title")}
+          description={t("landing.twin.description")}
           align="center"
           className="mx-auto"
         />
 
         <p className="mb-10 text-center text-xs font-medium uppercase tracking-wider text-slate-500">
-          {DIGITAL_TWIN.demoLabel}
+          {t("landing.twin.demoLabel")}
         </p>
 
         <motion.div
@@ -44,9 +46,9 @@ export function DigitalTwinSection() {
           {DIGITAL_TWIN.scores.map((score, index) => (
             <ScoreCard
               key={score.id}
-              label={score.label}
+              label={t(`landing.twin.scores.${score.id}.label`)}
               score={score.score}
-              trend={score.trend}
+              trend={t(`landing.twin.scores.${score.id}.trend`)}
               index={index}
             />
           ))}

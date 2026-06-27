@@ -1,12 +1,14 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { AlertTriangle, CheckCircle, Loader2, MapPin } from "lucide-react";
+import { AlertTriangle, CheckCircle, Loader2, MapPin, Mic, MicOff } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 import type { VisionAnalysis } from "@/ai/agents/vision";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 import { REPORT_CATEGORIES } from "../constants";
-
 import { MediaUploader } from "./MediaUploader";
 import { AIAnalysisCard } from "./AIAnalysisCard";
 
@@ -14,28 +16,24 @@ import { useReportForm } from "../hooks/use-report-form";
 import { submitReport } from "../services/report.service";
 import { analyzeMedia } from "../services/ai.service";
 import { useCurrentLocation, reverseGeocode } from "@/features/location";
+import { useSpeechRecognition } from "@/hooks/use-speech-recognition";
 
 export function ReportForm() {
+  const { t, i18n } = useTranslation();
   const {
     description,
     setDescription,
-
     category,
     setCategory,
-
     media,
     setMediaFile,
-
     location,
     setLocation,
-
     submitting,
     submit,
     reset,
-
     analysis,
     setAnalysis,
-
     analyzing,
     setAnalyzing,
   } = useReportForm();
@@ -49,6 +47,14 @@ export function ReportForm() {
   } = useCurrentLocation();
 
   const [geocodeError, setGeocodeError] = useState<string | null>(null);
+
+  // Speech to Text hook integration
+  const { isListening, isSupported, startListening, stopListening } = useSpeechRecognition({
+    lang: i18n.language,
+    onResult: (text) => {
+      setDescription((prev) => (prev ? prev + " " + text : text));
+    },
+  });
 
   useEffect(() => {
     if (
@@ -79,7 +85,7 @@ export function ReportForm() {
         setGeocodeError(null);
       } catch (error) {
         console.error(error);
-        setGeocodeError("Unable to resolve address.");
+        setGeocodeError(t("reportForm.locationDetail.errorGeocode") || "Unable to resolve address.");
 
         setLocation({
           latitude: currentLatitude,
@@ -94,54 +100,49 @@ export function ReportForm() {
     }
 
     fetchAddress();
-  }, [accuracy, latitude, longitude, locationError, locationLoading, setLocation]);
+  }, [accuracy, latitude, longitude, locationError, locationLoading, setLocation, t]);
 
   const onSubmit = useCallback(async () => {
     await submit(async (payload) => {
       const id = await submitReport(payload);
-
-      alert(`Report submitted successfully!\nReport ID: ${id}`);
-
+      alert(t("reportForm.toasts.submitSuccess", { id }) || `Report submitted successfully!\nReport ID: ${id}`);
       reset();
     });
-  }, [reset, submit]);
+  }, [reset, submit, t]);
 
   const onAnalyze = useCallback(async () => {
     if (!media) return;
 
     try {
       setAnalyzing(true);
-
       const result = await analyzeMedia(media);
-
       setAnalysis(result as VisionAnalysis);
     } catch (error) {
       console.error(error);
-      alert("AI analysis failed. Please try again.");
+      alert(t("reportForm.toasts.analyzeFailed") || "AI analysis failed. Please try again.");
     } finally {
       setAnalyzing(false);
     }
-  }, [media, setAnalysis, setAnalyzing]);
+  }, [media, setAnalysis, setAnalyzing, t]);
 
   return (
     <div className="grid gap-8 lg:grid-cols-3">
       {/* Left Section */}
       <div className="lg:col-span-2">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold tracking-tight">
-            Report a Civic Issue
+          <h1 className="text-3xl font-bold tracking-tight text-foreground">
+            {t("reportForm.title")}
           </h1>
 
           <p className="mt-2 text-muted-foreground">
-            Upload an image or short video of the issue. Our AI will analyze
-            the evidence and recommend the appropriate department.
+            {t("reportForm.description")}
           </p>
         </div>
 
         {/* Upload */}
-        <section className="mb-6">
-          <h2 className="mb-2 text-lg font-semibold">
-            Upload Evidence
+        <section aria-labelledby="upload-section-title" className="mb-6">
+          <h2 id="upload-section-title" className="mb-2 text-lg font-semibold">
+            {t("reportForm.uploadTitle")}
           </h2>
 
           <MediaUploader
@@ -150,77 +151,109 @@ export function ReportForm() {
           />
 
           <p className="mt-2 text-xs text-muted-foreground">
-            Supported formats: JPG, PNG, WEBP, MP4, MOV, WEBM
+            {t("reportForm.uploadTip")}
           </p>
         </section>
 
         {/* Description */}
-        <section className="mb-6">
-          <label className="mb-2 block text-sm font-medium">
-            Description
-          </label>
+        <section aria-labelledby="description-section-title" className="mb-6">
+          <div className="mb-2 flex items-center justify-between">
+            <label id="description-section-title" htmlFor="report-description" className="block text-sm font-medium">
+              {t("reportForm.descLabel")}
+            </label>
+            
+            {/* Microphone Button */}
+            {isSupported && (
+              <Button
+                type="button"
+                variant={isListening ? "destructive" : "outline"}
+                size="sm"
+                onClick={isListening ? stopListening : startListening}
+                className={cn(
+                  "rounded-full flex items-center gap-1.5 h-8 text-xs font-semibold px-3 transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                  isListening && "animate-pulse"
+                )}
+                aria-label={isListening ? t("reportForm.speech.stop") : t("reportForm.speech.start")}
+              >
+                {isListening ? (
+                  <>
+                    <MicOff className="h-3.5 w-3.5" aria-hidden="true" />
+                    <span>{t("reportForm.speech.stop")}</span>
+                  </>
+                ) : (
+                  <>
+                    <Mic className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />
+                    <span>{t("reportForm.speech.start")}</span>
+                  </>
+                )}
+              </Button>
+            )}
+          </div>
 
           <textarea
+            id="report-description"
             rows={5}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            placeholder="Describe the civic issue..."
-            className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+            placeholder={t("reportForm.descPlaceholder")}
+            className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           />
         </section>
 
         {/* Category + Location */}
-        <section className="mb-8 flex flex-col gap-4 md:flex-row">
+        <section aria-labelledby="meta-section-title" className="mb-8 flex flex-col gap-4 md:flex-row">
+          <h2 id="meta-section-title" className="sr-only">Category and Location details</h2>
           <div className="flex-1">
-            <label className="mb-2 block text-sm font-medium">
-              Category
+            <label htmlFor="report-category" className="mb-2 block text-sm font-medium">
+              {t("reportForm.categoryLabel")}
             </label>
 
             <select
+              id="report-category"
               value={category}
               onChange={(e) => setCategory(e.target.value as any)}
-              className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+              className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               {REPORT_CATEGORIES.map((item) => (
                 <option key={item} value={item}>
-                  {item}
+                  {t("categories." + item) || item}
                 </option>
               ))}
             </select>
           </div>
 
           <div className="w-full md:w-72">
-            <label className="mb-2 block text-sm font-medium">Location</label>
+            <label className="mb-2 block text-sm font-medium">{t("reportDetail.location")}</label>
 
             <div className="rounded-3xl border border-border bg-background p-4 shadow-sm">
               <div className="mb-4 flex items-center justify-between gap-3">
                 <div>
-                  <p className="text-sm font-semibold">Location status</p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm font-semibold">{t("reportForm.locationStatus")}</p>
+                  <p className="text-xs text-muted-foreground mt-0.5" aria-live="polite">
                     {locationLoading
-                      ? "Waiting for browser permission..."
+                      ? t("reportForm.locationDetail.waiting")
                       : locationError
-                      ? "Location permission denied. You can still submit without a detected location."
+                      ? t("reportForm.locationDetail.denied")
                       : location && location.address
-                      ? "Location detected"
-                      : "Requesting location..."}
+                      ? t("reportForm.locationDetail.detected")
+                      : t("reportForm.locationDetail.requesting")}
                   </p>
                 </div>
                 <div>
                   {locationLoading ? (
                     <span className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-3 py-1 text-sm font-medium text-emerald-700">
-                      <Loader2 className="animate-spin size-4" />
-                      Detecting
+                      <Loader2 className="animate-spin size-4" aria-hidden="true" />
+                      {t("common.loading").replace("...", "")}
                     </span>
                   ) : locationError ? (
                     <span className="inline-flex items-center gap-2 rounded-full bg-destructive/10 px-3 py-1 text-sm font-medium text-destructive">
-                      <AlertTriangle className="size-4" />
-                      Denied
+                      <AlertTriangle className="size-4" aria-hidden="true" />
+                      {t("common.error")}
                     </span>
                   ) : (
                     <span className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-3 py-1 text-sm font-medium text-emerald-700">
-                      <CheckCircle className="size-4" />
-                      Detected
+                      <CheckCircle className="size-4" aria-hidden="true" />
+                      {t("reportForm.locationDetail.detected")}
                     </span>
                   )}
                 </div>
@@ -228,40 +261,40 @@ export function ReportForm() {
 
               {locationLoading ? (
                 <p className="text-sm text-muted-foreground">
-                  Asking for permission to access your browser location.
+                  {t("reportForm.locationDetail.waiting")}
                 </p>
               ) : locationError ? (
                 <p className="text-sm text-destructive">{locationError}</p>
               ) : location ? (
-                <div className="space-y-3 rounded-2xl bg-slate-950/5 p-4 text-sm text-slate-700">
+                <div className="space-y-3 rounded-2xl bg-slate-950/5 dark:bg-white/5 p-4 text-sm text-slate-700 dark:text-slate-300">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <MapPin className="size-4 text-emerald-600" />
-                    <span className="font-medium text-foreground">Address</span>
+                    <MapPin className="size-4 text-emerald-600" aria-hidden="true" />
+                    <span className="font-medium text-foreground">{t("reportForm.locationCard.address")}</span>
                   </div>
-                  <p>{location.address}</p>
-                  <div className="grid gap-3 sm:grid-cols-2">
+                  <p className="text-xs leading-relaxed">{location.address}</p>
+                  <div className="grid grid-cols-2 gap-2 text-xs">
                     <div>
-                      <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Latitude</p>
-                      <p className="mt-1 text-sm text-foreground">{location.latitude.toFixed(6)}</p>
+                      <p className="text-[10px] uppercase tracking-wider text-muted-foreground">{t("reportForm.locationCard.latitude")}</p>
+                      <p className="mt-0.5 font-semibold text-foreground">{location.latitude.toFixed(6)}</p>
                     </div>
                     <div>
-                      <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Longitude</p>
-                      <p className="mt-1 text-sm text-foreground">{location.longitude.toFixed(6)}</p>
+                      <p className="text-[10px] uppercase tracking-wider text-muted-foreground">{t("reportForm.locationCard.longitude")}</p>
+                      <p className="mt-0.5 font-semibold text-foreground">{location.longitude.toFixed(6)}</p>
                     </div>
                     <div>
-                      <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">City</p>
-                      <p className="mt-1 text-sm text-foreground">{location.city || "Unknown"}</p>
+                      <p className="text-[10px] uppercase tracking-wider text-muted-foreground">{t("reportForm.locationCard.city")}</p>
+                      <p className="mt-0.5 font-semibold text-foreground truncate">{location.city || "Unknown"}</p>
                     </div>
                     <div>
-                      <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Region</p>
-                      <p className="mt-1 text-sm text-foreground">{location.state || "Unknown"}</p>
+                      <p className="text-[10px] uppercase tracking-wider text-muted-foreground">{t("reportForm.locationCard.region")}</p>
+                      <p className="mt-0.5 font-semibold text-foreground truncate">{location.state || "Unknown"}</p>
                     </div>
                   </div>
-                  <div className="text-xs text-muted-foreground">
-                    Accuracy: {accuracy ? `${accuracy.toFixed(0)} meters` : "N/A"}
+                  <div className="text-[10px] text-muted-foreground border-t border-border/40 pt-2">
+                    {t("reportForm.locationCard.accuracy", { accuracy: accuracy?.toFixed(0) || "N/A" })}
                   </div>
                   {geocodeError ? (
-                    <p className="text-sm text-destructive">{geocodeError}</p>
+                    <p className="text-xs text-destructive">{geocodeError}</p>
                   ) : null}
                 </div>
               ) : null}
@@ -270,52 +303,52 @@ export function ReportForm() {
         </section>
 
         {/* Buttons */}
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           <button
             type="button"
             onClick={onAnalyze}
             disabled={!media || analyzing || !!analysis}
-            className="rounded-md bg-secondary px-5 py-2 font-medium text-secondary-foreground transition hover:opacity-90 disabled:opacity-60"
+            className="rounded-md bg-secondary px-5 py-2 font-medium text-secondary-foreground transition hover:opacity-90 disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 cursor-pointer"
           >
             {analyzing
-              ? "Analyzing..."
+              ? t("reportForm.buttons.analyzing")
               : analysis
-              ? "✓ AI Analysis Complete"
-              : "Analyze with AI"}
+              ? t("reportForm.buttons.complete")
+              : t("reportForm.buttons.analyze")}
           </button>
 
           <button
             type="button"
             onClick={onSubmit}
             disabled={submitting || !analysis}
-            className="rounded-md bg-primary px-5 py-2 font-medium text-primary-foreground transition hover:opacity-90 disabled:opacity-60"
+            className="rounded-md bg-primary px-5 py-2 font-medium text-primary-foreground transition hover:opacity-90 disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 cursor-pointer"
           >
-            {submitting ? "Submitting..." : "Submit Report"}
+            {submitting ? t("reportForm.buttons.submitting") : t("reportForm.buttons.submit")}
           </button>
 
           <button
             type="button"
             onClick={reset}
-            className="rounded-md border border-border px-5 py-2 transition hover:bg-muted"
+            className="rounded-md border border-border px-5 py-2 transition hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 cursor-pointer text-foreground"
           >
-            Reset
+            {t("reportForm.buttons.reset")}
           </button>
         </div>
       </div>
 
       {/* Right Sidebar */}
-      <aside className="space-y-5">
+      <aside className="space-y-5" aria-label="AI Verification Info">
         <AIAnalysisCard
           analysis={analysis}
           loading={analyzing}
         />
 
-        <div className="rounded-lg border border-border bg-background p-4">
-          <h3 className="mb-2 text-sm font-semibold">
-            Live Location
+        <div className="rounded-2xl border border-border bg-background p-5 shadow-xs">
+          <h3 className="mb-2 text-sm font-semibold text-foreground">
+            {t("reportForm.locationStatus")}
           </h3>
 
-          <p className="text-sm text-muted-foreground">
+          <p className="text-xs text-muted-foreground leading-relaxed">
             Google Maps and GPS integration will appear here after analysis.
           </p>
         </div>

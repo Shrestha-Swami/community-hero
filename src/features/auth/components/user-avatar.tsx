@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { ChevronDown, LogOut, LayoutDashboard, FileText, MapPin } from "lucide-react"
+import { useTranslation } from "react-i18next"
 import { cn } from "@/lib/utils"
 import type { User } from "firebase/auth"
 
@@ -14,6 +15,7 @@ interface UserAvatarProps {
 
 export function UserAvatar({ user, onLogout }: UserAvatarProps) {
   const [open, setOpen] = useState(false)
+  const { t } = useTranslation()
 
   const displayName = user.displayName || user.email || "Hero"
   const photoURL = user.photoURL
@@ -58,7 +60,7 @@ export function UserAvatar({ user, onLogout }: UserAvatarProps) {
             onClick={() => setOpen(false)}
           >
             <LayoutDashboard className="size-4" />
-            Dashboard
+            {t("navbar.dashboard")}
           </Link>
           <Link
             href="/report"
@@ -66,7 +68,7 @@ export function UserAvatar({ user, onLogout }: UserAvatarProps) {
             onClick={() => setOpen(false)}
           >
             <MapPin className="size-4" />
-            Report Issue
+            {t("navbar.report")}
           </Link>
           <Link
             href="/reports"
@@ -74,7 +76,7 @@ export function UserAvatar({ user, onLogout }: UserAvatarProps) {
             onClick={() => setOpen(false)}
           >
             <FileText className="size-4" />
-            My Reports
+            {t("navbar.myReports")}
           </Link>
           <button
             type="button"
@@ -85,7 +87,7 @@ export function UserAvatar({ user, onLogout }: UserAvatarProps) {
             }}
           >
             <LogOut className="size-4" />
-            Logout
+            {t("navbar.logout")}
           </button>
         </div>
       </div>
