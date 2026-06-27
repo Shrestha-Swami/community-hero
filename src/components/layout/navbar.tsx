@@ -55,6 +55,7 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const pathname = usePathname()
   const { t } = useTranslation()
+  const { isAdmin } = useAuth()
 
   const getTranslationKey = (label: string) => {
     switch (label) {
@@ -100,6 +101,21 @@ export function Navbar() {
               </li>
             )
           })}
+          {isAdmin && (
+            <li>
+              <Link
+                href="/admin"
+                className={cn(
+                  "rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                  pathname.startsWith("/admin")
+                    ? "bg-muted text-foreground font-semibold"
+                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                )}
+              >
+                {t("navbar.adminPanel", { defaultValue: "Admin Panel" })}
+              </Link>
+            </li>
+          )}
         </ul>
 
         <div className="hidden md:flex items-center gap-3">
@@ -149,6 +165,22 @@ export function Navbar() {
               </li>
             )
           })}
+          {isAdmin && (
+            <li>
+              <Link
+                href="/admin"
+                className={cn(
+                  "block rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                  pathname.startsWith("/admin")
+                    ? "bg-muted text-foreground font-semibold"
+                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                )}
+                onClick={() => setMobileOpen(false)}
+              >
+                {t("navbar.adminPanel", { defaultValue: "Admin Panel" })}
+              </Link>
+            </li>
+          )}
           <li className="pt-2 flex flex-col gap-3">
             <div className="flex items-center justify-between border-t border-border/40 pt-3 pb-1">
               <span className="text-xs text-muted-foreground font-medium">Language / भाषा</span>
@@ -161,3 +193,4 @@ export function Navbar() {
     </header>
   )
 }
+
