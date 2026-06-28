@@ -32,7 +32,7 @@ function ConfirmDialog({
   if (!open) return null;
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in">
-      <div className="w-full max-w-sm rounded-3xl border border-border bg-card p-6 shadow-2xl space-y-4">
+      <div className="w-full max-w-sm p-6 space-y-4 rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
         <div className="flex items-center gap-3">
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-500/10 text-amber-600">
             <Shield className="h-5 w-5" />
@@ -272,7 +272,7 @@ export default function AdminUsersPage() {
             {filtered.map((user) => {
               const isAdmin = user.role === "admin";
               return (
-                <div key={user.uid} className="rounded-2xl border border-border bg-card p-4 shadow-xs space-y-3">
+                <div key={user.uid} className="p-4 space-y-3 rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                   <div className="flex items-center gap-3">
                     {user.photoURL ? (
                       <Image
@@ -332,7 +332,7 @@ export default function AdminUsersPage() {
           </div>
 
           {filtered.length === 0 && (
-            <div className="flex flex-col items-center justify-center py-12 text-center">
+            <div className="flex flex-col items-center justify-center py-16 md:py-20 lg:py-24 text-center">
               <p className="font-semibold text-foreground">No users found</p>
               <p className="mt-2 text-sm text-muted-foreground">Try adjusting your search.</p>
             </div>

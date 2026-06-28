@@ -21,8 +21,8 @@ export function CivicProblemSection() {
     <SectionShell
       id={CIVIC_PROBLEM.id}
       ariaLabelledby={headingId}
-      variant="soft"
-    >
+      
+     variant="soft">
       <SectionContainer ref={ref}>
         <SectionHeading
           id={headingId}

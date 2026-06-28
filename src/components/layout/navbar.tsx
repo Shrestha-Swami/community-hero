@@ -30,7 +30,7 @@ function LanguageSelector() {
   }
 
   return (
-    <div className="relative flex items-center gap-1 border border-border bg-background/50 hover:bg-muted/50 rounded-full px-2.5 py-1 text-xs text-foreground focus-within:ring-2 focus-within:ring-primary/20 shrink-0">
+    <div className="relative flex items-center gap-1 px-2.5 py-1 text-xs text-foreground focus-within:ring-2 focus-within:ring-emerald-500/30 rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md shrink-0">
       <Languages className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
       <select
         value={i18n.language}
@@ -46,6 +46,7 @@ function LanguageSelector() {
         <option value="ta">தமிழ்</option>
         <option value="te">తెలుగు</option>
         <option value="kn">ಕನ್ನಡ</option>
+        <option value="ml">മലയാളം</option>
       </select>
     </div>
   )

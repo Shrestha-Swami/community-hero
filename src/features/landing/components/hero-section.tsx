@@ -38,7 +38,7 @@ export function HeroSection({ className }: HeroSectionProps) {
     >
       <HeroBackground />
 
-      <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
+      <div className="relative mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
         <motion.div className="mx-auto max-w-4xl" {...motionProps}>
           <motion.div {...childMotionProps}>
             <GlassPanel className="mb-6 inline-flex items-center gap-2 px-4 py-2">
@@ -54,7 +54,7 @@ export function HeroSection({ className }: HeroSectionProps) {
 
           <motion.p
             {...childMotionProps}
-            className="mb-4 text-lg font-medium tracking-tight text-emerald-700 sm:text-xl"
+            className="mb-4 text-base font-medium tracking-tight text-emerald-700 sm:text-lg"
           >
             {t("landing.hero.tagline")}
           </motion.p>
@@ -62,7 +62,7 @@ export function HeroSection({ className }: HeroSectionProps) {
           <motion.h1
             id="hero-heading"
             {...childMotionProps}
-            className="text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-7xl lg:leading-[1.08]"
+            className="text-5xl font-semibold tracking-tight text-slate-900 lg:text-6xl lg:leading-[1.08]"
           >
             {t("landing.hero.headline.before")}
             <span className="bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">
@@ -72,12 +72,12 @@ export function HeroSection({ className }: HeroSectionProps) {
 
           <motion.p
             {...childMotionProps}
-            className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 sm:text-xl"
+            className="mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg"
           >
             {t("landing.hero.description")}
           </motion.p>
 
-          <motion.div {...childMotionProps} className="mt-10">
+          <motion.div {...childMotionProps} className="mt-8">
             <HeroCtaGroup
               primary={{ ...HERO.ctas.primary, label: t("landing.hero.ctas.primary") }}
               secondary={{ ...HERO.ctas.secondary, label: t("landing.hero.ctas.secondary") }}
@@ -86,7 +86,7 @@ export function HeroSection({ className }: HeroSectionProps) {
 
           <motion.div
             {...childMotionProps}
-            className="mt-10 flex flex-wrap items-center gap-3"
+            className="mt-8 flex flex-wrap items-center gap-3"
           >
             {HERO_TRUST_BADGES.map((badge) => (
               <TrustBadge

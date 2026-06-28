@@ -26,7 +26,7 @@ export const HERO = {
     highlight: "communities transform.",
   },
   description:
-    "Community Hero turns a single photo and voice note into a verified, prioritized, trackable civic action—so every report reaches the right authority and every resident stays informed.",
+    "Community Hero transforms a citizen report into an AI-assisted, prioritized, and trackable civic workflow—helping residents and local authorities collaborate more effectively from reporting to resolution.",
   ctas: {
     primary: {
       label: "Report an Issue",
@@ -100,10 +100,10 @@ export const CIVIC_PROBLEM = {
 
 export const AI_SOLUTION = {
   id: "solution",
-  eyebrow: "The AI solution",
-  title: "From one citizen report to community resolution",
+  eyebrow: "THE REPORT WORKFLOW",
+  title: "From Report to Resolution",
   description:
-    "Community Hero is an AI operating system for civic life. Every report flows through specialized agents that understand, validate, prioritize, and coordinate—then bring the community back into the loop.",
+    "Community Hero guides every report through an AI-assisted civic workflow that helps residents, local authorities, and communities collaborate toward transparent issue resolution.",
   flow: [
     { id: "citizen", label: "Citizen", detail: "Snaps a photo, records a voice note, or taps a map pin" },
     { id: "agents", label: "AI Agents", detail: "Six specialized agents analyze, verify, and route the report" },
@@ -118,7 +118,7 @@ export const AGENT_PIPELINE = {
   eyebrow: "AI agent pipeline",
   title: "Six agents. One coordinated workflow.",
   description:
-    "Each agent owns a single responsibility. Together they transform raw citizen input into actionable intelligence—without a single line of hardcoded guesswork.",
+    "Each capability has a focused role in turning citizen input into structured civic information, with future-facing features clearly identified.",
   agents: [
     {
       id: "vision",
@@ -135,8 +135,8 @@ export const AGENT_PIPELINE = {
     {
       id: "trust",
       icon: ShieldCheck,
-      title: "Trust Agent",
-      responsibility: "Validates authenticity and flags duplicate or spam reports",
+      title: "Validation Agent",
+      responsibility: "Validates report completeness and helps identify potential duplicate reports before routing.",
     },
     {
       id: "priority",
@@ -147,14 +147,15 @@ export const AGENT_PIPELINE = {
     {
       id: "prediction",
       icon: TrendingUp,
-      title: "Prediction Agent",
-      responsibility: "Forecasts resolution timelines based on historical patterns",
+      title: "Future Prediction",
+      responsibility: "Designed to estimate issue resolution timelines using historical municipal report data.",
+      badge: "Future Enhancement",
     },
     {
       id: "copilot",
       icon: MessageSquare,
-      title: "Community Copilot",
-      responsibility: "Guides citizens in their language and explains every step",
+      title: "Citizen Assistant",
+      responsibility: "Guides citizens through multilingual assistance, speech interaction, and report tracking.",
     },
   ],
 } as const satisfies {
@@ -167,6 +168,7 @@ export const AGENT_PIPELINE = {
     icon: LucideIcon
     title: string
     responsibility: string
+    badge?: string
   }>
 }
 
@@ -190,10 +192,10 @@ export const LIVE_TRACKING = {
 export const DIGITAL_TWIN = {
   id: "twin",
   eyebrow: "Community digital twin",
-  title: "Your neighborhood, measured and understood",
+  title: "Illustrative Community Health Dashboard",
   description:
-    "AI synthesizes reports, resolutions, and community feedback into living health scores—giving leaders and residents a shared picture of civic wellbeing.",
-  demoLabel: "AI-generated demo scores",
+    "This demonstration illustrates how aggregated civic reports can be visualized as community health indicators using AI-generated insights.",
+  demoLabel: "AI Generated Demo",
   scores: [
     { id: "infrastructure", label: "Infrastructure", score: 74, trend: "+3 this month" },
     { id: "safety", label: "Safety", score: 81, trend: "+5 this month" },
@@ -205,46 +207,52 @@ export const DIGITAL_TWIN = {
 
 export const GOOGLE_TECH = {
   id: "google",
-  eyebrow: "Built on Google",
-  title: "Powered by the platforms communities already trust",
+  eyebrow: "Technology Stack",
+  title: "Modern tech stack powered by AI & open standards",
   description:
-    "Community Hero integrates Google technologies end-to-end—so intelligence, infrastructure, and insight scale together.",
+    "Community Hero combines Google AI, Firebase infrastructure, and open-source maps to deliver a secure, localized experience.",
   technologies: [
     {
       id: "ai-studio",
       icon: Bot,
       title: "Google AI Studio",
-      description: "Gemini powers every agent decision—from vision analysis to community copilot responses.",
+      category: "AI",
+      description: "Gemini powers AI-assisted vision analysis, multilingual understanding, intelligent summarization, and community assistance across the platform.",
     },
     {
       id: "firebase",
       icon: Cloud,
       title: "Firebase",
-      description: "Authentication, real-time data sync, and secure storage keep reports flowing instantly.",
+      category: "Backend",
+      description: "Firebase Authentication, Firestore database, secure storage, and real-time synchronization power the complete application backend.",
     },
     {
       id: "maps",
       icon: Map,
-      title: "Google Maps",
-      description: "Precise geolocation, ward mapping, and live issue pins connect reports to places.",
+      title: "OpenStreetMap + Leaflet",
+      category: "Maps",
+      description: "Interactive open-source maps provide issue locations, ward boundaries, and live geographic visualization.",
     },
     {
       id: "speech",
       icon: Mic,
-      title: "Speech",
-      description: "Voice-to-text and text-to-speech let every resident report in the way that feels natural.",
+      title: "Web Speech API",
+      category: "Speech",
+      description: "Browser-native Speech-to-Text and Text-to-Speech enable voice-based issue reporting and accessibility.",
     },
     {
       id: "translate",
       icon: Languages,
-      title: "Translate",
-      description: "Multilingual support ensures no neighbor is excluded because of language.",
+      title: "AI Powered Multilingual Translation",
+      category: "Translation",
+      description: "Gemini-powered multilingual translation enables citizens to interact with Community Hero in their preferred language.",
     },
     {
       id: "analytics",
       icon: BarChart3,
-      title: "Analytics",
-      description: "Usage and impact metrics help cities measure what is working and where to invest.",
+      title: "Community Analytics Dashboard",
+      category: "Analytics",
+      description: "Interactive dashboards visualize issue statistics, category trends, response timelines, AI insights, and community health indicators.",
     },
   ],
 } as const satisfies {
@@ -256,17 +264,19 @@ export const GOOGLE_TECH = {
     id: string
     icon: LucideIcon
     title: string
+    category: string
     description: string
   }>
 }
 
+
 export const COMMUNITY_IMPACT = {
   id: "impact",
   eyebrow: "Community impact",
-  title: "The difference transparency makes",
+  title: "Potential Community Impact",
   description:
-    "When citizens see progress, they report more, volunteer more, and trust more. These numbers illustrate what becomes possible.",
-  demoLabel: "Sample statistics for demonstration",
+    "Illustrative statistics demonstrating how transparent civic reporting can improve community engagement and municipal responsiveness.",
+  demoLabel: "Illustrative Metrics",
   stats: [
     { id: "solved", label: "Issues Solved", value: 1247, suffix: "" },
     { id: "citizens", label: "Citizens Helped", value: 8934, suffix: "" },

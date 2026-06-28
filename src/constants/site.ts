@@ -1,8 +1,8 @@
 export const SITE = {
   name: "Community Hero",
-  tagline: "Empowering communities through collective action",
+  tagline: "AI-assisted civic reporting for stronger communities",
   description:
-    "Community Hero connects neighbors, organizers, and volunteers to solve local challenges together.",
+    "Community Hero helps residents report civic issues and follow their progress through an AI-assisted, transparent workflow.",
 } as const
 
 export const NAV_LINKS = [
@@ -14,7 +14,7 @@ export const NAV_LINKS = [
 ] as const
 
 export const FOOTER_LINKS = [
-  { href: "#privacy", label: "Privacy" },
-  { href: "#terms", label: "Terms" },
-  { href: "#contact", label: "Contact" },
+  { href: "/privacy", label: "Privacy" },
+  { href: "/terms", label: "Terms" },
+  { href: "/contact", label: "Contact" },
 ] as const

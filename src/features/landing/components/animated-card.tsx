@@ -22,7 +22,7 @@ export function AnimatedCard({
     >
       <GlassPanel
         className={cn(
-          "group h-full p-6 transition-shadow duration-300 hover:shadow-[0_12px_48px_rgba(15,23,42,0.08)] sm:p-8",
+          "group h-full rounded-3xl border-slate-200 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-8",
           className
         )}
       >

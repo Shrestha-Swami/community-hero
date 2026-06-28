@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { ReportProgress, StatusBadge } from "@/features/tracking";
 import { useReportTracking } from "@/features/tracking";
 import type { Report } from "../types";
+import { formatDepartmentName } from "@/lib/utils";
 
 interface ReportCardProps {
   report: Report;
@@ -37,7 +38,7 @@ export function ReportCard({ report }: ReportCardProps) {
   return (
     <Link
       href={report.id ? `/report/${report.id}` : "/reports"}
-      className="block rounded-3xl border border-border bg-card p-4 sm:p-5 transition hover:border-primary/40 hover:shadow-lg w-full max-w-none min-w-0 overflow-hidden break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      className="block p-4 sm:p-5 w-full max-w-none min-w-0 overflow-hidden break-words focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
     >
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between min-w-0 w-full">
         <div className="min-w-0 flex-1 break-words">
@@ -52,7 +53,7 @@ export function ReportCard({ report }: ReportCardProps) {
             <span className="shrink-0 hidden xs:inline">•</span>
             <span className="break-words min-w-0">
               {report.aiAnalysis?.department
-                ? (t("departments." + report.aiAnalysis.department) || report.aiAnalysis.department)
+                ? formatDepartmentName(t("departments." + report.aiAnalysis.department) || report.aiAnalysis.department)
                 : t("reportDetail.notAssigned")}
             </span>
           </div>

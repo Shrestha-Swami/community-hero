@@ -8,8 +8,10 @@ import { useTranslation } from "react-i18next";
 import { SectionTitle, ErrorCard } from "@/components/common";
 import { useAuth } from "@/features/auth/hooks/use-auth";
 import { StatusBadge, ReportProgress, Timeline, useLiveReport } from "@/features/tracking";
+import { getTimelineStatusKey } from "@/features/tracking/utils";
 import { useSpeechSynthesis } from "@/hooks/use-speech-synthesis";
 import { Button } from "@/components/ui/button";
+import { formatDepartmentName } from "@/lib/utils";
 
 function formatDate(date?: Date | null, lang: string = "en") {
   if (!date) return "—";
@@ -123,7 +125,7 @@ function ReportNotFound() {
       <div className="mt-6">
         <Link
           href="/reports"
-          className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow transition hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          className="inline-flex items-center gap-2 bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
         >
           {t("reportDetail.notFound.back")}
         </Link>
@@ -165,13 +167,23 @@ function ReportDetailContent({ reportId }: { reportId: string }) {
             targetLang: currentLang,
           }),
         });
-        if (!res.ok) throw new Error("Translation failed");
+        if (!res.ok) {
+          if (process.env.NODE_ENV === "development") {
+            console.warn("[Translation] API returned non-OK status:", res.status);
+          }
+          if (isMounted) {
+            setTranslatedSummary(summaryText);
+          }
+          return;
+        }
         const data = await res.json();
         if (isMounted) {
           setTranslatedSummary(data.translatedText || summaryText);
         }
       } catch (err) {
-        console.error(err);
+        if (process.env.NODE_ENV === "development") {
+          console.warn("[Translation] Request failed, falling back to original summary:", err);
+        }
         if (isMounted) {
           setTranslatedSummary(summaryText);
         }
@@ -207,18 +219,18 @@ function ReportDetailContent({ reportId }: { reportId: string }) {
 
   // Speakable text calculations
   const catText = t("categories." + report.category) || report.category;
-  const statusText = t("tracking.status." + report.status) || report.status;
+  const statusText = t("tracking.status." + getTimelineStatusKey(report.status), { defaultValue: report.status });
   const detailsText = `${t("reportDetail.title")}. ${t("reportForm.categoryLabel")}: ${catText}. ${t("reportForm.descLabel")}: ${report.description}. ${t("reportForm.locationStatus")}: ${statusText}`;
   
   const timelineText = `${t("tracking.timeline.title")}. ` + (report.statusHistory || [])
     .map((item) => {
-      const translatedStatus = t("tracking.status." + item.status) || item.status;
-      const translatedDesc = t("tracking.status." + (item.description ?? item.status)) || (item.description ?? item.status);
+      const translatedStatus = t("tracking.status." + getTimelineStatusKey(item.status), { defaultValue: item.status });
+      const translatedDesc = t("tracking.status." + getTimelineStatusKey(item.description ?? item.status), { defaultValue: item.description ?? item.status });
       return `${translatedStatus}: ${translatedDesc}`;
     })
     .join(". ");
 
-  const aiDeptText = report.aiAnalysis ? (t("departments." + report.aiAnalysis.department) || report.aiAnalysis.department) : "";
+  const aiDeptText = report.aiAnalysis ? formatDepartmentName(t("departments." + report.aiAnalysis.department) || report.aiAnalysis.department) : "";
   const aiSevText = report.aiAnalysis ? (t("severity." + report.aiAnalysis.severity) || report.aiAnalysis.severity) : "";
   const aiSumText = report.aiAnalysis ? (translating ? t("reportDetail.aiAnalysis.translating") : (translatedSummary || report.aiAnalysis.summary)) : "";
   
@@ -267,7 +279,7 @@ function ReportDetailContent({ reportId }: { reportId: string }) {
             </div>
             <p className="break-words">
               {report.aiAnalysis?.department
-                ? (t("departments." + report.aiAnalysis.department) || report.aiAnalysis.department)
+                ? formatDepartmentName(t("departments." + report.aiAnalysis.department) || report.aiAnalysis.department)
                 : t("reportDetail.notAssigned")}
             </p>
           </div>
@@ -316,7 +328,7 @@ function ReportDetailContent({ reportId }: { reportId: string }) {
           <div className="mt-4 grid gap-3 grid-cols-1 sm:grid-cols-2 text-xs sm:text-sm text-muted-foreground break-words min-w-0">
             <div>
               <p className="font-medium text-foreground text-sm">{t("reportDetail.aiAnalysis.department")}</p>
-              <p className="mt-1 break-words">{t("departments." + report.aiAnalysis.department) || report.aiAnalysis.department}</p>
+              <p className="mt-1 break-words">{formatDepartmentName(t("departments." + report.aiAnalysis.department) || report.aiAnalysis.department)}</p>
             </div>
             <div>
               <p className="font-medium text-foreground text-sm">{t("reportDetail.aiAnalysis.severity")}</p>

@@ -5,8 +5,11 @@ import type { SectionShellProps } from "@/features/landing/types"
 
 const variantClasses = {
   default: "bg-white",
-  soft: "bg-slate-50/80",
-  gradient: "bg-gradient-to-b from-white via-slate-50/50 to-emerald-50/30",
+  soft: "bg-slate-50/50",
+  emerald: "bg-emerald-50/20",
+  indigo: "bg-indigo-50/20",
+  teal: "bg-teal-50/20",
+  gradient: "bg-gradient-to-b from-slate-50 via-white to-emerald-50/20",
 } as const
 
 export function SectionShell({
@@ -35,7 +38,7 @@ export const SectionContainer = forwardRef<
     <div
       ref={ref}
       className={cn(
-        "relative mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28",
+        "relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-20",
         className
       )}
     >

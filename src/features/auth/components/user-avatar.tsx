@@ -38,7 +38,7 @@ export function UserAvatar({ user, onLogout }: UserAvatarProps) {
             className="h-8 w-8 rounded-full object-cover"
           />
         ) : (
-          <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
+          <span className="inline-flex h-8 w-8 items-center justify-center bg-primary text-primary-foreground rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
             {displayName.charAt(0).toUpperCase()}
           </span>
         )}

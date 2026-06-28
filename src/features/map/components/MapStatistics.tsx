@@ -41,13 +41,13 @@ export function MapStatistics({
   ];
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+    <div className="mb-6 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
       {stats.map((stat) => (
         <div
           key={stat.label}
-          className={`rounded-2xl border bg-background p-4 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md ${stat.color}`}
+          className={`p-4 ${stat.color} rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl`}
         >
-          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+          <p className="text-sm font-semibold text-muted-foreground uppercase tracking-[0.3em] font-semibold">
             {stat.label}
           </p>
           <div className="mt-2 flex items-center justify-between">

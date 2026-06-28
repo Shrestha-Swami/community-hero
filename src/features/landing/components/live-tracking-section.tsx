@@ -23,7 +23,7 @@ export function LiveTrackingSection() {
     <SectionShell
       id={LIVE_TRACKING.id}
       ariaLabelledby={headingId}
-      variant="soft"
+      variant="default"
     >
       <SectionContainer ref={ref}>
         <SectionHeading
@@ -38,12 +38,12 @@ export function LiveTrackingSection() {
           animate={isInView || prefersReducedMotion ? "visible" : "hidden"}
           variants={fadeInUp}
         >
-          <GlassPanel className="overflow-hidden p-6 sm:p-8 lg:p-10">
+          <GlassPanel className="overflow-hidden rounded-3xl border-slate-200 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-8 lg:p-10">
             <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
               <div>
-                <p className="text-xs font-medium uppercase tracking-wider text-emerald-600">
+                <span className="inline-flex rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700">
                   {t("landing.live_tracking.sampleLabel")}
-                </p>
+                </span>
                 <h3 className="mt-1 text-xl font-semibold text-slate-900 sm:text-2xl dark:text-white">
                   {t("landing.live_tracking.issue.category")}
                 </h3>
@@ -56,7 +56,9 @@ export function LiveTrackingSection() {
             <div className="space-y-6">
               <div>
                 <div className="mb-2 flex items-center justify-between text-sm">
-                  <span className="font-medium text-slate-700 dark:text-slate-300">{t("landing.live_tracking.labels.progress")}</span>
+                  <span className="font-medium text-slate-700 dark:text-slate-300">
+                    {t("landing.live_tracking.labels.progress")}
+                  </span>
                   <span className="font-semibold text-emerald-600">
                     {issue.progress}%
                   </span>
@@ -69,9 +71,11 @@ export function LiveTrackingSection() {
                   aria-valuemax={100}
                   aria-label="Issue resolution progress"
                 >
-                  <div
-                    className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-teal-500 transition-all duration-700"
-                    style={{ width: `${issue.progress}%` }}
+                  <motion.div
+                    className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-teal-500"
+                    initial={{ width: "0%" }}
+                    animate={isInView ? { width: `${issue.progress}%` } : { width: "0%" }}
+                    transition={{ duration: 1, ease: "easeOut" }}
                   />
                 </div>
               </div>
@@ -105,7 +109,7 @@ function DashboardField({
   return (
     <div
       className={cn(
-        "rounded-xl border border-white/70 bg-white/40 p-4 backdrop-blur-sm dark:border-white/10 dark:bg-white/5",
+        "rounded-3xl border border-slate-200 bg-white/60 p-4 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-white/5",
         className
       )}
     >

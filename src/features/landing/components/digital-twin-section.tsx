@@ -21,8 +21,8 @@ export function DigitalTwinSection() {
     <SectionShell
       id={DIGITAL_TWIN.id}
       ariaLabelledby={headingId}
-      variant="gradient"
-    >
+      
+     variant="teal">
       <SectionContainer ref={ref}>
         <SectionHeading
           id={headingId}
@@ -33,7 +33,7 @@ export function DigitalTwinSection() {
           className="mx-auto"
         />
 
-        <p className="mb-10 text-center text-xs font-medium uppercase tracking-wider text-slate-500">
+        <p className="mx-auto mb-8 w-fit rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-center text-xs font-semibold text-amber-700">
           {t("landing.twin.demoLabel")}
         </p>
 

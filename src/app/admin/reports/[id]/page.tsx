@@ -22,7 +22,8 @@ import {
 } from "@/features/admin/services/admin.service";
 import { useLiveReport } from "@/features/tracking";
 import { StatusBadge, Timeline } from "@/features/tracking";
-import { cn } from "@/lib/utils";
+import { getTimelineStatusKey } from "@/features/tracking/utils";
+import { cn, formatDepartmentName } from "@/lib/utils";
 
 const DEPARTMENTS = [
   "Public Works Department",
@@ -65,7 +66,7 @@ function ConfirmDialog({
   if (!open) return null;
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in">
-      <div className="w-full max-w-sm rounded-3xl border border-border bg-card p-6 shadow-2xl space-y-4">
+      <div className="w-full max-w-sm p-6 space-y-4 rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
         <h3 className="text-base font-bold text-foreground">{title}</h3>
         <p className="text-sm text-muted-foreground">{description}</p>
         <div className="flex justify-end gap-3 pt-2">
@@ -178,7 +179,7 @@ export default function AdminReportDetailPage({
 
   if (error || !report) {
     return (
-      <div className="flex flex-col items-center justify-center py-16 text-center space-y-4">
+      <div className="flex flex-col items-center justify-center py-16 md:py-20 lg:py-24 text-center space-y-4">
         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10 text-destructive">
           <AlertCircle className="h-6 w-6" />
         </div>
@@ -205,8 +206,8 @@ export default function AdminReportDetailPage({
           return at - bt;
         })
         .map((item, idx, arr) => ({
-          status: item.status,
-          description: item.description ?? item.status,
+          status: getTimelineStatusKey(item.status) as any,
+          description: getTimelineStatusKey(item.description ?? item.status),
           timestamp: item.timestamp ? formatDate(item.timestamp) : "",
           state:
             idx < arr.length - 1
@@ -215,8 +216,8 @@ export default function AdminReportDetailPage({
         }))
     : [
         {
-          status: report.status,
-          description: "Issue submitted",
+          status: getTimelineStatusKey(report.status) as any,
+          description: "submitted",
           timestamp: formatDate(report.createdAt),
           state: "current" as const,
         },
@@ -254,10 +255,10 @@ export default function AdminReportDetailPage({
       </Link>
 
       {/* Report Info */}
-      <section className="rounded-3xl border border-border bg-card p-6 shadow-xs space-y-5">
+      <section className="p-6 space-y-5 rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="min-w-0 flex-1">
-            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            <p className="text-sm font-semibold uppercase text-muted-foreground tracking-[0.3em] font-semibold">
               {t("categories." + report.category, { defaultValue: report.category })}
             </p>
             <h1 className="mt-1 text-xl font-bold text-foreground leading-snug">
@@ -273,7 +274,7 @@ export default function AdminReportDetailPage({
         {/* Citizen + Location info */}
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
           <div className="rounded-2xl bg-muted/40 p-4 text-sm space-y-1">
-            <div className="flex items-center gap-2 font-semibold text-foreground text-xs uppercase tracking-wide mb-2">
+            <div className="flex items-center gap-2 font-semibold text-foreground text-sm uppercase mb-2 tracking-[0.3em] font-semibold">
               <User className="h-3.5 w-3.5" /> Citizen
             </div>
             <p className="text-foreground font-medium">
@@ -283,7 +284,7 @@ export default function AdminReportDetailPage({
           </div>
 
           <div className="rounded-2xl bg-muted/40 p-4 text-sm space-y-1">
-            <div className="flex items-center gap-2 font-semibold text-foreground text-xs uppercase tracking-wide mb-2">
+            <div className="flex items-center gap-2 font-semibold text-foreground text-sm uppercase mb-2 tracking-[0.3em] font-semibold">
               <MapPin className="h-3.5 w-3.5" /> Location
             </div>
             <p className="text-foreground">{report.location?.address || "—"}</p>
@@ -297,7 +298,7 @@ export default function AdminReportDetailPage({
       </section>
 
       {/* Admin Actions Panel */}
-      <section className="rounded-3xl border border-border bg-card p-6 shadow-xs space-y-6">
+      <section className="p-6 space-y-6 rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
         <h2 className="text-base font-bold text-foreground flex items-center gap-2">
           <ClipboardList className="h-4 w-4 text-muted-foreground" />
           Admin Actions
@@ -305,7 +306,7 @@ export default function AdminReportDetailPage({
 
         {/* Status Workflow Buttons */}
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">
+          <p className="text-sm font-semibold uppercase text-muted-foreground mb-3 tracking-[0.3em] font-semibold">
             Status Workflow
           </p>
           <div className="flex flex-wrap gap-2">
@@ -342,7 +343,7 @@ export default function AdminReportDetailPage({
 
         {/* Department Assignment */}
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3 flex items-center gap-2">
+          <p className="text-sm font-semibold uppercase text-muted-foreground mb-3 flex items-center gap-2 tracking-[0.3em] font-semibold">
             <UserCog className="h-3.5 w-3.5" /> Assign Department
           </p>
           <div className="flex flex-wrap gap-3 items-center">
@@ -354,14 +355,14 @@ export default function AdminReportDetailPage({
               <option value="">— Select Department —</option>
               {DEPARTMENTS.map((d) => (
                 <option key={d} value={d}>
-                  {t("departments." + d, { defaultValue: d })}
+                  {formatDepartmentName(t("departments." + d, { defaultValue: d }))}
                 </option>
               ))}
             </select>
             <button
               onClick={handleAssignDepartment}
               disabled={!selectedDept || assigning}
-              className="rounded-xl bg-primary px-5 py-2.5 text-xs font-bold text-primary-foreground hover:bg-primary/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              className="bg-primary px-5 py-2.5 text-xs font-bold text-primary-foreground disabled:opacity-40 disabled:cursor-not-allowed rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
             >
               {assigning ? "Assigning…" : "Assign Department"}
             </button>
@@ -371,7 +372,7 @@ export default function AdminReportDetailPage({
 
       {/* AI Analysis */}
       {report.aiAnalysis && (
-        <section className="rounded-3xl border border-border bg-card p-6 shadow-xs space-y-4">
+        <section className="p-6 space-y-4 rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
           <h2 className="text-base font-bold text-foreground flex items-center gap-2">
             <Sparkles className="h-4 w-4 text-muted-foreground" />
             {t("reportDetail.aiAnalysis.title")}
@@ -381,7 +382,7 @@ export default function AdminReportDetailPage({
             {[
               {
                 label: t("reportDetail.aiAnalysis.department"),
-                value: t("departments." + report.aiAnalysis.department, { defaultValue: report.aiAnalysis.department }),
+                value: formatDepartmentName(t("departments." + report.aiAnalysis.department, { defaultValue: report.aiAnalysis.department })),
               },
               {
                 label: t("reportDetail.aiAnalysis.severity"),
@@ -399,7 +400,7 @@ export default function AdminReportDetailPage({
               },
             ].map((item) => (
               <div key={item.label} className="rounded-2xl bg-muted/40 p-4 space-y-1">
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                <p className="text-sm font-semibold text-muted-foreground uppercase tracking-[0.3em] font-semibold">
                   {item.label}
                 </p>
                 <p className="text-sm font-bold text-foreground">{item.value}</p>
@@ -409,7 +410,7 @@ export default function AdminReportDetailPage({
 
           {report.aiAnalysis.summary && (
             <div className="rounded-2xl bg-muted/40 p-4">
-              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">
+              <p className="text-sm font-semibold text-muted-foreground uppercase mb-2 tracking-[0.3em] font-semibold">
                 {t("reportDetail.aiAnalysis.summary")}
               </p>
               <p className="text-sm text-foreground leading-relaxed">
@@ -421,7 +422,7 @@ export default function AdminReportDetailPage({
       )}
 
       {/* Timeline */}
-      <section className="rounded-3xl border border-border bg-card p-6 shadow-xs">
+      <section className="p-6 rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
         <h2 className="text-base font-bold text-foreground mb-4">
           {t("tracking.timeline.title")}
         </h2>

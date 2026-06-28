@@ -21,7 +21,7 @@ export function GoogleTechSection() {
     <SectionShell
       id={GOOGLE_TECH.id}
       ariaLabelledby={headingId}
-      variant="default"
+      variant="gradient"
     >
       <SectionContainer ref={ref}>
         <SectionHeading
@@ -44,6 +44,8 @@ export function GoogleTechSection() {
               key={tech.id}
               icon={tech.icon}
               title={t(`landing.google.technologies.${tech.id}.title`)}
+              category={tech.category}
+              categoryLabel={t(`landing.google.technologies.${tech.id}.category`)}
               description={t(`landing.google.technologies.${tech.id}.description`)}
               index={index}
             />

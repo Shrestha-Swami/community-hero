@@ -14,9 +14,9 @@ const createUserIcon = () => {
   return L.divIcon({
     className: "user-location-icon",
     html: `
-      <div class="flex items-center justify-center relative">
-        <div class="absolute w-6 h-6 rounded-full bg-blue-500 opacity-40 animate-ping"></div>
-        <div class="relative w-4 h-4 rounded-full border-2 border-white bg-blue-600 shadow-md"></div>
+      <div className="flex items-center justify-center relative">
+        <div className="absolute w-6 h-6 rounded-full bg-blue-500 opacity-40 animate-ping"></div>
+        <div className="relative w-4 h-4 rounded-full border-2 border-white bg-blue-600 shadow-md"></div>
       </div>
     `,
     iconSize: [24, 24],
@@ -63,7 +63,7 @@ export function LiveMap({ reports, userLocation }: LiveMapProps) {
   const center = userLocation || fallbackCenter;
 
   return (
-    <div className="h-[400px] sm:h-[550px] w-full rounded-[2rem] overflow-hidden border border-border shadow-xl relative z-10">
+    <div className="relative z-10 h-[400px] w-full overflow-hidden rounded-3xl border border-slate-200 shadow-xl ring-1 ring-slate-950/5 sm:h-[550px]">
       <MapContainer
         center={center}
         zoom={defaultZoom}

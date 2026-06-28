@@ -24,7 +24,7 @@ export function PageContainer({
   return (
     <Component
       className={cn(
-        "mx-auto w-full flex-1 px-4 py-10 sm:px-6 lg:px-8",
+        "mx-auto w-full flex-1 px-4 py-10 sm:px-6 sm:py-16 md:py-20 lg:py-24 lg:px-8 lg:py-14",
         sizeClasses[size],
         className
       )}

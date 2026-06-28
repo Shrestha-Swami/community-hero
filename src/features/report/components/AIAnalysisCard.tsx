@@ -6,6 +6,7 @@ import { Play, Square, Pause } from "lucide-react";
 import { useSpeechSynthesis } from "@/hooks/use-speech-synthesis";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
+import { formatDepartmentName } from "@/lib/utils";
 
 interface Props {
   analysis: VisionAnalysis | null;
@@ -47,13 +48,23 @@ export function AIAnalysisCard({
             targetLang: currentLang,
           }),
         });
-        if (!res.ok) throw new Error("Translation failed");
+        if (!res.ok) {
+          if (process.env.NODE_ENV === "development") {
+            console.warn("[Translation] API returned non-OK status:", res.status);
+          }
+          if (isMounted) {
+            setTranslatedSummary(analysis.summary);
+          }
+          return;
+        }
         const data = await res.json();
         if (isMounted) {
           setTranslatedSummary(data.translatedText || analysis.summary);
         }
       } catch (err) {
-        console.error(err);
+        if (process.env.NODE_ENV === "development") {
+          console.warn("[Translation] Request failed, falling back to original summary:", err);
+        }
         if (isMounted) {
           setTranslatedSummary(analysis.summary);
         }
@@ -75,7 +86,7 @@ export function AIAnalysisCard({
     if (!analysis) return;
     const catText = t("categories." + analysis.category) || analysis.category;
     const sevText = t("severity." + analysis.severity) || analysis.severity;
-    const deptText = t("departments." + analysis.department) || analysis.department;
+    const deptText = formatDepartmentName(t("departments." + analysis.department) || analysis.department);
     const sumText = translating ? t("reportDetail.aiAnalysis.translating") : (translatedSummary || analysis.summary);
 
     const textToRead = `${t("reportDetail.aiAnalysis.title")}. ${t("reportForm.categoryLabel")}: ${catText}. ${t("reportDetail.aiAnalysis.severity")}: ${sevText}. ${t("reportDetail.aiAnalysis.department")}: ${deptText}. ${t("reportDetail.aiAnalysis.summary")}: ${sumText}`;
@@ -83,7 +94,7 @@ export function AIAnalysisCard({
   };
 
   return (
-    <div className="rounded-2xl border border-border bg-background p-5 shadow-xs">
+    <div className="rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl p-5 sm:p-6">
       <div className="mb-4 flex items-center justify-between gap-2">
         <h3 className="text-base font-semibold text-foreground">
           {t("reportDetail.aiAnalysis.title")}
@@ -173,7 +184,7 @@ export function AIAnalysisCard({
           </div>
 
           <div>
-            <strong className="text-foreground">{t("reportDetail.aiAnalysis.department")}:</strong> <span className="text-muted-foreground">{t("departments." + analysis.department) || analysis.department}</span>
+            <strong className="text-foreground">{t("reportDetail.aiAnalysis.department")}:</strong> <span className="text-muted-foreground">{formatDepartmentName(t("departments." + analysis.department) || analysis.department)}</span>
           </div>
 
           <div className="border-t border-border/40 pt-2">

@@ -10,34 +10,71 @@ export function HeroBackground() {
   if (prefersReducedMotion) {
     return (
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-24 left-1/2 h-72 w-[42rem] -translate-x-1/2 rounded-full bg-emerald-200/30 blur-3xl" />
-        <div className="absolute top-32 -right-20 h-64 w-64 rounded-full bg-sky-200/35 blur-3xl" />
-        <div className="absolute -bottom-16 -left-16 h-56 w-56 rounded-full bg-indigo-100/50 blur-3xl" />
+        <div 
+          className="absolute -top-24 left-1/4 h-[30rem] w-[30rem] rounded-full bg-emerald-400/10" 
+          style={{ filter: "blur(160px)" }} 
+        />
+        <div 
+          className="absolute top-1/4 -right-16 h-[28rem] w-[28rem] rounded-full bg-cyan-400/10" 
+          style={{ filter: "blur(160px)" }} 
+        />
+        <div 
+          className="absolute -bottom-24 left-10 h-[32rem] w-[32rem] rounded-full bg-indigo-400/10" 
+          style={{ filter: "blur(160px)" }} 
+        />
       </div>
     )
   }
 
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+      {/* Emerald Blob */}
       <motion.div
-        className="absolute -top-24 left-1/2 h-72 w-[42rem] -translate-x-1/2 rounded-full bg-emerald-200/30 blur-3xl"
-        animate={{ y: [0, -20, 0], scale: [1, 1.05, 1] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -top-24 left-1/4 h-[30rem] w-[30rem] rounded-full bg-emerald-400/10"
+        style={{ filter: "blur(160px)" }}
+        animate={{
+          x: [0, 40, -20, 0],
+          y: [0, -30, 20, 0],
+          opacity: [0.08, 0.15, 0.08]
+        }}
+        transition={{
+          duration: 22,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut"
+        }}
       />
+      {/* Cyan Blob */}
       <motion.div
-        className="absolute top-32 -right-20 h-64 w-64 rounded-full bg-sky-200/35 blur-3xl"
-        animate={{ x: [0, 24, 0], y: [0, 12, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 -right-16 h-[28rem] w-[28rem] rounded-full bg-cyan-400/10"
+        style={{ filter: "blur(160px)" }}
+        animate={{
+          x: [0, -30, 30, 0],
+          y: [0, 40, -20, 0],
+          opacity: [0.06, 0.12, 0.06]
+        }}
+        transition={{
+          duration: 19,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut"
+        }}
       />
+      {/* Indigo Blob */}
       <motion.div
-        className="absolute -bottom-16 -left-16 h-56 w-56 rounded-full bg-indigo-100/50 blur-3xl"
-        animate={{ x: [0, 16, 0], y: [0, -12, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute top-1/2 left-1/4 h-32 w-32 rounded-full bg-teal-100/40 blur-2xl"
-        animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.65, 0.4] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -bottom-24 left-10 h-[32rem] w-[32rem] rounded-full bg-indigo-400/10"
+        style={{ filter: "blur(160px)" }}
+        animate={{
+          x: [0, 25, -25, 0],
+          y: [0, -40, 30, 0],
+          opacity: [0.07, 0.14, 0.07]
+        }}
+        transition={{
+          duration: 25,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut"
+        }}
       />
     </div>
   )

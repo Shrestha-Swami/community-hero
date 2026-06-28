@@ -29,6 +29,8 @@ import { Leaderboard } from "@/features/gamification/components/Leaderboard";
 import { db } from "@/firebase";
 import { collection, query, where, getCountFromServer } from "firebase/firestore";
 import { useTranslation } from "react-i18next";
+import { motion, useReducedMotion } from "framer-motion";
+import { AnimatedNumber } from "@/components/common";
 
 function formatDate(date?: Date | null) {
   if (!date) return "—";
@@ -48,6 +50,7 @@ export default function DashboardPage() {
   const { profile, loading: gamificationLoading } = useGamification();
   const [rank, setRank] = useState<number | null>(null);
   const { t } = useTranslation();
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     if (!profile) return;
@@ -148,7 +151,12 @@ export default function DashboardPage() {
 
   return (
     <AuthGuard>
-      <main className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 w-full min-w-0 overflow-x-hidden">
+      <motion.main
+        className="mx-auto w-full max-w-5xl min-w-0 overflow-x-hidden bg-gradient-to-b from-white via-indigo-50/20 to-emerald-50/20 px-4 py-8 sm:px-6 lg:px-8"
+        initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: prefersReducedMotion ? 0 : 0.5 }}
+      >
         <SectionTitle
           title={t("dashboard.title")}
           subtitle={t("dashboard.subtitle")}
@@ -261,7 +269,7 @@ export default function DashboardPage() {
               {isPageLoading ? (
                 <div className="h-8 w-12 animate-pulse rounded bg-slate-900/10 dark:bg-slate-100/10" />
               ) : (
-                <p className="text-3xl font-semibold">{stats.total}</p>
+                <p className="text-3xl lg:text-4xl font-semibold"><AnimatedNumber value={stats.total} /></p>
               )}
             </div>
             <p className="mt-4 text-xs text-muted-foreground/80">
@@ -281,7 +289,7 @@ export default function DashboardPage() {
               {isPageLoading ? (
                 <div className="h-8 w-12 animate-pulse rounded bg-slate-900/10 dark:bg-slate-100/10" />
               ) : (
-                <p className="text-3xl font-semibold">{stats.pending}</p>
+                <p className="text-3xl lg:text-4xl font-semibold"><AnimatedNumber value={stats.pending} /></p>
               )}
             </div>
             <p className="mt-4 text-xs text-muted-foreground/80">
@@ -301,7 +309,7 @@ export default function DashboardPage() {
               {isPageLoading ? (
                 <div className="h-8 w-12 animate-pulse rounded bg-slate-900/10 dark:bg-slate-100/10" />
               ) : (
-                <p className="text-3xl font-semibold">{stats.assigned}</p>
+                <p className="text-3xl lg:text-4xl font-semibold"><AnimatedNumber value={stats.assigned} /></p>
               )}
             </div>
             <p className="mt-4 text-xs text-muted-foreground/80">
@@ -321,7 +329,7 @@ export default function DashboardPage() {
               {isPageLoading ? (
                 <div className="h-8 w-12 animate-pulse rounded bg-slate-900/10 dark:bg-slate-100/10" />
               ) : (
-                <p className="text-3xl font-semibold">{stats.inProgress}</p>
+                <p className="text-3xl lg:text-4xl font-semibold"><AnimatedNumber value={stats.inProgress} /></p>
               )}
             </div>
             <p className="mt-4 text-xs text-muted-foreground/80">
@@ -341,7 +349,7 @@ export default function DashboardPage() {
               {isPageLoading ? (
                 <div className="h-8 w-12 animate-pulse rounded bg-slate-900/10 dark:bg-slate-100/10" />
               ) : (
-                <p className="text-3xl font-semibold">{stats.resolved}</p>
+                <p className="text-3xl lg:text-4xl font-semibold"><AnimatedNumber value={stats.resolved} /></p>
               )}
             </div>
             <p className="mt-4 text-xs text-muted-foreground/80">
@@ -374,7 +382,7 @@ export default function DashboardPage() {
                 {isPageLoading ? (
                   <div className="h-8 w-12 animate-pulse rounded bg-slate-900/10 dark:bg-slate-100/10" />
                 ) : (
-                  <p className="text-3xl font-semibold">{performanceStats.verifiedByAi}</p>
+                  <p className="text-3xl lg:text-4xl font-semibold">{performanceStats.verifiedByAi}</p>
                 )}
               </div>
               <p className="mt-4 text-xs text-muted-foreground/80">
@@ -394,7 +402,7 @@ export default function DashboardPage() {
                 {isPageLoading ? (
                   <div className="h-8 w-12 animate-pulse rounded bg-slate-900/10 dark:bg-slate-100/10" />
                 ) : (
-                  <p className="text-3xl font-semibold">{performanceStats.highPriority}</p>
+                  <p className="text-3xl lg:text-4xl font-semibold">{performanceStats.highPriority}</p>
                 )}
               </div>
               <p className="mt-4 text-xs text-muted-foreground/80">
@@ -414,7 +422,7 @@ export default function DashboardPage() {
                 {isPageLoading ? (
                   <div className="h-8 w-12 animate-pulse rounded bg-slate-900/10 dark:bg-slate-100/10" />
                 ) : (
-                  <p className="text-3xl font-semibold">{performanceStats.avgPriorityScore}</p>
+                  <p className="text-3xl lg:text-4xl font-semibold">{performanceStats.avgPriorityScore}</p>
                 )}
               </div>
               <p className="mt-4 text-xs text-muted-foreground/80">
@@ -434,7 +442,7 @@ export default function DashboardPage() {
                 {isPageLoading ? (
                   <div className="h-8 w-12 animate-pulse rounded bg-slate-900/10 dark:bg-slate-100/10" />
                 ) : (
-                  <p className="text-3xl font-semibold">{performanceStats.avgConfidence}%</p>
+                  <p className="text-3xl lg:text-4xl font-semibold">{performanceStats.avgConfidence}%</p>
                 )}
               </div>
               <p className="mt-4 text-xs text-muted-foreground/80">
@@ -498,7 +506,7 @@ export default function DashboardPage() {
                           : "border-border bg-background opacity-60 grayscale"
                       )}
                     >
-                      <div className="text-3xl shrink-0" aria-hidden="true">{badge.icon}</div>
+                      <div className="text-3xl lg:text-4xl shrink-0" aria-hidden="true">{badge.icon}</div>
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-1.5 justify-between">
                           <span className="font-semibold text-xs text-foreground truncate">
@@ -527,7 +535,7 @@ export default function DashboardPage() {
             </aside>
           </div>
         )}
-      </main>
+      </motion.main>
     </AuthGuard>
   );
 }

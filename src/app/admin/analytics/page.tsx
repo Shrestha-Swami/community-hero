@@ -5,6 +5,8 @@ import { useTranslation } from "react-i18next";
 
 import { subscribeToAllReports } from "@/features/admin/services/admin.service";
 import type { Report } from "@/features/report/types";
+import { getTimelineStatusKey } from "@/features/tracking/utils";
+import { formatDepartmentName } from "@/lib/utils";
 
 // ─── Primitive bar chart ───────────────────────────────────────────────────
 function BarChart({
@@ -111,8 +113,8 @@ function StatCard({ title, value, subtitle, colorClass = "text-foreground" }: {
 }) {
   return (
     <div className="rounded-2xl border border-border bg-muted/30 p-5 space-y-1">
-      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{title}</p>
-      <p className={`text-3xl font-bold tracking-tight ${colorClass}`}>{value}</p>
+      <p className="text-sm font-semibold uppercase text-muted-foreground tracking-[0.3em] font-semibold">{title}</p>
+      <p className={`text-3xl lg:text-4xl font-bold tracking-tight ${colorClass}`}>{value}</p>
       {subtitle && <p className="text-xs text-muted-foreground">{subtitle}</p>}
     </div>
   );
@@ -152,7 +154,7 @@ export default function AdminAnalyticsPage() {
 
     // Reports by Status
     const byStatus = ["Pending", "Verified", "Assigned", "In Progress", "Resolved"].map((s) => ({
-      label: t("tracking.status." + s, { defaultValue: s }),
+      label: t("tracking.status." + getTimelineStatusKey(s), { defaultValue: s }),
       value: reports.filter((r) => r.status === s).length,
       color: STATUS_COLORS[s],
     }));
@@ -179,7 +181,7 @@ export default function AdminAnalyticsPage() {
     });
     const byDept = Object.entries(deptMap)
       .map(([label, value], i) => ({
-        label: t("departments." + label, { defaultValue: label }),
+        label: formatDepartmentName(t("departments." + label, { defaultValue: label })),
         value,
         color: DEPT_COLORS[i % DEPT_COLORS.length],
       }))
@@ -251,12 +253,12 @@ export default function AdminAnalyticsPage() {
       {/* Charts Grid */}
       <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
         {/* Status Donut */}
-        <div className="rounded-3xl border border-border bg-card p-6 shadow-xs">
+        <div className="p-6 rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
           <DonutChart data={analytics.byStatus} label="Reports by Status" />
         </div>
 
         {/* Category Bar */}
-        <div className="rounded-3xl border border-border bg-card p-6 shadow-xs">
+        <div className="p-6 rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
           <BarChart
             data={analytics.byCategory}
             label="Reports by Category"
@@ -265,7 +267,7 @@ export default function AdminAnalyticsPage() {
         </div>
 
         {/* Department Bar */}
-        <div className="rounded-3xl border border-border bg-card p-6 shadow-xs lg:col-span-2">
+        <div className="p-6 lg:col-span-2 rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
           <BarChart
             data={analytics.byDept}
             label="Reports by Department"
@@ -274,7 +276,7 @@ export default function AdminAnalyticsPage() {
         </div>
 
         {/* Monthly Trend */}
-        <div className="rounded-3xl border border-border bg-card p-6 shadow-xs lg:col-span-2">
+        <div className="p-6 lg:col-span-2 rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
           <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-4">
             Monthly Submissions (Last 6 Months)
           </p>

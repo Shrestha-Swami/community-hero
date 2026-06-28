@@ -3,6 +3,142 @@ import { initReactI18next } from "react-i18next";
 
 const en = {
   translation: {
+    auth: {
+      badge: "COMMUNITY HERO • SECURE WORKSPACE",
+      title: "Secure access to Community Hero",
+      description: "Sign in securely using your Google account to report civic issues, track report progress, collaborate with your community, and access your personalized dashboard.",
+      signInButton: "Sign in with Google",
+      signingIn: "Signing in...",
+      backToHome: "Back to Home",
+      indicators: {
+        secure: "Secure Login",
+        tracking: "Real-time Tracking",
+        ai: "AI Assisted Workflow"
+      }
+    },
+    privacy: {
+      eyebrow: "Project policy",
+      title: "Privacy Policy",
+      description: "A plain-language overview of the information Community Hero uses and how the current demonstration handles it.",
+      updated: "28 June 2026",
+      sections: {
+        data_collection: {
+          title: "Data Collection",
+          description: "Community Hero collects the information needed to operate the civic reporting demonstration. This can include your Google account name, email address, report description, category, report status, and technical timestamps."
+        },
+        authentication: {
+          title: "Authentication",
+          description: "Google sign-in is handled through Firebase Authentication. Community Hero uses your authenticated user identifier to associate reports with your account. Passwords are not collected or stored by this application."
+        },
+        firebase: {
+          title: "Firebase Usage",
+          description: "Firestore stores account-related profile information, submitted report details, AI analysis results, location details when provided, and report status history. Firebase services are configured by the project operator."
+        },
+        location: {
+          title: "Location Permissions",
+          description: "Location access is requested through your browser when you use reporting features. If granted, coordinates, accuracy, and a resolved address may be included with your report. You can deny or revoke location access in browser settings."
+        },
+        media: {
+          title: "Image and Video Selection",
+          description: "Media you select is used to request AI-assisted issue analysis. The current report record stores media type information and the resulting analysis; it does not store the original selected media file in Firestore."
+        },
+        voice: {
+          title: "Voice Interaction",
+          description: "Speech-to-Text and Text-to-Speech use browser-provided Web Speech capabilities. Browser and operating-system vendors may process speech according to their own policies. Community Hero does not intentionally store raw voice recordings."
+        },
+        cookies: {
+          title: "Cookies and Local Storage",
+          description: "Firebase Authentication may use browser storage to maintain your signed-in session. Community Hero also uses local browser storage for preferences such as language when you are signed out. No advertising cookies are intentionally added by this project."
+        },
+        contact: {
+          title: "Contact",
+          description: "For privacy questions, use the Contact page. The public project email is currently a team-supplied placeholder and should be replaced with the final support address before launch."
+        }
+      }
+    },
+    terms: {
+      eyebrow: "Project terms",
+      title: "Terms of Service",
+      description: "Practical terms for responsible use of the Community Hero demonstration and its AI-assisted reporting workflow.",
+      updated: "28 June 2026",
+      sections: {
+        acceptable_use: {
+          title: "Acceptable Use",
+          description: "Use Community Hero only for lawful civic reporting and evaluation. Do not submit harassment, illegal material, intentionally false reports, malicious files, or content that violates another person’s privacy or safety."
+        },
+        user_resp: {
+          title: "User Responsibilities",
+          description: "You are responsible for the accuracy and appropriateness of the information you submit. Avoid including unnecessary personal or sensitive information, and confirm that you have permission to share selected media."
+        },
+        ownership: {
+          title: "Content Ownership",
+          description: "You retain ownership of content you create. By submitting a report, you permit the project to process that content as needed to analyze, display, route, and demonstrate the civic reporting workflow."
+        },
+        disclaimer: {
+          title: "AI Assistance Disclaimer",
+          description: "AI output can be incomplete or incorrect. Categories, summaries, confidence values, priorities, translations, and recommendations are assistive signals and should be reviewed by people before consequential action is taken."
+        },
+        notice: {
+          title: "Municipal Demonstration Notice",
+          description: "Community Hero is a solution-challenge project and civic workflow demonstration. Unless a participating authority explicitly states otherwise, submitting a report here does not replace an official emergency or municipal reporting channel.",
+          item1: "Do not use Community Hero for emergencies.",
+          item2: "Use local emergency services when immediate safety is at risk.",
+          item3: "Demo metrics, forecasts, and community health indicators are illustrative where labelled."
+        },
+        liability: {
+          title: "Limitation of Liability",
+          description: "The project is provided for demonstration and evaluation without a guarantee of uninterrupted availability, municipal response, issue resolution, or AI accuracy. Applicable legal rights and responsibilities may vary by jurisdiction."
+        }
+      }
+    },
+    contact: {
+      eyebrow: "Project Contact",
+      title: "Let's Build More Responsive Communities",
+      description: "Community Hero explores how AI-assisted civic reporting helps residents and local authorities collaborate from issue reporting through transparent resolution.",
+      challenge: {
+        title: "Google Solution Challenge",
+        desc: "Community Hero demonstrates how responsible AI can improve transparency, accessibility and collaboration between citizens and local authorities."
+      },
+      developer: {
+        title: "Project Developer",
+        name: "Shrestha Swami",
+        degree: "B.Tech Computer Science & Engineering (Data Science)",
+        institution: "SKIT Jaipur",
+        focus: "AI • Data Science • Civic Technology"
+      },
+      links: {
+        title: "Connect with the Developer",
+        github: "GitHub Profile",
+        linkedin: "LinkedIn Profile",
+        note: "Open to collaboration, research opportunities, and civic technology discussions."
+      },
+      form: {
+        successTitle: "Message prepared",
+        successMessage: "This demonstration form does not send data to a backend. Connect a verified team inbox before production launch.",
+        backText: "Back to form",
+        name: "Name",
+        email: "Email",
+        subject: "Subject",
+        message: "Message",
+        placeholderName: "John Doe",
+        placeholderEmail: "john@example.com",
+        placeholderSubject: "How can we help?",
+        placeholderMessage: "Tell us more details...",
+        demoText: "UI demonstration only—this form does not transmit or store your message.",
+        submitButton: "Prepare message"
+      },
+      faq: {
+        eyebrow: "Quick Answers",
+        title: "Frequently Asked Questions",
+        q1: "Is Community Hero an official municipal service?",
+        a1: "No. Community Hero is currently a Google Solution Challenge project and civic workflow demonstration unless adopted by a participating authority.",
+        q2: "Does the contact form send messages?",
+        a2: "No. This page currently demonstrates the user interface only. A production backend can be connected later.",
+        q3: "Are homepage statistics real?",
+        a3: "No. All dashboards, AI-generated insights and impact metrics are illustrative demonstrations and are labelled accordingly."
+      }
+    },
+
     common: {
       loading: "Loading...",
       error: "Error",
@@ -85,6 +221,28 @@ const en = {
     },
 
     footer: {
+      about: {
+        title: "About Community Hero",
+        desc: "Community Hero is an AI-assisted civic reporting platform that empowers citizens and local authorities to collaborate through transparent issue reporting, multilingual accessibility, and real-time progress tracking.",
+      },
+      tech: {
+        title: "Technology Stack",
+        items: {
+          nextjs: "Next.js 16",
+          react: "React + TypeScript",
+          firebase: "Firebase + Firestore",
+          ai: "Google AI Studio",
+          maps: "OpenStreetMap + Leaflet",
+          tailwind: "Tailwind CSS",
+        },
+      },
+      quick_links: { title: "Quick Links" },
+      recognition: {
+        title: "Recognition",
+        badge: "Google Solution Challenge 2026",
+        desc: "Designed to demonstrate how responsible AI, multilingual accessibility, and transparent civic workflows can strengthen collaboration between communities and municipalities.",
+      },
+      challenge_tag: "Built with ❤️ for Google Solution Challenge",
       privacy: "Privacy",
       terms: "Terms",
       contact: "Contact",
@@ -133,9 +291,9 @@ const en = {
         },
       },
       solution: {
-        eyebrow: "The AI solution",
-        title: "From one citizen report to community resolution",
-        description: "Community Hero is an AI operating system for civic life. Every report flows through specialized agents that understand, validate, prioritize, and coordinate—then bring the community back into the loop.",
+        eyebrow: "THE REPORT WORKFLOW",
+        title: "From Report to Resolution",
+        description: "Community Hero guides every report through an AI-assisted civic workflow that helps residents, local authorities, and communities collaborate toward transparent issue resolution.",
         flow: {
           citizen: {
             label: "Citizen",
@@ -160,36 +318,42 @@ const en = {
         },
       },
       agents: {
-        eyebrow: "AI agent pipeline",
+        eyebrow: "AI AGENT PIPELINE",
         title: "Six agents. One coordinated workflow.",
-        description: "Each agent owns a single responsibility. Together they transform raw citizen input into actionable intelligence—without a single line of hardcoded guesswork.",
+        description: "Each capability has a focused role in turning citizen input into structured civic information, with human-readable explanations and intelligent assistance.",
+        badges: { future_enhancement: "Future Enhancement" },
         list: {
-          vision: {
-            title: "Vision Agent",
-            responsibility: "Analyzes photos and visual evidence from citizen reports",
+          vision: { title: "Vision Agent", responsibility: "Analyzes photos and visual evidence from citizen reports." },
+          geo: { title: "Geo Agent", responsibility: "Maps issues to precise ward boundaries and landmarks." },
+          trust: { title: "Validation Agent", responsibility: "Validates report completeness and helps identify potential duplicate reports before submission." },
+          priority: { title: "Priority Agent", responsibility: "Ranks urgency and community impact for faster response." },
+          prediction: { title: "Future Prediction", responsibility: "Designed to evaluate issue escalation tendencies using historical municipal patterns." },
+          copilot: { title: "Citizen Assistant", responsibility: "Guides citizens through multilingual assistance, explains decisions, and supports issue tracking." },
+        },
+      },
+      credibility: {
+        title: "Built for Transparent Civic Collaboration",
+        description: "Community Hero demonstrates how AI-assisted workflows, multilingual accessibility, and transparent reporting can strengthen collaboration between citizens and local authorities.",
+        cards: {
+          ai: {
+            title: "AI-Assisted Reporting",
+            desc: "Instantly categorizes, summarizes, and prioritizes reports with vision, location, and speech analysis.",
           },
-          geo: {
-            title: "Geo Agent",
-            responsibility: "Maps issues to precise ward boundaries and landmarks",
+          tracking: {
+            title: "Transparent Tracking",
+            desc: "Keeps residents and officials updated in real time through structured progress timelines.",
           },
-          trust: {
-            title: "Trust Agent",
-            responsibility: "Validates authenticity and flags duplicate or spam reports",
+          i18n: {
+            title: "Multilingual Accessibility",
+            desc: "Translates the interface into 8 regional languages with integrated Speech-to-Text inputs.",
           },
-          priority: {
-            title: "Priority Agent",
-            responsibility: "Ranks urgency and community impact for faster response",
-          },
-          prediction: {
-            title: "Prediction Agent",
-            responsibility: "Forecasts resolution timelines based on historical patterns",
-          },
-          copilot: {
-            title: "Community Copilot",
-            responsibility: "Guides citizens in their language and explains every step",
+          verification: {
+            title: "Community Verification",
+            desc: "Builds municipal trust through verified local coordinates and multi-neighbor confirmations.",
           },
         },
       },
+
       live_tracking: {
         eyebrow: "Live tracking preview",
         title: "Every report. Every status. In real time.",
@@ -238,35 +402,41 @@ const en = {
         },
       },
       google: {
-        eyebrow: "Built on Google",
-        title: "Powered by the platforms communities already trust",
-        description: "Community Hero integrates Google technologies end-to-end—so intelligence, infrastructure, and insight scale together.",
+        eyebrow: "TECHNOLOGY STACK",
+        title: "Modern tech stack powered by AI & open standards",
+        description: "Community Hero combines Google AI, Firebase infrastructure, and open-source technologies to deliver secure, multilingual, AI-assisted civic reporting.",
         technologies: {
           "ai-studio": {
+            category: "AI Platform",
             title: "Google AI Studio",
-            description: "Gemini powers every agent decision—from vision analysis to community copilot responses.",
+            description: "Gemini powers AI-assisted vision analysis, multilingual understanding, intelligent summarization, and community assistance across the platform."
           },
           firebase: {
+            category: "Backend",
             title: "Firebase",
-            description: "Authentication, real-time data sync, and secure storage keep reports flowing instantly.",
+            description: "Firebase Authentication, Firestore database, secure storage, and real-time synchronization power the complete application backend."
           },
           maps: {
-            title: "Google Maps",
-            description: "Precise geolocation, ward mapping, and live issue pins connect reports to places.",
+            category: "Interactive Maps",
+            title: "OpenStreetMap + Leaflet",
+            description: "Interactive open-source maps provide issue locations, ward boundaries, and live geographic visualization."
           },
           speech: {
-            title: "Speech API",
-            description: "Voice-to-text and text-to-speech let every resident report in the way that feels natural.",
+            category: "Browser API",
+            title: "Web Speech API",
+            description: "Browser-native Speech-to-Text and Text-to-Speech enable voice-based issue reporting and accessibility."
           },
           translate: {
-            title: "Google Translate",
-            description: "Multilingual support ensures no neighbor is excluded because of language.",
+            category: "Multilingual",
+            title: "AI Powered Multilingual Translation",
+            description: "Gemini-powered multilingual translation enables citizens to interact with Community Hero in their preferred language."
           },
           analytics: {
-            title: "Google Analytics",
-            description: "Usage and impact metrics help cities measure what is working and where to invest.",
-          },
-        },
+            category: "Visualization",
+            title: "Community Analytics Dashboard",
+            description: "Interactive dashboards visualize issue statistics, category trends, response timelines, AI insights, and community health indicators."
+          }
+        }
       },
       impact: {
         eyebrow: "Community impact",
@@ -437,6 +607,13 @@ const en = {
         description: "Recent updates shown in chronological order.",
       },
       status: {
+        submitted: "Report submitted by citizen.",
+        assigned: "Assigned to the corresponding municipal department.",
+        inspectionStarted: "Inspection completed, field work started.",
+        inProgress: "In Progress",
+        verified: "AI verification completed",
+        resolved: "Issue resolved",
+        closed: "Report closed",
         Pending: "Pending",
         Verified: "Verified",
         Assigned: "Assigned",
@@ -567,6 +744,142 @@ const en = {
 
 const hi = {
   translation: {
+    auth: {
+      badge: "कम्युनिटी हीरो • सुरक्षित कार्यक्षेत्र",
+      title: "कम्युनिटी हीरो तक सुरक्षित पहुंच",
+      description: "नागरिक समस्याओं की रिपोर्ट करने, रिपोर्ट की प्रगति को ट्रैक करने, अपने समुदाय के साथ सहयोग करने और अपने व्यक्तिगत डैशबोर्ड तक पहुंचने के लिए अपने Google खाते का उपयोग करके सुरक्षित रूप से साइन इन करें।",
+      signInButton: "गूगल के साथ साइन इन करें",
+      signingIn: "साइन इन किया जा रहा है...",
+      backToHome: "होम पर वापस जाएं",
+      indicators: {
+        secure: "सुरक्षित लॉगिन",
+        tracking: "रियल-टाइम ट्रैकिंग",
+        ai: "AI सहायक वर्कफ़्लो"
+      }
+    },
+    privacy: {
+      eyebrow: "परियोजना नीति",
+      title: "गोपनीयता नीति",
+      description: "कम्युनिटी हीरो द्वारा उपयोग की जाने वाली जानकारी और वर्तमान प्रदर्शन इसे कैसे संभालता है, इसका एक सरल भाषा में अवलोकन।",
+      updated: "28 जून 2026",
+      sections: {
+        data_collection: {
+          title: "डेटा संग्रह",
+          description: "कम्युनिटी हीरो नागरिक रिपोर्टिंग प्रदर्शन को संचालित करने के लिए आवश्यक जानकारी एकत्र करता है। इसमें आपका Google खाता नाम, ईमेल पता, रिपोर्ट विवरण, श्रेणी, रिपोर्ट की स्थिति और तकनीकी टाइमस्टैम्प शामिल हो सकते हैं।"
+        },
+        authentication: {
+          title: "प्रमाणीकरण",
+          description: "Google साइन-इन को Firebase प्रमाणीकरण के माध्यम से संभाला जाता है। कम्युनिटी हीरो आपकी रिपोर्ट को आपके खाते से जोड़ने के लिए आपके प्रमाणित उपयोगकर्ता पहचानकर्ता का उपयोग करता है। इस एप्लिकेशन द्वारा पासवर्ड एकत्र या संग्रहीत नहीं किए जाते हैं।"
+        },
+        firebase: {
+          title: "Firebase उपयोग",
+          description: "Firestore खाता-संबंधित प्रोफ़ाइल जानकारी, सबमिट किए गए रिपोर्ट विवरण, AI विश्लेषण परिणाम, स्थान विवरण (यदि प्रदान किया गया हो) और रिपोर्ट स्थिति इतिहास संग्रहीत करता है। Firebase सेवाएं परियोजना ऑपरेटर द्वारा कॉन्फ़िगर की गई हैं।"
+        },
+        location: {
+          title: "स्थान अनुमतियाँ",
+          description: "जब आप रिपोर्टिंग सुविधाओं का उपयोग करते हैं तो आपके ब्राउज़र के माध्यम से स्थान पहुंच का अनुरोध किया जाता है। यदि अनुमति दी जाती है, तो आपकी रिपोर्ट में निर्देशांक, सटीकता और एक हल किया गया पता शामिल किया जा सकता है। आप ब्राउज़र सेटिंग्स में स्थान पहुंच को अस्वीकार या रद्द कर सकते हैं।"
+        },
+        media: {
+          title: "छवि और वीडियो चयन",
+          description: "आपके द्वारा चुनी गई मीडिया का उपयोग AI-सहायक समस्या विश्लेषण का अनुरोध करने के लिए किया जाता है। वर्तमान रिपोर्ट रिकॉर्ड मीडिया प्रकार की जानकारी और परिणामी विश्लेषण को संग्रहीत करता है; यह मूल चयनित मीडिया फ़ाइल को Firestore में संग्रहीत नहीं करता है।"
+        },
+        voice: {
+          title: "आवाज संपर्क",
+          description: "भाषण-से-पाठ (Speech-to-Text) और पाठ-से-भाषण (Text-to-Speech) ब्राउज़र-प्रदान की गई वेब स्पीच क्षमताओं का उपयोग करते हैं। ब्राउज़र और ऑपरेटिंग-सिस्टम विक्रेता अपनी नीतियों के अनुसार भाषण को संसाधित कर सकते हैं। कम्युनिटी हीरो जानबूझकर कच्चे वॉयस रिकॉर्डिंग को संग्रहीत नहीं करता है।"
+        },
+        cookies: {
+          title: "कुकीज़ और स्थानीय संग्रहण",
+          description: "Firebase प्रमाणीकरण आपके साइन-इन सत्र को बनाए रखने के लिए ब्राउज़र संग्रहण का उपयोग कर सकता है। जब आप साइन आउट होते हैं, तो कम्युनिटी हीरो भाषा जैसी प्राथमिकताओं के लिए स्थानीय ब्राउज़र संग्रहण का भी उपयोग करता है। इस परियोजना द्वारा कोई विज्ञापन कुकीज़ जानबूझकर नहीं जोड़ी जाती हैं।"
+        },
+        contact: {
+          title: "संपर्क",
+          description: "गोपनीयता प्रश्नों के लिए, संपर्क पृष्ठ का उपयोग करें। सार्वजनिक परियोजना ईमेल वर्तमान में एक टीम-प्रदान किया गया प्लेसहोल्डर है और लॉन्च से पहले इसे अंतिम सहायता पते से बदला जाना चाहिए।"
+        }
+      }
+    },
+    terms: {
+      eyebrow: "परियोजना की शर्तें",
+      title: "सेवा की शर्तें",
+      description: "कम्युनिटी हीरो प्रदर्शन और इसके AI-सहायक रिपोर्टिंग वर्कफ़्लो के जिम्मेदार उपयोग के लिए व्यावहारिक शर्तें।",
+      updated: "28 जून 2026",
+      sections: {
+        acceptable_use: {
+          title: "स्वीकार्य उपयोग",
+          description: "कम्युनिटी हीरो का उपयोग केवल वैध नागरिक रिपोर्टिंग और मूल्यांकन के लिए करें। उत्पीड़न, अवैध सामग्री, जानबूझकर झूठी रिपोर्ट, दुर्भावनापूर्ण फाइलें या ऐसी सामग्री सबमिट न करें जो किसी अन्य व्यक्ति की गोपनीयता या सुरक्षा का उल्लंघन करती हो।"
+        },
+        user_resp: {
+          title: "उपयोगकर्ता की जिम्मेदारियां",
+          description: "आपके द्वारा सबमिट की जाने वाली जानकारी की सटीकता और उपयुक्तता के लिए आप जिम्मेदार हैं। अनावश्यक व्यक्तिगत या संवेदनशील जानकारी शामिल करने से बचें, और पुष्टि करें कि आपके पास चयनित मीडिया को साझा करने की अनुमति है।"
+        },
+        ownership: {
+          title: "सामग्री का स्वामित्व",
+          description: "आपके द्वारा बनाई गई सामग्री का स्वामित्व आपके पास रहता है। एक रिपोर्ट सबमिट करके, आप परियोजना को नागरिक रिपोर्टिंग वर्कफ़्लो का विश्लेषण, प्रदर्शन, रूट और प्रदर्शित करने के लिए आवश्यक रूप से उस सामग्री को संसाधित करने की अनुमति देते हैं।"
+        },
+        disclaimer: {
+          title: "AI सहायता अस्वीकरण",
+          description: "AI आउटपुट अपूर्ण या गलत हो सकता है। श्रेणियां, सारांश, आत्मविश्वास मूल्य, प्राथमिकताएं, अनुवाद और सिफारिशें सहायक संकेत हैं और परिणामी कार्रवाई किए जाने से पहले लोगों द्वारा उनकी समीक्षा की जानी चाहिए।"
+        },
+        notice: {
+          title: "नगरपालिका प्रदर्शन नोटिस",
+          description: "कम्युनिटी हीरो एक समाधान-चुनौती परियोजना और नागरिक वर्कफ़्लो प्रदर्शन है। जब तक कि कोई भाग लेने वाला प्राधिकरण स्पष्ट रूप से अन्यथा न कहे, यहाँ रिपोर्ट सबमिट करने से कोई आधिकारिक आपातकालीन या नगरपालिका रिपोर्टिंग चैनल प्रतिस्थापित नहीं होता है।",
+          item1: "आपातकालीन स्थितियों के लिए कम्युनिटी हीरो का उपयोग न करें।",
+          item2: "तत्काल सुरक्षा खतरे में होने पर स्थानीय आपातकालीन सेवाओं का उपयोग करें।",
+          item3: "डेमो मेट्रिक्स, पूर्वानुमान और सामुदायिक स्वास्थ्य संकेतक जहां लेबल किए गए हैं, वहां उदाहरण के लिए हैं।"
+        },
+        liability: {
+          title: "दायित्व की सीमा",
+          description: "परियोजना निरंतर उपलब्धता, नगरपालिका प्रतिक्रिया, समस्या समाधान, या AI सटीकता की गारंटी के बिना प्रदर्शन और मूल्यांकन के लिए प्रदान की जाती है। लागू कानूनी अधिकार और जिम्मेदारियां क्षेत्राधिकार के अनुसार भिन्न हो सकती हैं।"
+        }
+      }
+    },
+    contact: {
+      eyebrow: "परियोजना संपर्क",
+      title: "आइए अधिक उत्तरदायी समुदाय बनाएं",
+      description: "कम्युनिटी हीरो यह पता लगाता है कि कैसे AI-सहायक नागरिक रिपोर्टिंग निवासियों और स्थानीय अधिकारियों को पारदर्शी समाधान के माध्यम से रिपोर्टिंग से सहयोग करने में मदद करती है।",
+      challenge: {
+        title: "Google Solution Challenge",
+        desc: "कम्युनिटी हीरो यह दर्शाता है कि कैसे जिम्मेदार AI नागरिकों और स्थानीय अधिकारियों के बीच पारदर्शिता, पहुंच और सहयोग में सुधार कर सकता है।"
+      },
+      developer: {
+        title: "परियोजना डेवलपर",
+        name: "श्रेष्ठा स्वामी",
+        degree: "बी.टेक कंप्यूटर साइंस एंड इंजीनियरिंग (डेटा साइंस)",
+        institution: "एसकेआईटी जयपुर",
+        focus: "AI • डेटा साइंस • नागरिक प्रौद्योगिकी"
+      },
+      links: {
+        title: "डेवलपर के साथ जुड़ें",
+        github: "गिटहब प्रोफाइल",
+        linkedin: "लिंक्डइन प्रोफाइल",
+        note: "सहयोग, अनुसंधान के अवसरों और नागरिक प्रौद्योगिकी चर्चाओं के लिए खुला है।"
+      },
+      form: {
+        successTitle: "संदेश तैयार किया गया",
+        successMessage: "यह प्रदर्शन फ़ॉर्म बैकएंड को डेटा नहीं भेजता है। उत्पादन शुरू करने से पहले एक सत्यापित टीम इनबॉक्स कनेक्ट करें।",
+        backText: "फ़ॉर्म पर वापस जाएँ",
+        name: "नाम",
+        email: "ईमेल",
+        subject: "विषय",
+        message: "संदेश",
+        placeholderName: "जॉन डो",
+        placeholderEmail: "john@example.com",
+        placeholderSubject: "हम आपकी क्या मदद कर सकते हैं?",
+        placeholderMessage: "हमें और विवरण बताएं...",
+        demoText: "केवल UI प्रदर्शन—यह फ़ॉर्म आपके संदेश को प्रसारित या संग्रहीत नहीं करता है।",
+        submitButton: "संदेश तैयार करें"
+      },
+      faq: {
+        eyebrow: "त्वरित उत्तर",
+        title: "अक्सर पूछे जाने वाले प्रश्न",
+        q1: "क्या कम्युनिटी हीरो एक आधिकारिक नगरपालिका सेवा है?",
+        a1: "नहीं। कम्युनिटी हीरो वर्तमान में एक Google Solution Challenge परियोजना और नागरिक वर्कफ़्लो प्रदर्शन है जब तक कि किसी भाग लेने वाले प्राधिकरण द्वारा इसे अपनाया नहीं जाता।",
+        q2: "क्या संपर्क फ़ॉर्म संदेश भेजता है?",
+        a2: "नहीं। यह पृष्ठ वर्तमान में केवल उपयोगकर्ता इंटरफ़ेस का प्रदर्शन करता है। एक उत्पादन बैकएंड को बाद में जोड़ा जा सकता है।",
+        q3: "क्या होमपेज के आंकड़े वास्तविक हैं?",
+        a3: "नहीं। सभी डैशबोर्ड, AI-जनरेटेड अंतर्दृष्टि और प्रभाव मीट्रिक केवल उदाहरण के रूप में हैं और तदनुसार लेबल किए गए हैं।"
+      }
+    },
+
     common: {
       loading: "लोड हो रहा है...",
       error: "त्रुटि",
@@ -608,6 +921,28 @@ const hi = {
       },
     },
     footer: {
+      about: {
+        title: "कम्युनिटी हीरो के बारे में",
+        desc: "कम्युनिटी हीरो एक AI-सहायक नागरिक रिपोर्टिंग प्लेटफ़ॉर्म है जो नागरिकों और स्थानीय अधिकारियों को पारदर्शी समस्या रिपोर्टिंग, बहुभाषी पहुंच और रियल-टाइम प्रगति ट्रैकिंग के माध्यम से सहयोग करने में सक्षम बनाता है।",
+      },
+      tech: {
+        title: "तकनीकी स्टैक",
+        items: {
+          nextjs: "Next.js 16",
+          react: "React + TypeScript",
+          firebase: "Firebase + Firestore",
+          ai: "Google AI Studio",
+          maps: "OpenStreetMap + Leaflet",
+          tailwind: "Tailwind CSS",
+        },
+      },
+      quick_links: { title: "त्वरित लिंक" },
+      recognition: {
+        title: "मान्यता",
+        badge: "Google Solution Challenge 2026",
+        desc: "यह दर्शाने के लिए डिज़ाइन किया गया है कि जिम्मेदार AI, बहुभाषी पहुंच और पारदर्शी नागरिक वर्कफ़्लो समुदायों और नगर पालिकाओं के बीच सहयोग को कैसे मजबूत कर सकते हैं।",
+      },
+      challenge_tag: "Google Solution Challenge के लिए ❤️ के साथ बनाया गया",
       privacy: "गोपनीयता",
       terms: "शर्तें",
       contact: "संपर्क",
@@ -656,63 +991,69 @@ const hi = {
         },
       },
       solution: {
-        eyebrow: "एआई समाधान",
-        title: "एक नागरिक रिपोर्ट से लेकर सामुदायिक समाधान तक",
-        description: "कम्युनिटी हीरो नागरिक जीवन के लिए एक एआई ऑपरेटिंग सिस्टम है। प्रत्येक रिपोर्ट विशेष एजेंटों के माध्यम से प्रवाहित होती है जो समझती है, पुष्टि करती है, प्राथमिकता देती है और समन्वय करती है—फिर समुदाय को वापस जोड़ती है।",
+        eyebrow: "रिपोर्ट वर्कफ़्लो",
+        title: "रिपोर्ट से समाधान तक",
+        description: "कम्युनिटी हीरो हर रिपोर्ट को एक AI-सहायक नागरिक वर्कफ़्लो के माध्यम से निर्देशित करता है जो निवासियों, स्थानीय अधिकारियों और समुदायों को पारदर्शी समस्या समाधान की दिशा में सहयोग करने में मदद करता है।",
         flow: {
           citizen: {
             label: "नागरिक",
-            detail: "एक तस्वीर लेता है, आवाज नोट रिकॉर्ड करता है, या मानचित्र पर टैप करता है",
+            detail: "एक फोटो लेता है, वॉयस नोट रिकॉर्ड करता है, या मानचित्र पिन टैप करता है",
           },
           agents: {
-            label: "एआई एजेंट",
-            detail: "छह विशेष एजेंट रिपोर्ट का विश्लेषण, सत्यापन और मार्ग प्रशस्त करते हैं",
+            label: "AI एजेंट",
+            detail: "छह विशेष एजेंट रिपोर्ट का विश्लेषण, सत्यापन और रूटिंग करते हैं",
           },
           authorities: {
-            label: "प्राधिकारी",
-            detail: "वार्ड इंजीनियरों और विभागों को प्राथमिकता वाले कार्य आदेश प्राप्त होते हैं",
+            label: "प्राधिकरण",
+            detail: "वार्ड इंजीनियर और विभागों को प्राथमिकता वाले कार्य आदेश प्राप्त होते हैं",
           },
           community: {
             label: "समुदाय",
-            detail: "पड़ोसी मिलकर प्रगति को ट्रैक करते हैं और समाधान की पुष्टि करते हैं",
+            detail: "पड़ोसी प्रगति ट्रैक करते हैं और साथ मिलकर सुधार सत्यापित करते हैं",
           },
           resolution: {
             label: "समाधान",
-            detail: "सबूत के साथ मुद्दे बंद होते हैं—और विश्वास का निर्माण ब्लॉक दर ब्लॉक होता है",
+            detail: "समस्याएं प्रमाण के साथ बंद होती हैं—और विश्वास ब्लॉक दर ब्लॉक पुनर्निर्मित होता है",
           },
         },
       },
       agents: {
         eyebrow: "एआई एजेंट पाइपलाइन",
-        title: "छह एजेंट। एक समन्वित कार्यप्रवाह।",
-        description: "प्रत्येक एजेंट की एक जिम्मेदारी होती है। मिलकर वे बिना किसी गलत अनुमान के नागरिक इनपुट को कार्रवाई योग्य जानकारी में बदल देते हैं।",
+        title: "छह एजेंट। एक समन्वित वर्कफ़्लो।",
+        description: "प्रत्येक क्षमता की नागरिक इनपुट को संरचित नागरिक जानकारी में बदलने में एक केंद्रित भूमिका होती है, जिसमें मानव-पठनीय स्पष्टीकरण और बुद्धिमान सहायता शामिल होती है।",
+        badges: { future_enhancement: "भविष्य की सुविधा" },
         list: {
-          vision: {
-            title: "विज़न एजेंट",
-            responsibility: "नागरिक रिपोर्टों से तस्वीरों और दृश्य साक्ष्यों का विश्लेषण करता है",
+          vision: { title: "विज़न एजेंट", responsibility: "नागरिक रिपोर्टों से तस्वीरों और दृश्य साक्ष्यों का विश्लेषण करता है।" },
+          geo: { title: "जियो एजेंट", responsibility: "मुद्दों को सटीक वार्ड सीमाओं और स्थलों पर मैप करता है।" },
+          trust: { title: "वैलिडेशन एजेंट", responsibility: "रिपोर्ट की पूर्णता की पुष्टि करता है और प्रस्तुत करने से पहले संभावित डुप्लिकेट की पहचान में मदद करता है।" },
+          priority: { title: "प्रायोरिटी एजेंट", responsibility: "तेजी से प्रतिक्रिया के लिए तात्कालिकता और सामुदायिक प्रभाव को रैंक करता है।" },
+          prediction: { title: "भविष्य की भविष्यवाणी", responsibility: "ऐतिहासिक नगरपालिका पैटर्नों का उपयोग करके समस्या बढ़ने की प्रवृत्तियों का मूल्यांकन करने के लिए डिज़ाइन किया गया।" },
+          copilot: { title: "सिटिज़न असिस्टेंट", responsibility: "बहुभाषी सहायता के माध्यम से नागरिकों का मार्गदर्शन करता है, निर्णयों की व्याख्या करता है, और समस्या ट्रैकिंग का समर्थन करता है।" },
+        },
+      },
+      credibility: {
+        title: "पारदर्शी नागरिक सहयोग के लिए निर्मित",
+        description: "कम्युनिटी हीरो दर्शाता है कि AI-सहायक वर्कफ़्लो, बहुभाषी पहुंच और पारदर्शी रिपोर्टिंग नागरिकों और स्थानीय अधिकारियों के बीच सहयोग को कैसे मजबूत कर सकते हैं।",
+        cards: {
+          ai: {
+            title: "AI-सहायक रिपोर्टिंग",
+            desc: "दृष्टि, स्थान और भाषण विश्लेषण के साथ रिपोर्ट को तुरंत वर्गीकृत, सारांशित और प्राथमिकता देता है।",
           },
-          geo: {
-            title: "जियो एजेंट",
-            responsibility: "सटीक वार्ड सीमाओं और स्थलों के लिए मुद्दों को मैप करता है",
+          tracking: {
+            title: "पारदर्शी ट्रैकिंग",
+            desc: "संरचित प्रगति समयरेखाओं के माध्यम से निवासियों और अधिकारियों को वास्तविक समय में अपडेट रखता है।",
           },
-          trust: {
-            title: "ट्रस्ट एजेंट",
-            responsibility: "सत्यता की पुष्टि करता है और नकली या स्पैम रिपोर्टों को फ़्लैग करता है",
+          i18n: {
+            title: "बहुभाषी पहुंच",
+            desc: "इंटरफ़ेस को एकीकृत Speech-to-Text इनपुट के साथ 8 क्षेत्रीय भाषाओं में अनुवाद करता है।",
           },
-          priority: {
-            title: "प्राथमिकता एजेंट",
-            responsibility: "तेज प्रतिक्रिया के लिए तात्कालिकता और सामुदायिक प्रभाव को रैंक करता है",
-          },
-          prediction: {
-            title: "पूर्वानुमान एजेंट",
-            responsibility: "ऐतिहासिक पैटर्न के आधार पर समाधान समयरेखा का अनुमान लगाता है",
-          },
-          copilot: {
-            title: "सामुदायिक कोपायलट",
-            responsibility: "नागरिकों का उनकी भाषा में मार्गदर्शन करता है और हर कदम समझाता है",
+          verification: {
+            title: "सामुदायिक सत्यापन",
+            desc: "सत्यापित स्थानीय निर्देशांक और बहु-पड़ोसी पुष्टि के माध्यम से नगरपालिका विश्वास बनाता है।",
           },
         },
       },
+
       live_tracking: {
         eyebrow: "लाइव ट्रैकिंग पूर्वावलोकन",
         title: "हर रिपोर्ट। हर स्थिति। वास्तविक समय में।",
@@ -761,35 +1102,41 @@ const hi = {
         },
       },
       google: {
-        eyebrow: "गूगल पर निर्मित",
-        title: "उन प्लेटफार्मों द्वारा संचालित जिन पर समुदाय पहले से भरोसा करते हैं",
-        description: "कम्युनिटी हीरो अंत से अंत तक गूगल तकनीकों को एकीकृत करता है—ताकि खुफिया जानकारी, बुनियादी ढांचा और अंतर्दृष्टि एक साथ स्केल हो सकें।",
+        eyebrow: "तकनीकी स्टैक",
+        title: "एआई और खुले मानकों द्वारा संचालित आधुनिक तकनीकी स्टैक",
+        description: "कम्युनिटी हीरो सुरक्षित, बहुभाषी, एआई-सहायक नागरिक रिपोर्टिंग प्रदान करने के लिए Google एआई, फायरबेस बुनियादी ढांचे और ओपन-सोर्स तकनीकों को जोड़ता है।",
         technologies: {
           "ai-studio": {
-            title: "गूगल एआई स्टूडियो",
-            description: "जेमिनी हर एजेंट के निर्णय को संचालित करता है—विज़न विश्लेषण से लेकर सामुदायिक कोपायलट प्रतिक्रियाओं तक।",
+            category: "एआई प्लेटफॉर्म",
+            title: "Google AI Studio",
+            description: "जैमनी पूरे प्लेटफॉर्म पर एआई-सहायक दृष्टि विश्लेषण, बहुभाषी समझ, बुद्धिमान सारांश और सामुदायिक सहायता को शक्ति प्रदान करता है।"
           },
           firebase: {
-            title: "फायरबेस",
-            description: "सत्यापन, वास्तविक समय डेटा सिंक और सुरक्षित भंडारण रिपोर्टों को तुरंत चालू रखते हैं।",
+            category: "बैकएंड",
+            title: "Firebase",
+            description: "फायरबेस प्रमाणीकरण, फायरस्टोर डेटाबेस, सुरक्षित भंडारण और वास्तविक समय सिंक्रनाइज़ेशन संपूर्ण एप्लिकेशन बैकएंड को शक्ति प्रदान करते हैं।"
           },
           maps: {
-            title: "गूगल मैप्स",
-            description: "सटीक भू-स्थान, वार्ड मैपिंग और लाइव इश्यू पिन रिपोर्ट को स्थानों से जोड़ते हैं।",
+            category: "इंटरैक्टिव मानचित्र",
+            title: "OpenStreetMap + Leaflet",
+            description: "इंटरैक्टिव ओपन-सोर्स मानचित्र समस्या स्थान, वार्ड सीमाएं और लाइव भौगोलिक विज़ुअलाइज़ेशन प्रदान करते हैं।"
           },
           speech: {
-            title: "स्पीच एपीआई",
-            description: "वॉयस-टू-टेक्स्ट और टेक्स्ट-टू-स्पीच प्रत्येक निवासी को स्वाभाविक रूप से रिपोर्ट करने की अनुमति देते हैं।",
+            category: "ब्राउज़र एपीआई",
+            title: "Web Speech API",
+            description: "ब्राउज़र-मूल स्पीच-टू-टेक्स्ट और टेक्स्ट-टू-स्पीच आवाज-आधारित समस्या रिपोर्टिंग और पहुंच को सक्षम बनाते हैं।"
           },
           translate: {
-            title: "गूगल ट्रांसलेट",
-            description: "बहुभाषी समर्थन यह सुनिश्चित करता है कि भाषा के कारण कोई भी पड़ोसी बाहर न छूटे।",
+            category: "बहुभाषी",
+            title: "एआई संचालित बहुभाषी अनुवाद",
+            description: "जैमनी-संचालित बहुभाषी अनुवाद नागरिकों को उनकी पसंदीदा भाषा में कम्युनिटी हीरो के साथ बातचीत करने में सक्षम बनाता है।"
           },
           analytics: {
-            title: "गूगल एनालिटिक्स",
-            description: "उपयोग और प्रभाव मेट्रिक्स शहरों को यह मापने में मदद करते हैं कि क्या काम कर रहा है और कहां निवेश करना है।",
-          },
-        },
+            category: "विज़ुअलाइज़ेशन",
+            title: "सामुदायिक विश्लेषण डैशबोर्ड",
+            description: "इंटरैक्टिव डैशबोर्ड समस्या के आंकड़े, श्रेणी के रुझान, प्रतिक्रिया समयसीमा, एआई अंतर्दृष्टि और सामुदायिक स्वास्थ्य संकेतकों की कल्पना करते हैं।"
+          }
+        }
       },
       impact: {
         eyebrow: "सामुदायिक प्रभाव",
@@ -960,6 +1307,13 @@ const hi = {
         description: "हाल के अपडेट समय के अनुसार दिखाए गए हैं।",
       },
       status: {
+        submitted: "नागरिक द्वारा रिपोर्ट दर्ज की गई।",
+        assigned: "रिपोर्ट संबंधित विभाग को भेज दी गई।",
+        inspectionStarted: "निरीक्षण पूरा हुआ, कार्य प्रारंभ हो गया।",
+        inProgress: "कार्य प्रगति पर है",
+        verified: "एआई सत्यापन पूरा हुआ",
+        resolved: "समस्या का समाधान कर दिया गया है",
+        closed: "रिपोर्ट बंद की गई",
         Pending: "लंबित",
         Verified: "सत्यापित",
         Assigned: "आवंटित",
@@ -1130,6 +1484,138 @@ const hi = {
 
 const gu = {
   translation: {
+    auth: {
+      badge: "કમ્યુનિટી હીરો • સુરક્ષિત કાર્યસ્થળ",
+      title: "કમ્યુનિટી હીરોની સુરક્ષિત ઍક્સેસ",
+      description: "નાગરિક સમસ્યાઓની ફરિયાદ કરવા, રિપોર્ટની પ્રગતિને ટ્રેક કરવા, તમારા સમુદાય સાથે સહયોગ કરવા અને તમારા વ્યક્તિગત ડેશબોર્ડને ઍક્સેస్ કરવા માટે તમારા ગૂગલ એકાઉન્ટનો ઉપયોગ કરીને સુરક્ષિત રીતે સાઇન ઇન કરો.",
+      signInButton: "ગૂગલ સાથે સાઇન ઇન કરો",
+      signingIn: "સાઇન ઇન થઈ રહ્યું છે...",
+      backToHome: "હોમ પેજ પર પાછા ફરો",
+      indicators: {
+        secure: "સુરક્ષિત લોગીન",
+        tracking: "રિયલ-ટાઇમ ટ્રેકિંગ",
+        ai: "AI સહાયિત વર્કફ્લો"
+      }
+    },
+    privacy: {
+      eyebrow: "પ્રોજેક્ટ પોલિસી",
+      title: "પ્રાઇવેસી પોલિસી",
+      description: "કમ્યુનિટી હીરો કઈ માહિતીનો ઉપયોગ કરે છે અને આ ડેમો તેને કેવી રીતે હેન્ડલ કરે છે તેની સરળ ભાષામાં વિગત.",
+      updated: "28 જૂન 2026",
+      sections: {
+        data_collection: {
+          title: "ડેટા કલેક્શન",
+          description: "કમ્યુનિટી હીરો નાગરિક રિપોર્ટિંગના ડેમો ચલાવવા માટે જરૂરી માહિતી એકત્રિત કરે છે. આમાં તમારું ગૂગલ એકાઉન્ટ નામ, ઈમેલ સરનામું, રિપોર્ટ વર્ણન, કેટેગરી, રિપોર્ટની સ્થિતિ અને ટેકનિકલ ટાઇમસ્ટેમ્પ શામેલ હોઈ શકે છે."
+        },
+        authentication: {
+          title: "પ્રમાણીકરણ",
+          description: "ગૂગલ સાઇન-ઇન ફાયરબેઝ ઓથેન્ટિકેશન દ્વારા સંચાલિત થાય છે. કમ્યુનિટી હીરો રિપોર્ટ્સને તમારા એકાઉન્ટ સાથે લિંક કરવા માટે તમારા પ્રમાણિત યુઝર આઈડીનો ઉપયોગ કરે છે. આ એપ્લિકેશન દ્વારા પાસવર્ડ ક્યારેય લેવા કે સ્ટોર કરવામાં આવતા નથી."
+        },
+        firebase: {
+          title: "ફાયરબેઝ ઉપયોગ",
+          description: "ફાયરસ્ટોર એકાઉન્ટ-સંબંધિત પ્રોફાઇલ માહિતી, સબમિટ કરેલા રિપોર્ટની વિગતો, AI વિશ્લેષણ પરિણામો, લોકેશન વિગતો અને રિપોર્ટ સ્ટેટસ હિસ્ટ્રી સ્ટોર કરે છે."
+        },
+        location: {
+          title: "લોકેશન પરવાનગીઓ",
+          description: "જ્યારે તમે રિપોર્ટિંગ સુવિધાઓનો ઉપયોગ કરો ત્યારે તમારા બ્રાઉઝર દ્વારા લોકેશન ઍક્સેસ માટે વિનંતી કરવામાં આવે છે. જો મંજૂર કરવામાં આવે, તો કોઓર્ડિનેટ્સ અને મેળવેલ સરનામું તમારા રિપોર્ટમાં શામેल હોઈ શકે છે."
+        },
+        media: {
+          title: "ઇમેજ અને વિડિયો સિલેક્શન",
+          description: "તમે પસંદ કરેલ મીડિયાનો ઉપયોગ AI-સહાયિત વિશ્લેષણ વિનંતી માટે થાય છે. વર્તમાન રિપોર્ટ રેકોર્ડ માત્ર મીડિયા પ્રકાર અને વિશ્લેષણ સ્ટોર કરે છે; તે ઓરિજિનલ ફાઇલ ફાયરસ્ટોરમાં સ્ટોર કરતું નથી."
+        },
+        voice: {
+          title: "વોઇસ ઇન્ટરેક્શન",
+          description: "સ્પીચ-ટુ-ટેક્સ્ટ અને ટેક્સ્ટ-ટુ-સ્પીચ બ્રાઉઝરની વેબ સ્પીચ ક્ષમતાઓનો ઉપયોગ કરે છે. કમ્યુનિટી હીરો ઓરિજિનલ વૉઇસ રેકોર્ડિંગ્સ ક્યારેય સ્ટોર કરતું નથી."
+        },
+        cookies: {
+          title: "કુકીઝ અને લોકલ સ્ટોરેજ",
+          description: "ફાયરબેઝ ઓથેન્ટિકેશન તમારું લોગિન સેશન ચાલુ રાખવા માટે બ્રાઉઝર સ્ટોરેજનો ઉપયોગ કરી શકે છે. આ પ્રોજેક્ટમાં કોઈપણ જાહેરાત કૂકીઝ શામેલ નથી."
+        },
+        contact: {
+          title: "સંપર્ક",
+          description: "પ્રાઇવેસી પ્રશ્નો માટે સંપર્ક પેજનો ઉપયોગ કરો. સાર્વજનિક પ્રોજેક્ટ ઈમેલ હાલમાં ડેમો પ્લેસહોલ્ડર છે."
+        }
+      }
+    },
+    terms: {
+      eyebrow: "પ્રોજેક્ટની શરતો",
+      title: "સેવાની શરતો",
+      description: "કમ્યુનિટી હીરો અને તેના AI-સહાયિત રિપોર્ટિંગના જવાબદાર ઉપયોગ માટે વ્યવહારુ શરતો.",
+      updated: "28 જૂન 2026",
+      sections: {
+        acceptable_use: {
+          title: "સ્વીકાર્ય ઉપયોગ",
+          description: "કમ્યુનિટી હીરોનો ઉપયોગ માત્ર કાયદેસર નાગરિક રિપોર્ટિંગ માટે કરો. કોઈ હેરાનગતિ, ગેરકાયદે સામગ્રી અથવા ઈરાદાપૂર્વક ખોટા અહેવાલો સબમિટ કરશો નહીં."
+        },
+        user_resp: {
+          title: "વપરાશકર્તાની જવાબદારીઓ",
+          description: "તમે સબમિટ કરેલી માહિતીની સચોટતા માટે તમે પોતે જ જવાબદાર છો. બિનજરૂરી અંગત માહિતી આપવાનું ટાળો."
+        },
+        ownership: {
+          title: "સામગ્રીની માલિકી",
+          description: "તમે બનાવેલી સામગ્રીની માલિકી તમારી પાસે રહે છે. રિપોર્ટ સબમિટ કરીને, તમે પ્રોજેક્ટને તેનું વિશ્લેષણ અને પ્રદર્શન કરવાની મંજૂરી આપો છો."
+        },
+        disclaimer: {
+          title: "AI સહાય અસ્વીકરણ",
+          description: "AI પરિણામ અપૂર્ણ లేదా తప్పు కావచ్చు. કોઈ ગંભીર નિર્ણય લેતા પહેલા તે લોકો દ્વારા ચકાસવું જરૂરી છે."
+        },
+        notice: {
+          title: "મ્યુનિસિપલ ડેમો નોટિસ",
+          description: "કમ્યુનિટી હીરો એ સોલ્યુશન ચેલેન્જ પ્રોજેક્ટ છે. રિપોર્ટ સબમिट કરવાથી કોઈ સત્તાવાર સરકારી ચેનલ બદલાતી નથી.",
+          item1: "કટોકટી માટે કમ્યુનિટી હીરોનો ઉપયોગ કરશો નહીં.",
+          item2: "જ્યારે તાત્કાલિક જોખમ હોય ત્યારે સ્થાનિક કટોકટી સેવાઓનો ઉપયોગ કરો.",
+          item3: "ડેમો મેટ્રિક્સ અને સામુદાયિક આરોગ્ય સૂચકાંકો માત્ર ઉદાહરણો છે."
+        },
+        liability: {
+          title: "જવાબદારીની મર્યાદા",
+          description: "આ પ્રોજેક્ટ કોઈપણ ગેરંટી વિના મૂલ્યાંકન માટે પ્રદાન કરવામાં આવ્યો છે."
+        }
+      }
+    },
+    contact: {
+      eyebrow: "પ્રોજેક્ટ સંપર્ક",
+      title: "ચાલો વધુ સક્રિય સમુદાયો બનાવીએ",
+      description: "કમ્યુનિટી હીરો એ સંશોધન કરે છે કે કેવી રીતે AI-સહાયિત નાગરિક અહેવાલો રહેવાસીઓ અને સ્થાનિક અધિકારીઓને પારદર્શક સમસ્યા નિવારણ માટે સહયોગ કરવામાં મદદ કરે છે.",
+      challenge: {
+        title: "Google Solution Challenge",
+        desc: "કમ્યુનિટી હીરો દર્શાવે છે કે કેવી રીતે જવાબદાર AI નાગરિકો અને સત્તાવાળાઓ વચ્ચે પારદર્શિતા, સુલભતા અને સહયોગમાં સુધારો કરી શકે છે."
+      },
+      developer: {
+        title: "પ્રોજેક્ટ ડેવલપર",
+        name: "શ્રેષ્ઠા સ્વામી",
+        degree: "બી.ટેક કમ્પ્યુટર સાયન્સ એન્ડ એન્જિનિયરિંગ (ડેટા સાયન્સ)",
+        institution: "SKIT જયપુર",
+        focus: "AI • ડેટા સાયન્સ • સિવિક ટેકનોલોજી"
+      },
+      links: {
+        title: "ડેવલપર સાથે જોડાઓ",
+        github: "GitHub પ્રોફાઇલ",
+        linkedin: "LinkedIn પ્રોફાઇલ",
+        note: "સહયોગ, સંશોધનની તકો અને સિવિક ટેકનોલોજી ચર્ચાઓ માટે ખુલ્લા છે."
+      },
+      form: {
+        successTitle: "સંદેશ તૈયાર થયો",
+        successMessage: "આ ડેમો ફોર્મ બેકએન્ડ પર ડેટા મોકલતું નથી. પ્રોડક્શન શરૂ કરતા પહેલા યોગ્ય ઇનબૉક્સ લિંક કરો.",
+        backText: "ફોર્મ પર પાછા ફરો",
+        name: "નામ",
+        email: "ઈમેલ",
+        subject: "વિષય",
+        message: "સંદેશ",
+        placeholderName: "જોન ડો",
+        placeholderEmail: "john@example.com",
+        placeholderSubject: "અમે તમને કેવી રીતે મદદ કરી શકીએ?",
+        placeholderMessage: "અમને વધુ વિગતો જણાવો...",
+        demoText: "ફક્ત UI પ્રદર્શન—આ ફોર્મ તમારા સંદેશને મોકલતું કે સંગ્રહ કરતું નથી.",
+        submitButton: "સંદેશ તૈયાર કરો"
+      },
+      faq: {
+        eyebrow: "ઝડપી જવાબો",
+        title: "વારંવાર પૂછાતા પ્રશ્નો",
+        q1: "શું કમ્યુનિટી હીરો સત્તાવાર સરકારી સેવા છે?",
+        a1: "ના. કમ્યુનિટી હીરો હાલમાં ગૂગલ સોલ્યુશન ચેલેન્જ પ્રોજેક્ટ અને ડેમો છે."
+      }
+    },
+
     common: {
       loading: "લોડ થઈ રહ્યું છે...",
       error: "ભૂલ",
@@ -1171,6 +1657,28 @@ const gu = {
       },
     },
     footer: {
+      about: {
+        title: "ˉCommunity ˉHero ˉvishe",
+        desc: "ˉCommunity ˉHero ˉek ˉAI-sahayit ˉnagarik ˉreˉporting ˉplatˉform ˉche ˉje ˉnagarikone ˉane ˉsthanik ˉsattadhikaˉriyone ˉparaˉdarshak ˉsamasya ˉreporting, ˉbahubhashi ˉpravesh ˉane ˉvastavik-samay ˉpragati ˉtreˉking ˉdvara ˉsahˉkarˉ ˉkaˉrva ˉsˉaksham ˉbanave ˉche.",
+      },
+      tech: {
+        title: "ˉTechnology ˉStack",
+        items: {
+          nextjs: "Next.js 16",
+          react: "React + TypeScript",
+          firebase: "Firebase + Firestore",
+          ai: "Google AI Studio",
+          maps: "OpenStreetMap + Leaflet",
+          tailwind: "Tailwind CSS",
+        },
+      },
+      quick_links: { title: "ˉJaldi ˉLinkˉs" },
+      recognition: {
+        title: "ˉManˉyata",
+        badge: "Google Solution Challenge 2026",
+        desc: "ˉJimmedˉar ˉAI, ˉbahubhashi ˉpravesh ˉane ˉparaˉdarshak ˉnagarik ˉworkflowˉs ˉsamudayˉo ˉane ˉnaˉgarpaˉlikaoˉ vacche sahkˉar ˉne ˉkevi ˉrite ˉmˉazbut ˉˉkari ˉshke ˉche ˉte ˉdarsˉhavva ˉmate ˉdˉizˉain ˉkaˉrel.",
+      },
+      challenge_tag: "Google Solution Challenge ˉmate ˉ❤️ ˉsˉathe ˉbanˉaˉvel",
       privacy: "ગોપનીયતા",
       terms: "શરતો",
       contact: "સંપર્ક",
@@ -1219,63 +1727,69 @@ const gu = {
         },
       },
       solution: {
-        eyebrow: "AI ઉકેલ",
-        title: "એક નાગરિક અહેવાલથી લઈને સામુદાયિક ઉકેલ સુધી",
-        description: "કોમ્યુનિટી હીરો નાગરિક જીવન માટે એક AI ઓપરેટિંગ સિસ્ટમ છે. દરેક રિપોર્ટ વિશિષ્ટ એજન્ટો દ્વારા વહે છે જે સમજે છે, પુષ્ટિ કરે છે, અગ્રતા આપે છે અને સંકલન કરે છે—પછી સમુદાયને ફરીથી જોડે છે.",
+        eyebrow: "રિપોર્ટ વર્કફ્લો",
+        title: "રિપોર્ટથી સમાધાન સુધી",
+        description: "કમ્યુનિટી હીરો દરેક રિપોર્ટને AI-સહાયિત નાગરિક વર્કફ્લો દ્વારા માર્ગદર્શન આપે છે જે નિવાસીઓ, સ્થાનિક સત્તાધીશો અને સમુદાયોને પારદર્શક સમસ્યા નિવારણ તરફ સહકાર આપવામાં મદદ કરે છે.",
         flow: {
           citizen: {
             label: "નાગરિક",
-            detail: "ફોટો લે છે, વૉઇસ નોટ રેકોર્ડ કરે છે અથવા નકશા પર ટેપ કરે છે",
+            detail: "ફોટો લે છે, વૉઇસ નોટ રેકોર્ડ કરે છે, અથવા મેપ પિન ટૅપ કરે છે",
           },
           agents: {
-            label: "AI એજન્ટ્સ",
-            detail: "છ વિશિષ્ટ એજન્ટો રિપોર્ટનું વિશ્લેષણ, ચકાસણી અને રૂટીંગ કરે છે",
+            label: "AI એજન્ટ",
+            detail: "છ વિશેષ એજન્ટ રિપોર્ટનું વિશ્લેષણ, ચકાસણી અને રૂટિંગ કરે છે",
           },
           authorities: {
-            label: "સત્તાવાળાઓ",
-            detail: "વોર્ડ એન્જિનિયરો અને વિભાગોને પ્રાથમિકતાવાળા કામના ઓર્ડર મળે છે",
+            label: "સત્તાધિકારીઓ",
+            detail: "વોર્ડ ઇજનેરો અને વિભાગોને પ્રાથમિક કાર્ય આદેશ પ્રાપ્ત થાય છે",
           },
           community: {
             label: "સમુદાય",
-            detail: "પડોશીઓ સાથે મળીને પ્રગતિને ટ્રેક કરે છે અને ઉકેલોની ચકાસણી કરે છે",
+            detail: "પડોશીઓ પ્રગતિ ટ્રૅક કરે છે અને સાથે મળીને સુધારા ચકાસે છે",
           },
           resolution: {
-            label: "ઉકેલ",
-            detail: "પુરાવા સાથે સમસ્યાઓ બંધ થાય છે—અને વિશ્વાસનું નિર્માણ બ્લોક દર બ્લોક થાય છે",
+            label: "સમાધાન",
+            detail: "સમસ્યાઓ પ્રમાણ સાથે બંધ થાય છે—અને વિશ્વાસ બ્લૉક- બ્લૉક પુનઃ નિર્માણ થાય છે",
           },
         },
       },
       agents: {
         eyebrow: "AI એજન્ટ પાઇપલાઇન",
-        title: "છ એજન્ટો. એક સંકલિત કાર્યપ્રવાહ.",
-        description: "દરેક એજન્ટની એક જ જવાબદારી હોય છે. સાથે મળીને તેઓ નાગરિક ઇનપુટને કાર્યક્ષમ બુદ્ધિમાં ફેરવે છે.",
+        title: "છ એજન્ટો. એક સંકલિત વર્કફ્લો.",
+        description: "દરેક ક્ષમતા નાગરિક ઇન્પુટને સંરચિત નાગરિક માહિતીમાં રૂપાંતરિત કરવામાં કેન્દ્રિત ભૂમિકા ધરાવે છે, જેમાં માનવ-વાંચી શકાય તેવી સ્પષ્ટ સમજૂતીઓ અને બુદ્ધિશાળી સહાય છે.",
+        badges: { future_enhancement: "ભવિષ્યની સુવિધા" },
         list: {
-          vision: {
-            title: "વિઝન એજન્ટ",
-            responsibility: "નાગરિક અહેવાલોમાંથી ફોટા અને દ્રશ્ય પુરાવાઓનું વિશ્લેષણ કરે છે",
+          vision: { title: "વિઝ઼ન એજન્ટ", responsibility: "નાગરિક અહેવાલોમાંથી ફોટા અને વિઝ્યુઅલ પુરાવાઓનું વિશ્લેષણ કરે છે." },
+          geo: { title: "જિઓ એજન્ટ", responsibility: "વોર્ડની ચોક્કસ સીમાઓ અને સ્થળો સાથે સમસ્યાઓ મૅપ કરે છે." },
+          trust: { title: "વૅલિડેશન એજન્ટ", responsibility: "અહેવાલ સ઼ ·ˉbmit ˉkar ·ˉva ˉpahela ˉteni ˉpurnata ˉtharavar ˉkare ˉche ˉane ˉsambhavit ˉduplicate ˉne ˉolakhvama ˉmadad ˉkare ˉche." },
+          priority: { title: "પ્રાઇઓરિટી એજન્ટ", responsibility: "ઝ ·ˉdapathi ˉpratiˉsaad ˉ mate ˉtakeed ˉane ˉsamudaya ˉprabahav ˉne ˉrank ˉkare ˉche." },
+          prediction: { title: "ભ ·ˉvishyani ˉBhavishyavani", responsibility: "Aitihasik ˉMunicipal ˉPattern ˉna ˉUpayog ˉkarine ˉsamasya ˉvadh ˉavana ˉvalanonu ˉmulyankan ˉkarava ˉmate ˉrachayelu ˉche." },
+          copilot: { title: "Sitˉizan ˉAsistant", responsibility: "Bahubhashi ˉsahay ˉdvara ˉnagarikone ˉmargnirdesh ˉape ˉche, ˉnirnayo ˉsajhava ˉkare ˉche ˉane ˉsamasya ˉtreking ˉne ˉsamarthˉan ˉape ˉche." },
+        },
+      },
+      credibility: {
+        title: "પારદર્શી નાગરિક સહkarikal માટે નિર્મિત",
+        description: "કમ્યુનિટી હીરો દર્શાવે છે કે AI-સહાયિત વર્કફ્લો, બહુભાષી પ્રવેશ અને પારદર્શી રિપોર્ટિંગ નાગરિકો અને સ્થાનિક સત્તાધિકારીઓ વચ્ચે સહkarikal ને કેવી રીતે મજ઼ ·ˉbut ˉkari ˉshake ˉche.",
+        cards: {
+          ai: {
+            title: "AI-સહાયિત રિપોર્ટિંગ",
+            desc: "દ ·ˉ ·ˉ ·ˉ ·ˉ ·ˉ ·ˉ ·ˉ ·ˉ ·ˉ ·ˉdrishti, ˉsthan ˉane ˉbhasha ˉvishleshan ˉsathe ˉriporth ˉne ˉtarikha, ˉsarvaiyun ˉane ˉpradhanyata ˉape ˉche.",
           },
-          geo: {
-            title: "જીઓ એજન્ટ",
-            responsibility: "ચોક્કસ વોર્ડ સીમાઓ અને સીમાચિહ્નો માટે સમસ્યાઓ મેપ કરે છે",
+          tracking: {
+            title: "પારsdarsˉhi ˉTrˉeking",
+            desc: "ˉS ·ˉanrachit ˉpragati ˉsamayrekhaˉo ˉdvara ˉnivasˉio ˉane ˉadhikˉario ˉne ˉvastavik ˉsˉamay ˉma ˉupdata ˉrˉakhe ˉche.",
           },
-          trust: {
-            title: "ટ્રસ્ટ એજન્ટ",
-            responsibility: "સત્યતાની ચકાસણી કરે છે અને ડુપ્લિકેટ અથવા સ્પામ રિપોર્ટ્સને ફ્લેગ કરે છે",
+          i18n: {
+            title: "ˉBahubhashi ˉPravesh",
+            desc: "Ekikrit ˉSpeech-to-Text ˉinˉputˉ saˉthe ˉintˉerfˉace ˉne ˉ8 ˉpradˉeshik ˉbhashaˉoˉ ˉmˉa ˉanˉuˉvˉad ˉkˉare ˉche.",
           },
-          priority: {
-            title: "પ્રાયોરિટી એજન્ટ",
-            responsibility: "ઝડપી પ્રતિભાવ માટે તાકીદ અને સામુદાયિક પ્રભાવને રેન્ક આપે છે",
-          },
-          prediction: {
-            title: "પ્રેડિક્શન એજન્ટ",
-            responsibility: "ઐતિહાસિક પેટર્નના આધારે ઉકેલની સમયરેખાની આગાહી કરે છે",
-          },
-          copilot: {
-            title: "સામુદાયિક કોપાયલોટ",
-            responsibility: "નાગરિકોને તેમની ભાષામાં માર્ગદર્શન આપે છે અને દરેક પગલું સમજાવે છે",
+          verification: {
+            title: "ˉSamudˉay ˉSaˉtyaˉpan",
+            desc: "ˉSatˉyapit ˉstˉhanˉiy ˉnˉirdeshˉank ˉane ˉbahuˉ-padˉoshi ˉpˉushti ˉdˉvˉara ˉnaˉgˉarˉpalika ˉvishˉvas ˉbanˉave ˉche.",
           },
         },
       },
+
       live_tracking: {
         eyebrow: "લાઇવ ટ્રેકિંગ પૂર્વાવલોકન",
         title: "દરેક રિપોર્ટ. દરેક સ્થિતિ. વાસ્તવિક સમયમાં.",
@@ -1324,35 +1838,41 @@ const gu = {
         },
       },
       google: {
-        eyebrow: "ગૂગલ પર નિર્મિત",
-        title: "એવા પ્લેટફોર્મ્સ દ્વારા સંચાલિત જેના પર સમુદાયો પહેલેથી જ વિશ્વાસ કરે છે",
-        description: "કોમ્યુનિટી હીરો ગૂગલ ટેક્નોલોજીને શરૂઆતથી અંત સુધી સંકલિત કરે છે—જેથી બુદ્ધિમત્તા, ઇન્ફ્રાસ્ટ્રક્ચર અને આંતરદૃષ્ટિ એકસાથે સ્કેલ થાય.",
+        eyebrow: "ટેકનોલોજી સ્ટેક",
+        title: "AI અને ઓપન સ્ટાન્ડર્ડ દ્વારા સંચાલિત આધુનિક ટેક સ્ટેક",
+        description: "કમ્યુનિટી હીરો સલામત, બહુભાષી અને AI-સહાયિત નાગરિક રિપોર્ટિંગ માટે ગૂગલ AI, ફાયરબેઝ ઇન્ફ્રાસ્ટ્રક્ચર અને ઓપન-સોર્સ ટેક્નોલોજીને જોડે છે.",
         technologies: {
           "ai-studio": {
-            title: "ગૂગલ AI સ્ટુડિયો",
-            description: "જેમિની દરેક એજન્ટના નિર્ણયને સંચાલિત કરે છે—વિઝન વિશ્લેષણથી લઈને સામુદાયિક કોપાયલોટ પ્રતિભાવો સુધી.",
+            category: "AI પ્લેટફોર્મ",
+            title: "Google AI Studio",
+            description: "જેમિની સમગ્ર પ્લેટફોર્મ પર AI-સહાયિત વિઝન વિશ્લેષણ, બહુભાષી સમજ, સ્માર્ટ સારાંશ અને સામુદાયિક સહાય પૂરી પાડે છે."
           },
           firebase: {
-            title: "ફાયરબેઝ",
-            description: "ચકાસણી, રિયલ-ટાઇમ ડેટા સિંક અને સુરક્ષિત સ્ટોરેજ રિપોર્ટ્સને તરત જ વહેતા રાખે છે.",
+            category: "બેકએન્ડ",
+            title: "Firebase",
+            description: "ફાયરબેઝ ઓથેન્ટિકેશન, ફાયરસ્ટોર ડેટાબેઝ, સુરક્ષિત સ્ટોરેજ અને રિયલ-ટાઇમ સિંક્રનાઇઝેશન એપ્લિકેશન બેકએન્ડને પાવર કરે છે."
           },
           maps: {
-            title: "ગૂગલ મેપ્સ",
-            description: "ચોક્કસ ભૌગોલિક સ્થાન, વોર્ડ મેપિંગ અને લાઇવ ઇશ્યૂ પિન રિપોર્ટને સ્થાનો સાથે જોડે છે.",
+            category: "ઇન્ટરેક્ટિવ નકશા",
+            title: "OpenStreetMap + Leaflet",
+            description: "ઇન્ટરેક્ટિવ ઓપન-સોર્સ નકશા સમસ્યાનું સ્થાન, વોર્ડ સીમાઓ અને જીવંત ભૌગોલિક વિઝ્યુઅલાઈઝેશન પ્રદાન કરે છે."
           },
           speech: {
-            title: "સ્પીચ API",
-            description: "વોઇસ-ટુ-ટેક્સ્ટ અને ટેક્સ્ટ-ટુ-સ્પીચ દરેક રહેવાસીને કુદરતી રીતે રિપોર્ટ કરવાની મંજૂરી આપે છે.",
+            category: "બ્રાઉઝર API",
+            title: "Web Speech API",
+            description: "બ્રાઉઝર-નેટિવ સ્પીચ-ટુ-ટેક્સ્ટ અને ટેક્સ્ટ-ટુ-સ્પીચ અવાજ-આધારિત રિપોર્ટિંગ અને સુલભતા સક્ષમ કરે છે."
           },
           translate: {
-            title: "ગૂગલ ટ્રાન્સલેટ",
-            description: "બહુભાષી સપોર્ટ એ સુનિશ્ચિત કરે છે કે ભાષાના કારણે કોઈ પાડોશી બાકાત ન રહે.",
+            category: "બહુભાષીય",
+            title: "AI સંચાલિત બહુભાષી અનુવાદ",
+            description: "જેમિની-સંચાલિત બહુભાષી અનુવાદ નાગરિકોને તેમની મનપસંદ ભાષામાં કમ્યુનિટી હીરો સાથે વાતચીત કરવા સક્ષમ બનાવે છે."
           },
           analytics: {
-            title: "ગૂગલ એનાલિટિક્સ",
-            description: "ઉપયોગ અને પ્રભાવ મેટ્રિક્સ શહેરોને શું કામ કરી રહ્યું છે અને ક્યાં રોકાણ કરવું તે માપવામાં મદદ કરે છે.",
-          },
-        },
+            category: "વિઝ્યુઅલાઈઝેશન",
+            title: "સામુદાયિક એનાલિટિક્સ ડેશબોર્ડ",
+            description: "ઇન્ટરેક્ટિવ ડેશબોર્ડ સમસ્યાના આંકડા, કેટેગરી વલણો, પ્રતિભાવ સમયરેખા, AI આંતરદૃષ્ટિ અને સામુદಾಯિક આરોગ્ય સૂચકાંકો દર્શાવે છે."
+          }
+        }
       },
       impact: {
         eyebrow: "સામુદાયિક પ્રભાવ",
@@ -1523,6 +2043,13 @@ const gu = {
         description: "તાજેતરના અપડેટ્સ સમય ક્રમ અનુસાર દર્શાવ્યા છે.",
       },
       status: {
+        submitted: "નાગરિક દ્વારા ફરિયાદ નોંધાઈ.",
+        assigned: "ફરિયાદ સંબંધિત વિભાગને સોંપવામાં આવી.",
+        inspectionStarted: "તપાસ પૂર્ણ થઈ અને કાર્ય શરૂ થયું.",
+        inProgress: "કાર્ય ચાલુ છે",
+        verified: "AI ચકાસણી પૂર્ણ થઈ",
+        resolved: "ફરિયાદનું નિવારણ કરવામાં આવ્યું છે",
+        closed: "ફરિયાદ બંધ કરવામાં આવી",
         Pending: "વિલંબિત",
         Verified: "ચકાસાયેલ",
         Assigned: "સોંપાયેલ",
@@ -1693,6 +2220,138 @@ const gu = {
 
 const mr = {
   translation: {
+    auth: {
+      badge: "कम्युनिटी हिरो • सुरक्षित कार्यक्षेत्र",
+      title: "कम्युनिटी हिरोमध्ये सुरक्षित प्रवेश",
+      description: "नागरी समस्यांची तक्रार करण्यासाठी, तक्रारीच्या प्रगतीचा मागोवा घेण्यासाठी, आपल्या समुदायासोबत सहकार्य करण्यासाठी आणि आपल्या वैयक्तिक डॅशबोर्डमध्ये प्रवेश करण्यासाठी आपल्या Google खात्याचा वापर करून सुरक्षितपणे साइन इन करा.",
+      signInButton: "गूगल द्वारे साइन इन करा",
+      signingIn: "साइन इन होत आहे...",
+      backToHome: "होमवर परत जा",
+      indicators: {
+        secure: "सुरक्षित लॉगिन",
+        tracking: "रिअल-टाइम ट्रॅकिंग",
+        ai: "AI सहाय्यित वर्कफ्लो"
+      }
+    },
+    privacy: {
+      eyebrow: "प्रकल्प धोरण",
+      title: "गोपनीयता धोरण",
+      description: "कम्युनिटी हिरो वापरत असलेल्या माहितीचा आणि सद्य प्रदर्शन ती कशी हाताळते याचा सोप्या भाषेतील आढावा.",
+      updated: "२८ जून २०२६",
+      sections: {
+        data_collection: {
+          title: "डेटा संकलन",
+          description: "कम्युनिटी हिरो नागरी रिपोर्टिंग प्रदर्शन चालवण्यासाठी आवश्यक माहिती गोळा करते. यामध्ये तुमचे Google खाते नाव, ईमेल पत्ता, रिपोर्ट वर्णन, श्रेणी, रिपोर्टची स्थिती आणि तांत्रिक टाइमस्टॅम्प समाविष्ट असू शकतात."
+        },
+        authentication: {
+          title: "प्रमाणीकरण",
+          description: "Google साइन-इन Firebase प्रमाणीकरण द्वारे हाताळले जाते. कम्युनिटी हिरो रिपोर्ट्स तुमच्या खात्याशी जोडण्यासाठी तुमच्या प्रमाणित युझर आयडीचा वापर करते. पासवर्ड गोळा किंवा साठवले जात नाहीत."
+        },
+        firebase: {
+          title: "Firebase चा वापर",
+          description: "फायरस्टोअर खाते-संबंधित प्रोफाइल माहिती, सबमिट केलेले रिपोर्ट तपशील, AI विश्लेषण परिणाम, प्रदान केलेले स्थान तपशील आणि रिपोर्ट स्थिती इतिहास साठवते."
+        },
+        location: {
+          title: "स्थान परवानग्या",
+          description: "जेव्हा तुम्ही रिपोर्टिंग वैशिष्ट्ये वापरता तेव्हा तुमच्या ब्राउझरद्वारे स्थान प्रवेशाची विनंती केली जाते. मंजूर केल्यास, स्थान माहिती रिपोर्टमध्ये समाविष्ट केली जाऊ शकते."
+        },
+        media: {
+          title: "प्रतिमा आणि व्हिडिओ निवड",
+          description: "निवडलेल्या मीडियाचा वापर AI-सहाय्यित विश्लेषणासाठी केला जातो. चालू रिपोर्ट केवळ मीडिया प्रकार आणि विश्लेषण माहिती साठवतो; मूळ फाईल साठवली जात नाही."
+        },
+        voice: {
+          title: "आवाज संवाद",
+          description: "स्पीच-टू-टेक्स्ट आणि टेक्स्ट-टू-स्पीच ब्राउझरच्या वेब स्पीच क्षमतेचा वापर करतात. कम्युनिटी हिरो व्हॉइस रेकॉर्डिंग साठवत नाही."
+        },
+        cookies: {
+          title: "कुकीज आणि स्थानिक स्टोरेज",
+          description: "Firebase प्रमाणीकरण लॉगिन सत्र राखण्यासाठी ब्राउझर स्टोरेज वापरू शकते. या प्रकल्पात कोणत्याही जाहिरात कुकीज समाविष्ट नाहीत."
+        },
+        contact: {
+          title: "संपर्क",
+          description: "गोपनीयता प्रश्नांसाठी, संपर्क पृष्ठ वापरा. सार्वजनिक प्रकल्प ईमेल सध्या एक डेमो प्लेसहोल्डर आहे."
+        }
+      }
+    },
+    terms: {
+      eyebrow: "प्रकल्प अटी",
+      title: "सेवा अटी",
+      description: "कम्युनिटी हिरो आणि त्याच्या AI-सहाय्यित वर्कफ्लोच्या जबाबदार वापरासाठी व्यावहारिक अटी.",
+      updated: "२८ जून २०२६",
+      sections: {
+        acceptable_use: {
+          title: "स्वीकारार्ह वापर",
+          description: "कम्युनिटी हिरोचा वापर केवळ कायदेशीर नागरी रिपोर्टिंगसाठी करा. त्रास देणारी, बेकायदेशीर किंवा हेतुपुरस्सर खोटी माहिती सबमिट करू नका."
+        },
+        user_resp: {
+          title: "वापरकर्त्याच्या जबाबदाऱ्या",
+          description: "तुम्ही सबमिट केलेल्या माहितीच्या अचूकतेसाठी तुम्ही स्वतः जबाबदार आहात. नको असलेली वैयक्तिक माहिती टाळा."
+        },
+        ownership: {
+          title: "सामग्रीची मालकी",
+          description: "तुम्ही तयार केलेल्या सामग्रीची मालकी तुमच्याकडेच राहते. रिपोर्ट सबमिट करून, तुम्ही प्रकल्पाला त्याचे विश्लेषण करण्याची परवानगी देता."
+        },
+        disclaimer: {
+          title: "AI सहाय्य अस्वीकरण",
+          description: "AI माहिती अपूर्ण किंवा चुकीची असू शकते. कोणताही गंभीर निर्णय घेण्यापूर्वी लोकांनी त्याची तपासणी करणे आवश्यक आहे."
+        },
+        notice: {
+          title: "महानगरपालिका प्रदर्शन नोटीस",
+          description: "कम्युनिटी हिरो हा केवळ एक सोल्यूशन चॅलेंज प्रकल्प आहे. येथे रिपोर्ट सबमिट केल्याने कोणतीही अधिकृत सरकारी यंत्रणा बदलत नाही.",
+          item1: "तातडीच्या प्रसंगी कम्युनिटी हिरोचा वापर करू नका.",
+          item2: "तातडीच्या मदतीसाठी स्थानिक आपत्कालीन सेवांचा वापर करा.",
+          item3: "प्रदर्शित केलेले आकडे आणि आरोग्य निर्देशक केवळ उदाहरणासाठी आहेत."
+        },
+        liability: {
+          title: "जबाबदारीची मर्यादा",
+          description: "हा प्रकल्प कोणत्याही हमीशिवाय मूल्यमापनासाठी प्रदान केला गेला आहे."
+        }
+      }
+    },
+    contact: {
+      eyebrow: "प्रकल्प संपर्क",
+      title: "चला अधिक प्रतिसाद देणारे समुदाय तयार करूया",
+      description: "नागरिक आणि स्थानिक अधिकारी पारदर्शक पद्धतीने कसे सहकार्य करू शकतात यावर कम्युनिटी हिरो प्रकाश टाकते.",
+      challenge: {
+        title: "Google Solution Challenge",
+        desc: "कम्युनिटी हिरो दाखवते की जबाबदार AI मुळे पारदर्शकता, सुलभता आणि सहकार्य कसे सुधारू शकते."
+      },
+      developer: {
+        title: "प्रकल्प निर्माता",
+        name: "श्रेष्ठा स्वामी",
+        degree: "बी.टेक कॉम्प्युटर सायन्स आणि इंजिनिअरिंग (डेटा सायन्स)",
+        institution: "SKIT जयपूर",
+        focus: "AI • डेटा सायन्स • नागरी तंत्रज्ञान"
+      },
+      links: {
+        title: "निर्मात्याशी संपर्क साधा",
+        github: "GitHub प्रोफाइल",
+        linkedin: "LinkedIn प्रोफाइल",
+        note: "सहकार्य, संशोधन संधी आणि नागरी तंत्रज्ञान चर्चेसाठी उत्सुक."
+      },
+      form: {
+        successTitle: "संदेश तयार झाला",
+        successMessage: "हा फॉर्म फक्त डेमो आहे. तो डेटा पाठवत नाही.",
+        backText: "फॉर्मवर परत जा",
+        name: "नाव",
+        email: "ईमेल",
+        subject: "विषय",
+        message: "संदेश",
+        placeholderName: "जॉन डो",
+        placeholderEmail: "john@example.com",
+        placeholderSubject: "आम्ही कशी मदत करू शकतो?",
+        placeholderMessage: "आम्हाला अधिक तपशील सांगा...",
+        demoText: "केवळ UI प्रदर्शन—हा फॉर्म संदेश साठवत नाही.",
+        submitButton: "संदेश तयार करा"
+      },
+      faq: {
+        eyebrow: "त्वरित उत्तरे",
+        title: "सतत विचारले जाणारे प्रश्न",
+        q1: "कम्युनिटी हिरो ही अधिकृत सरकारी सेवा आहे का?",
+        a1: "नाही. कम्युनिटी हिरो हा सध्या केवळ एक Google सोल्यूशन चॅलेंज प्रोजेक्ट आहे."
+      }
+    },
+
     common: {
       loading: "लोड होत आहे...",
       error: "त्रुटी",
@@ -1734,6 +2393,28 @@ const mr = {
       },
     },
     footer: {
+      about: {
+        title: "कम्युनिटी हिरोबद्दल",
+        desc: "कम्युनिटी हिरो एक AI-सहाय्यित नागरिक रिपोर्टिंग प्लॅटफॉर्म आहे जे नागरिक आणि स्थानिक अधिकारी यांना पारदर्शक समस्या रिपोर्टिंग, बहुभाषिक प्रवेश आणि रिअल-टाइम प्रगती ट्रॅकिंगद्वारे सहकार्य करण्यास सक्षम करते.",
+      },
+      tech: {
+        title: "तंत्रज्ञान स्टॅक",
+        items: {
+          nextjs: "Next.js 16",
+          react: "React + TypeScript",
+          firebase: "Firebase + Firestore",
+          ai: "Google AI Studio",
+          maps: "OpenStreetMap + Leaflet",
+          tailwind: "Tailwind CSS",
+        },
+      },
+      quick_links: { title: "त्वरित दुवे" },
+      recognition: {
+        title: "मान्यता",
+        badge: "Google Solution Challenge 2026",
+        desc: "जबाबदार AI, बहुभाषिक प्रवेश आणि पारदर्शक नागरिक वर्कफ्लो समुदाय आणि नगरपालिका यांच्यातील सहकार्य कसे मजबूत करू शकतात हे दाखवण्यासाठी डिझाइन केलेले.",
+      },
+      challenge_tag: "Google Solution Challenge साठी ❤️ ने बनवले",
       privacy: "गोपनीयता",
       terms: "अटी",
       contact: "संपर्क",
@@ -1782,63 +2463,69 @@ const mr = {
         },
       },
       solution: {
-        eyebrow: "AI उपाय",
-        title: "एका नागरिकाच्या तक्रारीपासून ते सामायिक निराकरणापर्यंत",
-        description: "कम्युनिटी हिरो नागरी जीवनासाठी एक AI ऑपरेटिंग सिस्टम आहे. प्रत्येक तक्रार विशेष एजंट्सद्वारे प्रवाहित होते जे समजून घेतात, पडताळणी करतात, प्राधान्य देतात आणि समन्वय साधतात—त्यानंतर समुदायाला पुन्हा जोडतात.",
+        eyebrow: "रिपोर्ट वर्कफ्लो",
+        title: "रिपोर्टपासून निराकरणापर्यंत",
+        description: "कम्युनिटी हिरो प्रत्येक रिपोर्टला AI-सहाय्यित नागरिक वर्कफ्लोद्वारे मार्गदर्शन करतो जे रहिवासी, स्थानिक अधिकारी आणि समुदायांना पारदर्शक समस्या निराकरणाकडे सहकार्य करण्यात मदत करतो.",
         flow: {
           citizen: {
             label: "नागरिक",
-            detail: "फोटो काढतो, व्हॉइस नोट रेकॉर्ड करतो किंवा नकाशावर टॅप करतो",
+            detail: "फोटो घेतो, व्हॉइस नोट रेकॉर्ड करतो, किंवा मॅप पिन टॅप करतो",
           },
           agents: {
-            label: "AI एजंट्स",
-            detail: "सहा विशेष एजंट तक्रारीचे विश्लेषण, पडताळणी आणि वर्गीकरण करतात",
+            label: "एआय एजंट",
+            detail: "सहा विशेष एजंट रिपोर्टचे विश्लेषण, सत्यापन आणि रूटिंग करतात",
           },
           authorities: {
-            label: "प्राधिकारी",
-            detail: "वॉर्ड अभियंते आणि विभागांना प्राधान्यीकृत कामाचे आदेश मिळतात",
+            label: "प्राधिकरणे",
+            detail: "वार्ड अभियंते आणि विभागांना प्राधान्य कामाचे आदेश मिळतात",
           },
           community: {
             label: "समुदाय",
-            detail: "शेजारी मिळून प्रगतीचा मागोवा घेतात आणि समाधाची खात्री करतात",
+            detail: "शेजारी प्रगती ट्रॅक करतात आणि एकत्र सुधारणा सत्यापित करतात",
           },
           resolution: {
             label: "निराकरण",
-            detail: "पुराव्यांसह तक्रारी बंद होतात—आणि विश्वासाची निर्मिती घराघरात होते",
+            detail: "समस्या पुराव्यासह बंद होतात—आणि विश्वास ब्लॉक-दर-ब्लॉक पुन्हा निर्माण होतो",
           },
         },
       },
       agents: {
-        eyebrow: "AI एजंट पाइपलाइन",
+        eyebrow: "एआय एजंट पाइपलाइन",
         title: "सहा एजंट. एक समन्वित कार्यप्रवाह.",
-        description: "प्रत्येक एजंटची एकच जबाबदारी असते. एकत्र मिळून ते नागरी इनपुटला कृतीक्षम माहितीमध्ये बदलतात.",
+        description: "नागरिकांच्या इनपुटचे संरचित नागरी माहितीमध्ये रूपांतर करण्यात प्रत्येक क्षमतेची भूमिका केंद्रित असते, ज्यामध्ये मानवी-वाचनीय स्पष्टीकरणे आणि बुद्धिमान सहाय्य असते.",
+        badges: { future_enhancement: "भविष्यातील वैशिष्ट्य" },
         list: {
-          vision: {
-            title: "व्हिजन एजंट",
-            responsibility: "नागरी तक्रारींमधील फोटो आणि दृश्य पुराव्यांचे विश्लेषण करतो",
+          vision: { title: "व्हिजन एजंट", responsibility: "नागरिक अहवालांमधील फोटो आणि दृश्य पुराव्यांचे विश्लेषण करतो." },
+          geo: { title: "जिओ एजंट", responsibility: "समस्यांचे अचूक प्रभाग सीमा आणि महत्त्वाच्या ठिकाणांवर नकाशे तयार करतो." },
+          trust: { title: "व्हॅलिडेशन एजंट", responsibility: "अहवालाच्या पूर्णतेची पडताळणी करतो आणि सबमिट करण्यापूर्वी संभाव्य डुप्लिकेट ओळखण्यात मदत करतो." },
+          priority: { title: "प्रायोरिटी एजंट", responsibility: "जलद प्रतिसादासाठी तातडी आणि समुदाय प्रभावाला क्रमवारी देतो." },
+          prediction: { title: "भविष्यातील अंदाज", responsibility: "ऐतिहासिक म्युनिसिपल पॅटर्न वापरून समस्या वाढण्याच्या प्रवृत्तींचे मूल्यमापन करण्यासाठी डिझाइन केलेले." },
+          copilot: { title: "नागरिक सहाय्यक", responsibility: "बहुभाषिक सहाय्याद्वारे नागरिकांना मार्गदर्शन करतो, निर्णयांचे स्पष्टीकरण देतो आणि समस्या ट्रॅकिंगला समर्थन देतो." },
+        },
+      },
+      credibility: {
+        title: "पारदर्शक नागरिक सहकार्यासाठी निर्मित",
+        description: "कम्युनिटी हिरो दाखवते की AI-सहाय्यित वर्कफ्लो, बहुभाषिक प्रवेश आणि पारदर्शक रिपोर्टिंग नागरिक आणि स्थानिक अधिकारी यांच्यातील सहकार्य कसे बळकट करू शकते.",
+        cards: {
+          ai: {
+            title: "AI-सहाय्यित रिपोर्टिंग",
+            desc: "दृष्टी, स्थान आणि भाषण विश्लेषणाने रिपोर्ट त्वरित वर्गीकृत, सारांशित आणि प्राधान्यक्रमित करतो.",
           },
-          geo: {
-            title: "जिओ एजंट",
-            responsibility: "अचूक वॉर्ड सीमा आणि खुणांसाठी समस्यांचे मॅपिंग करतो",
+          tracking: {
+            title: "पारदर्शक ट्रॅकिंग",
+            desc: "संरचित प्रगती कालरेषांद्वारे रहिवासी आणि अधिकाऱ्यांना वास्तविक वेळेत अपडेट ठेवतो.",
           },
-          trust: {
-            title: "ट्रस्ट एजंट",
-            responsibility: "सत्यतेची पडताळणी करतो आणि बनावट किंवा स्पॅम तक्रारी चिन्हांकट करतो",
+          i18n: {
+            title: "बहुभाषिक प्रवेशयोग्यता",
+            desc: "एकात्मिक Speech-to-Text इनपुटसह इंटरफेसचे 8 प्रादेशिक भाषांमध्ये भाषांतर करतो.",
           },
-          priority: {
-            title: "प्रायोरिटी एजंट",
-            responsibility: "जलद प्रतिसादासाठी तातडी आणि सामायिक प्रभाव श्रेणीबद्ध करतो",
-          },
-          prediction: {
-            title: "प्रेडिक्शन एजंट",
-            responsibility: "ऐतिहासिक नमुन्यांच्या आधारे तक्रार निवारणाच्या वेळेचा अंदाज लावतो",
-          },
-          copilot: {
-            title: "सामुदायिक कोपायलट",
-            responsibility: "नागरिकांना त्यांच्या भाषेत मार्गदर्शन करतो आणि प्रत्येक पायरी स्पष्ट करतो",
+          verification: {
+            title: "सामुदायिक सत्यापन",
+            desc: "सत्यापित स्थानिक निर्देशांक आणि बहु-शेजारी पुष्टीद्वारे नगरपालिका विश्वास निर्माण करतो.",
           },
         },
       },
+
       live_tracking: {
         eyebrow: "लाइव्ह ट्रॅकिंग पूर्वदृश्य",
         title: "प्रत्येक तक्रार. प्रत्येक स्थिती. वास्तविक वेळेत.",
@@ -1887,35 +2574,41 @@ const mr = {
         },
       },
       google: {
-        eyebrow: "गूगलवर आधारित",
-        title: "समुदाय ज्या प्लॅटफॉर्मवर आधीच विश्वास ठेवतात त्यांच्याद्वारे समर्थित",
-        description: "कम्युनिटी हिरो गूगल तंत्रज्ञान सुरुवातीपासून शेवटपर्यंत समाविष्ट करतो—जेणेकरून बुद्धिमत्ता, पायाभूत सुविधा आणि अंतर्दृष्टी एकत्र वाढतात.",
+        eyebrow: "तंत्रज्ञान स्टॅक",
+        title: "AI आणि खुल्या मानकांद्वारे समर्थित आधुनिक तंत्रज्ञान स्टॅक",
+        description: "कम्युनिटी हिरो सुरक्षित, बहुभाषिक आणि AI-सहाय्यित नागरी अहवालासाठी Google AI, Firebase पायाभूत सुविधा आणि मुक्त-स्रोत तंत्रज्ञान एकत्र करते.",
         technologies: {
           "ai-studio": {
-            title: "गूगल AI स्टुडिओ",
-            description: "जेमिनी प्रत्येक एजंटच्या निर्णयाला चालवतो—व्हिजन विश्लेषणापासून ते सामुदायिक कोपायलट प्रतिसादांपर्यंत.",
+            category: "AI प्लॅटफॉर्म",
+            title: "Google AI Studio",
+            description: "जेमिनी संपूर्ण प्लॅटफॉर्मवर AI-सहाय्यित व्हिजन विश्लेषण, बहुभाषिक समज, स्मार्ट सारांश आणि समुदाय सहाय्य प्रदान करते."
           },
           firebase: {
-            title: "फायरबेस",
-            description: "पडताळणी, रिअल-टाइम डेटा सिंक आणि सुरक्षित स्टोरेज तक्रारींना त्वरित प्रवाहित ठेवतात.",
+            category: "बॅकएंड",
+            title: "Firebase",
+            description: "Firebase ऑथेंटिकेशन, Firestore डेटाबेस, सुरक्षित स्टोरेज आणि रिअल-टाइम सिंक्रोनाइझेशन संपूर्ण ॲप्लिकेशन बॅकएंडला सक्षम करते."
           },
           maps: {
-            title: "गूगल मॅप्स",
-            description: "अचूक भौगोलिक स्थान, वॉर्ड मॅपिंग आणि लाइव्ह तक्रार पिन तक्रारींना ठिकाणांशी जोडतात.",
+            category: "परस्परसंवादी नकाशे",
+            title: "OpenStreetMap + Leaflet",
+            description: "परस्परसंवादी मुक्त-स्रोत नकाशे समस्यांचे स्थान, प्रभागाच्या सीमा आणि थेट भौगोलिक व्हिज्युअलायझेशन प्रदान करतात."
           },
           speech: {
-            title: "स्पीच API",
-            description: "व्हॉइस-टू-टेक्स्ट आणि टेक्स्ट-टू-स्पीच प्रत्येक रहिवाशाला नैसर्गिकरित्या तक्रार करण्याची परवानगी देतात.",
+            category: "ब्राउझर API",
+            title: "Web Speech API",
+            description: "ब्राउझर-नेटिव्ह स्पीच-टू-टेक्स्ट आणि टेक्स्ट-टू-स्पीच आवाज-आधारित अहवाल आणि प्रवेशयोग्यता सक्षम करते."
           },
           translate: {
-            title: "गूगल ट्रान्सलेट",
-            description: "बहुभाषिक समर्थन हे सुनिश्चित करते की भाषेमुळे कोणताही शेजारी वंचित राहणार नाही.",
+            category: "बहुभाषिक",
+            title: "AI समर्थित बहुभाषिक भाषांतर",
+            description: "जेमिनी-चालित बहुभाषिक भाषांतर नागरिकांना त्यांच्या आवडीच्या भाषेत कम्युनिटी हिरोशी संवाद साधण्यास सक्षम करते."
           },
           analytics: {
-            title: "गूगल अ‍ॅनालिटिक्स",
-            description: "वापर आणि प्रभाव मेट्रिक्स शहरांना काय काम करत आहे आणि कुठे गुंतवणूक करावी हे मोजण्यात मदत करतात.",
-          },
-        },
+            category: "व्हिज्युअलायझेशन",
+            title: "सामुदायिक विश्लेषण डॅशबोर्ड",
+            description: "परस्परसंवादी डॅशबोर्ड समस्येची आकडेवारी, श्रेणीचे ट्रेंड, प्रतिसाद टाइमलाइन, AI अंतर्दृष्टी आणि समुदाय आरोग्य निर्देशक दर्शवतात."
+          }
+        }
       },
       impact: {
         eyebrow: "सामुदायिक प्रभाव",
@@ -2086,6 +2779,13 @@ const mr = {
         description: "अलीकडील अपडेट कालक्रमानुसार दाखवले आहेत.",
       },
       status: {
+        submitted: "नागरिकाद्वारे तक्रार नोंदवली गेली.",
+        assigned: "तक्रार संबंधित विभागाकडे सोपवण्यात आली.",
+        inspectionStarted: "तपासणी पूर्ण झाली आणि प्रत्यक्ष काम सुरू झाले.",
+        inProgress: "काम प्रगतीपथावर आहे",
+        verified: "AI पडताळणी पूर्ण झाली",
+        resolved: "समस्या सोडवली गेली आहे",
+        closed: "तक्रार बंद करण्यात आली",
         Pending: "प्रलंबित",
         Verified: "सत्यापित",
         Assigned: "नियुक्त",
@@ -2256,6 +2956,138 @@ const mr = {
 
 const bn = {
   translation: {
+    auth: {
+      badge: "কমিউনিটি হিরো • সুরক্ষিত কর্মক্ষেত্র",
+      title: "কমিউনিটি হিরো-তে সুরক্ষিত অ্যাক্সেস",
+      description: "নাগরিক সমস্যা রিপোর্ট করতে, রিপোর্টের অগ্রগতি ট্র্যাক করতে, আপনার সম্প্রদায়ের সাথে সহযোগিতা করতে এবং আপনার ব্যক্তিগত ড্যাশবোর্ড অ্যাক্সেস করতে আপনার Google অ্যাকাউন্ট ব্যবহার করে নিরাপদে সাইন ইন করুন।",
+      signInButton: "গুগল দিয়ে সাইন ইন করুন",
+      signingIn: "সাইন ইন হচ্ছে...",
+      backToHome: "হোমে ফিরে যান",
+      indicators: {
+        secure: "সুরक्षित লগইন",
+        tracking: "রিয়েল-টাইม ট্র্যাকিং",
+        ai: "AI সহায়তাপ্রাপ্ত ওয়ার্কফ্লো"
+      }
+    },
+    privacy: {
+      eyebrow: "প্রকল্প নীতি",
+      title: "গোপনীয়তা নীতি",
+      description: "কমিউনিটি হিরো যে তথ্য ব্যবহার করে এবং বর্তমান প্রদর্শন কীভাবে তা পরিচালনা করে তার একটি সহজ বিবরণ।",
+      updated: "২৮ জুন ২০২৬",
+      sections: {
+        data_collection: {
+          title: "তথ্য সংগ্রহ",
+          description: "কমিউনিটি হিরো নাগরিক রিপোর্টিং পরিচালনার জন্য প্রয়োজনীয় তথ্য সংগ্রহ করে। এর মধ্যে আপনার Google অ্যাকাউন্ট নাম, ইমেল ঠিকানা, রিপোর্টের বিবরণ, বিভাগ, রিপোর্টের অবস্থা এবং প্রযুক্তিগত টাইমস্ট্যাম্প অন্তর্ভুক্ত থাকতে পারে।"
+        },
+        authentication: {
+          title: "প্রমাণীকরণ",
+          description: "Google সাইন-ইন Firebase প্রমাণীকরণের মাধ্যমে পরিচালিত হয়। অ্যাপ্লিকেশন দ্বারা পাসওয়ার্ড সংগ্রহ বা সংরক্ষণ করা হয় না।"
+        },
+        firebase: {
+          title: "Firebase ব্যবহার",
+          description: "ফায়ারস্টোর অ্যাকাউন্ট সংক্রান্ত প্রোফাইল তথ্য, সাবমিট করা রিপোর্টের বিবরণ, AI বিশ্লেষণ ফলাফল, অবস্থান তথ্য এবং রিপোর্টের ইতিহাস সংরক্ষণ করে।"
+        },
+        location: {
+          title: "অবস্থানের অনুমতি",
+          description: "রিপোর্টিং বৈশিষ্ট্যগুলি ব্যবহারের সময় ব্রাউজারের মাধ্যমে অবস্থানের অ্যাক্সেসের অনুরোধ করা হয়। আপনি ব্রাউজার সেটিংসে এটি পরিবর্তন করতে পারেন।"
+        },
+        media: {
+          title: "ছবি ও ভিডিও নির্বাচন",
+          description: "নির্বাচিত মিডিয়া AI-সহায়তা বিশ্লেষণের জন্য ব্যবহৃত হয়। এটি ফায়ারস্টোরে মূল মিডিয়া ফাইল সংরক্ষণ করে না।"
+        },
+        voice: {
+          title: "ভয়েস ইন্টারঅ্যাকশন",
+          description: "স্পিচ-টু-টেক্সট এবং টেক্সট-টু-স্পিচ ব্রাউজারের ওয়েব স্পিচ ক্ষমতা ব্যবহার করে। ভয়েস রেকর্ডিং সংরক্ষণ করা হয় না।"
+        },
+        cookies: {
+          title: "কুকিজ এবং লোকাল স্টোরেজ",
+          description: "Firebase সাইন-ইন সেশন বজায় রাখতে ব্রাউজার স্টোরেজ ব্যবহার করতে পারে। এই প্রকল্পে কোন বিজ্ঞাপন কুকি ব্যবহার করা হয় না।"
+        },
+        contact: {
+          title: "যোগাযোগ",
+          description: "গোপনীয়তা সংক্রান্ত প্রশ্নের জন্য যোগাযোগ পৃষ্ঠা ব্যবহার করুন। পাবলিক প্রজেক্ট ইমেলটি বর্তমানে একটি প্লেসহোল্ডার।"
+        }
+      }
+    },
+    terms: {
+      eyebrow: "প্রকল্পের শর্তাবলী",
+      title: "শর্তাবলী",
+      description: "কমিউনিটি হিরো এবং এর AI-সহায়তা রিপোর্টিং ওয়ার্কফ্লোর দায়িত্বশীল ব্যবহারের জন্য ব্যবহারিক শর্তাবলী।",
+      updated: "২৮ জুন ২০২৬",
+      sections: {
+        acceptable_use: {
+          title: "গ্রহণযোগ্য ব্যবহার",
+          description: "কমিউনিটি হিরো কেবল বৈধ নাগরিক রিপোর্টিংয়ের জন্য ব্যবহার করুন। কোনো হয়রানিমূলক বা বেআইনি তথ্য জমা দেবেন না।"
+        },
+        user_resp: {
+          title: "ব্যবহারকারীর দায়িত্ব",
+          description: "জমা দেওয়া তথ্যের নির্ভুলতার জন্য আপনি দায়ী। অপ্রয়োজনীয় ব্যক্তিগত তথ্য দেওয়া এড়িয়ে চলুন।"
+        },
+        ownership: {
+          title: "বিষয়বস্তুর মালিকানা",
+          description: "আপনার তৈরি বিষয়বস্তুর মালিকানা আপনারই থাকবে। রিপোর্ট জমা দেওয়ার মাধ্যমে আপনি প্রকল্পটিকে এটি ব্যবহারের অনুমতি দিচ্ছেন।"
+        },
+        disclaimer: {
+          title: "AI সহায়তা দাবিত্যাগ",
+          description: "AI ফলাফল অপূর্ণ বা ভুল হতে পারে। যেকোনো সিদ্ধান্ত নেওয়ার আগে মানুষের দ্বারা তা যাচাই করা উচিত।"
+        },
+        notice: {
+          title: "পৌরসভা প্রদর্শন নোটিশ",
+          description: "কমিউনিটি হিরো একটি সোলিউশন চ্যালেঞ্জ প্রকল্প। এটি কোনো অফিসিয়াল সরকারি রিপোর্ট প্রতিস্থাপন করে না।",
+          item1: "জরুরী পরিস্থিতিতে এটি ব্যবহার করবেন না।",
+          item2: "জরুরী প্রয়োজনে স্থানীয় জরুরী সেবা ব্যবহার করুন।",
+          item3: "প্রদর্শিত পরিসংখ্যান এবং স্বাস্থ্য সূচকগুলি কেবল উদাহরণের জন্য।"
+        },
+        liability: {
+          title: "দায়বদ্ধতার সীমাবদ্ধতা",
+          description: "এই প্রকল্পটি কোনো ওয়ারেন্টি ছাড়াই মূল্যায়নের জন্য প্রদান করা হয়েছে।"
+        }
+      }
+    },
+    contact: {
+      eyebrow: "যোগাযোগ",
+      title: "আসুন আরও সক্রিয় সম্প্রদায় গড়ে তুলি",
+      description: "নাগরিক এবং স্থানীয় কর্তৃপক্ষ কীভাবে স্বচ্ছতার সাথে সহযোগিতা করতে পারে তা নিয়ে কাজ করে কমিউনিটি হিরো।",
+      challenge: {
+        title: "Google Solution Challenge",
+        desc: "কমিউনিটি হিরো দেখায় যে দায়িত্বশীল AI কীভাবে নাগরিকদের এবং কর্তৃপক্ষের মধ্যে সহযোগিতা বাড়াতে পারে।"
+      },
+      developer: {
+        title: "প্রকল্প ডেভেলপার",
+        name: "শ্রেষ্ঠা স্বামী",
+        degree: "বি.টেক কম্পিউটার সায়েন্স অ্যান্ড ইঞ্জিনিয়ারিং (ডেটা সায়েন্স)",
+        institution: "SKIT জয়পুর",
+        focus: "AI • ডেটা সায়েন্স • নাগরিক প্রযুক্তি"
+      },
+      links: {
+        title: "ডেভেলপারের সাথে যোগাযোগ করুন",
+        github: "GitHub প্রোফাইল",
+        linkedin: "LinkedIn প্রোফাইল",
+        note: "সহযোগিতা ও নাগরিক প্রযুক্তি সংক্রান্ত আলোচনার জন্য আমন্ত্রণ।"
+      },
+      form: {
+        successTitle: "বার্তা প্রস্তুত করা হয়েছে",
+        successMessage: "এই ফর্মটি একটি প্রদর্শন মাত্র। এটি কোন তথ্য ব্যাকএন্ডে পাঠায় না।",
+        backText: "ফর্মে ফিরে যান",
+        name: "নাম",
+        email: "ইমেল",
+        subject: "বিষয়",
+        message: "বার্তা",
+        placeholderName: "জন ডো",
+        placeholderEmail: "john@example.com",
+        placeholderSubject: "আমরা কীভাবে সাহায্য করতে পারি?",
+        placeholderMessage: "আমাদের আরও বিস্তারিত বলুন...",
+        demoText: "কেবল UI প্রদর্শন—এই ফর্মটি কোনো তথ্য সংরক্ষণ করে না।",
+        submitButton: "বার্তা প্রস্তুত করুন"
+      },
+      faq: {
+        eyebrow: "দ্রুত উত্তর",
+        title: "প্রায়শই জিজ্ঞাসিত প্রশ্নাবলী",
+        q1: "কমিউনিটি হিরো কি কোনো অফিসিয়াল সরকারী সেবা?",
+        a1: "না। কমিউনিটি হিরো বর্তমানে একটি গুগল সলিউশন চ্যালেঞ্জ প্রকল্প।"
+      }
+    },
+
     common: {
       loading: "লোড হচ্ছে...",
       error: "ত্রুটি",
@@ -2297,6 +3129,28 @@ const bn = {
       },
     },
     footer: {
+      about: {
+        title: "কমিউনিটি হিরো সম্পর্কে",
+        desc: "কমিউনিটি হিরো একটি AI-সহায়তা নাগরিক রিপোর্টিং প্ল্যাটফর্ম যা নাগরিকদের এবং স্থানীয় কর্তৃপক্ষকে স্বচ্ছ সমস্যা রিপোর্টিং, বহুভাষিক অ্যাক্সেসিবিলিটি এবং রিয়েল-টাইম প্রগতি ট্র্যাকিংয়ের মাধ্যমে সহযোগিতা করতে সক্ষম করে।",
+      },
+      tech: {
+        title: "প্রযুক্তি স্ট্যাক",
+        items: {
+          nextjs: "Next.js 16",
+          react: "React + TypeScript",
+          firebase: "Firebase + Firestore",
+          ai: "Google AI Studio",
+          maps: "OpenStreetMap + Leaflet",
+          tailwind: "Tailwind CSS",
+        },
+      },
+      quick_links: { title: "দ্রুত লিঙ্ক" },
+      recognition: {
+        title: "স্বীকৃতি",
+        badge: "Google Solution Challenge 2026",
+        desc: "দায়িত্বশীল AI, বহুভাষিক অ্যাক্সেসিবিলিটি এবং স্বচ্ছ নাগরিক ওয়ার্কফ্লো কীভাবে সম্প্রদায় ও পৌরসভার মধ্যে সহযোগিতা মজবুত করতে পারে তা প্রদর্শনের জন্য ডিজাইন করা হয়েছে।",
+      },
+      challenge_tag: "Google Solution Challenge-এর জন্য ❤️ দিয়ে তৈরি",
       privacy: "গোপনীয়তা",
       terms: "শর্তাবলী",
       contact: "যোগাযোগ",
@@ -2345,63 +3199,69 @@ const bn = {
         },
       },
       solution: {
-        eyebrow: "AI সমাধান",
-        title: "নাগরিক রিপোর্ট থেকে সামাজিক সমাধান পর্যন্ত",
-        description: "কমিউনিটি হিরো নাগরিক জীবনের জন্য একটি AI অপারেটিং সিস্টেম। প্রতিটি রিপোর্ট বিশেষায়িত এজেন্টের মধ্য দিয়ে প্রবাহিত হয় যা বোঝে, যাচাই করে, অগ্রাধিকার দেয় এবং সমন্বয় করে—তারপর সম্প্রদায়কে পুনরায় সংযুক্ত করে।",
+        eyebrow: "রিপোর্ট ওয়ার্কফ্লো",
+        title: "রিপোর্ট থেকে সমাধান পর্যন্ত",
+        description: "কমিউনিটি হিরো প্রতিটি রিপোর্টকে একটি AI-সহায়তা নাগরিক ওয়ার্কফ্লোর মাধ্যমে পরিচালিত করে যা বাসিন্দা, স্থানীয় কর্তৃপক্ষ এবং সম্প্রদায়গুলিকে স্বচ্ছ সমস্যা সমাধানের দিকে সহযোগিতা করতে সাহায্য করে।",
         flow: {
           citizen: {
             label: "নাগরিক",
-            detail: "একটি ছবি তোলে, ভয়েস নোট রেকর্ড করে, অথবা ম্যাপে ট্যাপ করে",
+            detail: "একটি ছবি তোলে, ভয়েস নোট রেকর্ড করে, বা মানচিত্র পিন ট্যাপ করে",
           },
           agents: {
-            label: "AI এজেন্টস",
-            detail: "ছয়টি বিশেষায়িত এজেন্ট রিপোর্ট বিশ্লেষণ, যাচাই এবং রুট করে",
+            label: "AI এজেন্ট",
+            detail: "ছয়টি বিশেষ এজেন্ট রিপোর্ট বিশ্লেষণ, যাচাই এবং রাউটিং করে",
           },
           authorities: {
             label: "কর্তৃপক্ষ",
-            detail: "ওয়ার্ড ইঞ্জিনিয়ার এবং বিভাগগুলো অগ্রাধিকারপ্রাপ্ত কাজের অর্ডার পায়",
+            detail: "ওয়ার্ড ইঞ্জিনিয়ার এবং বিভাগগুলি অগ্রাধিকার কাজের আদেশ পায়",
           },
           community: {
             label: "সম্প্রদায়",
-            detail: "প্রতিবেশীরা অগ্রগতি ট্র্যাক করে এবং সমাধান যাচাই করে",
+            detail: "প্রতিবেশীরা অগ্রগতি ট্র্যাক করে এবং একসাথে সংশোধন যাচাই করে",
           },
           resolution: {
             label: "সমাধান",
-            detail: "প্রমাণের সাথে সমস্যা বন্ধ হয়—এবং বিশ্বাস প্রতিটি ব্লকে পুনরায় গড়ে ওঠে",
+            detail: "সমস্যাগুলি প্রমাণ সহ বন্ধ হয়—এবং বিশ্বাস ব্লক বাই ব্লক পুনর্নির্মিত হয়",
           },
         },
       },
       agents: {
-        eyebrow: "AI এজেন্ট পাইপলাইন",
+        eyebrow: "এআই এজেন্ট পাইপলাইন",
         title: "ছয়টি এজেন্ট। একটি সমন্বিত কর্মপ্রবাহ।",
-        description: "প্রতিটি এজেন্টের একটি মাত্র দায়িত্ব থাকে। একসাথে তারা নাগরিক ইনপুটকে কার্যকর বুদ্ধিমত্তায় রূপান্তর করে।",
+        description: "নাগরিক ইনপুটকে কাঠামোগত নাগরিক তথ্যে রূপান্তর করার ক্ষেত্রে প্রতিটি ক্ষমতার একটি নির্দিষ্ট ভূমিকা রয়েছে, যার মধ্যে মানব-পাঠযোগ্য ব্যাখ্যা এবং বুদ্ধিমান সহায়তা রয়েছে।",
+        badges: { future_enhancement: "ভবিষ্যৎ উন্নতি" },
         list: {
-          vision: {
-            title: "ভিশন এজেন্ট",
-            responsibility: "নাগরিক রিপোর্ট থেকে ছবি এবং ভিজ্যুয়াল প্রমাণের বিশ্লেষণ করে",
+          vision: { title: "ভিশন এজেন্ট", responsibility: "নাগরিক প্রতিবেদন থেকে ফটো এবং ভিজ্যুয়াল প্রমাণ বিশ্লেষণ করে।" },
+          geo: { title: "জিও এজেন্ট", responsibility: "নির্দিষ্ট ওয়ার্ড সীমানা এবং ল্যান্ডমার্কে সমস্যাগুলি মানচিত্রভুক্ত করে।" },
+          trust: { title: "ভ্যালিডেশন এজেন্ট", responsibility: "প্রতিবেদনের সম্পূর্ণতা যাচাই করে এবং জমা দেওয়ার আগে সম্ভাব্য ডুপ্লিকেট সনাক্ত করতে সহায়তা করে।" },
+          priority: { title: "প্রায়োরিটি এজেন্ট", responsibility: "দ্রুত প্রতিক্রিয়ার জন্য জরুরিতা এবং সম্প্রদায়ের প্রভাবকে ক্রমানুসারে সাজায়।" },
+          prediction: { title: "ভবিষ্যৎ পূর্বাভাস", responsibility: "ঐতিহাসিক পৌর প্যাটার্ন ব্যবহার করে সমস্যা বৃদ্ধির প্রবণতা মূল্যায়ন করার জন্য ডিজাইন করা হয়েছে।" },
+          copilot: { title: "সিটিজেন অ্যাসিস্ট্যান্ট", responsibility: "বহুভাষিক সহায়তার মাধ্যমে নাগরিকদের গাইড করে, সিদ্ধান্ত ব্যাখ্যা করে এবং সমস্যা ট্র্যাকিং সমর্থন করে।" },
+        },
+      },
+      credibility: {
+        title: "স্বচ্ছ নাগরিক সহযোগিতার জন্য নির্মিত",
+        description: "কমিউনিটি হিরো প্রদর্শন করে যে AI-সহায়তা ওয়ার্কফ্লো, বহুভাষিক অ্যাক্সেসিবিলিটি এবং স্বচ্ছ রিপোর্টিং কীভাবে নাগরিক ও স্থানীয় কর্তৃপক্ষের মধ্যে সহযোগিতা মজবুত করতে পারে।",
+        cards: {
+          ai: {
+            title: "AI-সহায়তা রিপোর্টিং",
+            desc: "দৃষ্টি, অবস্থান এবং বক্তৃতা বিশ্লেষণ দিয়ে রিপোর্ট তাৎক্ষণিকভাবে শ্রেণীবদ্ধ, সারসংক্ষেপ এবং অগ্রাধিকার দেয়।",
           },
-          geo: {
-            title: "জিও এজেন্ট",
-            responsibility: "নির্দিষ্ট ওয়ার্ড সীমানা এবং ল্যান্ডমার্কে সমস্যা ম্যাপ করে",
+          tracking: {
+            title: "স্বচ্ছ ট্র্যাকিং",
+            desc: "কাঠামোগত অগ্রগতি টাইমলাইনের মাধ্যমে বাসিন্দা ও কর্মকর্তাদের বাস্তব সময়ে আপডেট রাখে।",
           },
-          trust: {
-            title: "ট্রাস্ট এজেন্ট",
-            responsibility: "যাচাই করে এবং ডুপ্লিকেট বা স্প্যাম রিপোর্ট চিহ্নিত করে",
+          i18n: {
+            title: "বহুভাষিক অ্যাক্সেসিবিলিটি",
+            desc: "সমন্বিত Speech-to-Text ইনপুট সহ ইন্টারফেস 8টি আঞ্চলিক ভাষায় অনুবাদ করে।",
           },
-          priority: {
-            title: "প্রায়োরিটি এজেন্ট",
-            responsibility: "দ্রুত প্রতিক্রিয়ার জন্য জরুরি অবস্থা এবং সামাজিক প্রভাবকে র্যাঙ্ক করে",
-          },
-          prediction: {
-            title: "প্রেডিকশন এজেন্ট",
-            responsibility: "ঐতিহাসিক প্যাটার্নের ভিত্তিতে সমাধানের সময়সীমা পূর্বাভাস দেয়",
-          },
-          copilot: {
-            title: "কমিউনিটি কোপাইলট",
-            responsibility: "নাগরিকদের তাদের নিজস্ব ভাষায় গাইড করে এবং প্রতিটি ধাপ ব্যাখ্যা করে",
+          verification: {
+            title: "কমিউনিটি যাচাইকরণ",
+            desc: "যাচাইকৃত স্থানীয় স্থানাঙ্ক এবং বহু-প্রতিবেশী নিশ্চিতকরণের মাধ্যমে পৌর বিশ্বাস গড়ে তোলে।",
           },
         },
       },
+
       live_tracking: {
         eyebrow: "লাইভ ট্র্যাকিং পূর্বরূপ",
         title: "প্রতিটি রিপোর্ট। প্রতিটি স্ট্যাটাস। রিয়েল টাইমে।",
@@ -2450,35 +3310,41 @@ const bn = {
         },
       },
       google: {
-        eyebrow: "গুগলের ওপর নির্মিত",
-        title: "সম্প্রদায়গুলো ইতিমধ্যে বিশ্বাস করে এমন প্ল্যাটফর্ম দ্বারা চালিত",
-        description: "কমিউনিটি হিরো গুগলের প্রযুক্তিগুলোকে শুরু থেকে শেষ পর্যন্ত সংহত করে—যাতে বুদ্ধিমত্তা, অবকাঠামো এবং অন্তর্দৃষ্টি একসঙ্গে বৃদ্ধি পায়।",
+        eyebrow: "প্রযুক্তি স্ট্যাক",
+        title: "AI এবং উন্মুক্ত মান দ্বারা চালিত আধুনিক প্রযুক্তি স্ট্যাক",
+        description: "কমিউনিটি হিরো নিরাপদ, বহুভাষিক, AI-সহায়তা নাগরিক রিপোর্টিং প্রদানের জন্য Google AI, Firebase অবকাঠামো এবং উন্মুক্ত-উৎস প্রযুক্তিকে একত্রিত করে।",
         technologies: {
           "ai-studio": {
-            title: "গুগল AI স্টুডিও",
-            description: "জেমিনি প্রতিটি এজেন্টের সিদ্ধান্তকে চালিত করে—ভিশন বিশ্লেষণ থেকে শুরু করে কমিউনিটি কোপাইলটের প্রতিক্রিয়া পর্যন্ত।",
+            category: "AI প্ল্যাটফর্ম",
+            title: "Google AI Studio",
+            description: "জেমিনি পুরো প্ল্যাটফর্ম জুড়ে AI-সহায়তা ভিশন বিশ্লেষণ, বহুভাষিক বোধগম্যতা, স্মার্ট সংক্ষিপ্তকরণ এবং সম্প্রদায় সহায়তা প্রদান করে।"
           },
           firebase: {
-            title: "ফায়ারবেস",
-            description: "যাচাইকরণ, রিয়েল-টাইম ডেটা সিঙ্ক এবং সুরক্ষিত স্টোরেজ রিপোর্টগুলোকে তাৎক্ষণিকভাবে সচল রাখে।",
+            category: "ব্যাকএন্ড",
+            title: "Firebase",
+            description: "Firebase প্রমাণীকরণ, Firestore ডেটাবেস, নিরাপদ স্টোরেজ এবং রিয়েল-টাইম সিঙ্ক্রোনাইজেশন সম্পূর্ণ অ্যাপ্লিকেশন ব্যাকএন্ডকে চালিত করে।"
           },
           maps: {
-            title: "গুগল ম্যাপস",
-            description: "সঠিক ভূ-অবস্থান, ওয়ার্ড ম্যাপিং এবং লাইভ সমস্যা পিন রিপোর্টগুলোকে স্থানগুলোর সাথে যুক্ত করে।",
+            category: "ইন্টারেক্টিভ মানচিত্র",
+            title: "OpenStreetMap + Leaflet",
+            description: "ইন্টারেক্টিভ ওপেন-সোর্স মানচিত্র সমস্যাগুলির অবস্থান, ওয়ার্ড সীমানা এবং লাইভ ভৌগোলিক ভিজ্যুয়ালাইজেশন প্রদান করে।"
           },
           speech: {
-            title: "স্পিচ API",
-            description: "ভয়েস-টু-টেক্সট এবং টেক্সট-টু-স্পিচ প্রত্যেক বাসিন্দাকে স্বাভাবিকভাবে রিপোর্ট করার অনুমতি দেয়।",
+            category: "ব্রাউজার API",
+            title: "Web Speech API",
+            description: "ব্রাউজার-নেটিভ স্পিচ-টু-টেক্সট এবং টেক্সট-টু-স্পিচ ভয়েস-ভিত্তিক রিপোর্ট এবং অ্যাক্সেসিবিলিটি সক্ষম করে।"
           },
           translate: {
-            title: "গুগল ট্রান্সলেট",
-            description: "বহুভাষিক সহায়তা নিশ্চিত করে যে ভাষার কারণে কোনো প্রতিবেশী যেন বাদ না পড়ে।",
+            category: "বহুভাষিক",
+            title: "AI চালিত বহুভাষিক অনুবাদ",
+            description: "জেমিনি-চালিত বহুভাষিক অনুবাদ নাগরিকদের তাদের পছন্দের ভাষায় কমিউনিটি হিরোর সাথে যোগাযোগ করতে সক্ষম করে।"
           },
           analytics: {
-            title: "গুগল অ্যানালিটিক্স",
-            description: "ব্যবহার এবং প্রভাবের মেট্রিক্স শহরগুলোকে কী কাজ করছে এবং কোথায় বিনিয়োগ করতে হবে তা পরিমাপ করতে সহায়তা করে।",
-          },
-        },
+            category: "ভিজ্যুয়ালাইজেশন",
+            title: "কমিউনিটি অ্যানালিটিক্স ড্যাশবোর্ড",
+            description: "ইন্টারেক্টিভ ড্যাশবোর্ডগুলি সমস্যার পরিসংখ্যান, বিভাগের প্রবণতা, প্রতিক্রিয়ার সময়সীমা, AI অন্তর্দৃষ্টি এবং সম্প্রদায়ের স্বাস্থ্য সূচকগুলি প্রদর্শন করে।"
+          }
+        }
       },
       impact: {
         eyebrow: "সামাজিক প্রভাব",
@@ -2649,6 +3515,13 @@ const bn = {
         description: "সাম্প্রতিক আপডেটগুলি কালানুক্রমিক ক্রমে দেখানো হয়েছে।",
       },
       status: {
+        submitted: "নাগরিক দ্বারা রিপোর্ট জমা দেওয়া হয়েছে।",
+        assigned: "সংশ্লিষ্ট পৌর বিভাগে বরাদ্দ করা হয়েছে।",
+        inspectionStarted: "পরিদর্শন সম্পন্ন হয়েছে, মাঠের কাজ শুরু হয়েছে।",
+        inProgress: "চলমান",
+        verified: "AI যাচাইকরণ সম্পন্ন হয়েছে",
+        resolved: "সমস্যার সমাধান করা হয়েছে",
+        closed: "রিপোর্ট বন্ধ করা হয়েছে",
         Pending: "মুলতুবি",
         Verified: "যাচাইকৃত",
         Assigned: "বরাদ্দকৃত",
@@ -2819,6 +3692,138 @@ const bn = {
 
 const ta = {
   translation: {
+    auth: {
+      badge: "கமிஉனிட்டி ஹீரோ • பாதுகாப்பான பணிமனை",
+      title: "கமிஉனிட்டி ஹீரோவிற்கான பாதுகாப்பான அணுகல்",
+      description: "சிவிக் புகார்களைப் பதிவுசெய்ய, புகாரின் முன்னேற்றத்தைக் கண்காணிக்க, உங்கள் சமூகத்துடன் இணைந்து செயல்பட மற்றும் உங்கள் தனிப்பயనాக்கப்பட்ட டாஷ்போர்டை அணுக உங்கள் கூகிள் கணக்கைப் பயன்படுத்தி பாதுகாப்பாக உள்நுழையவும்.",
+      signInButton: "கூகிள் மூலம் உள்நுழைக",
+      signingIn: "உள்நுழைகிறது...",
+      backToHome: "முகப்புப் பக்கத்திற்கு",
+      indicators: {
+        secure: "பாதுகாப்பான உள்நுழைவு",
+        tracking: "நிகழ்நேர கண்காணிப்பு",
+        ai: "AI உதவியுடன் கூடிய பணிப்பாய்வு"
+      }
+    },
+    privacy: {
+      eyebrow: "திட்டக் கொள்கை",
+      title: "தனியுரிமைக் கொள்கை",
+      description: "கமிUsernity ஹீரோ பயன்படுத்தும் தகவல்கள் மற்றும் தற்போதைய டெமோ அதை எவ்வாறு கையாள்கிறது என்பதற்கான எளிய கண்ணோட்டம்.",
+      updated: "28 ஜூன் 2026",
+      sections: {
+        data_collection: {
+          title: "தரவு சேகரிப்பு",
+          description: "கமிUsernity ஹீரோ சிவிக் ரிப்போர்ட்டிங் டெமோவை இயக்க தேவையான தகவல்களை சேகரிக்கிறது. இதில் கூகிள் கணக்கு பெயர், மின்னஞ்சல், அறிக்கை விவரங்கள், நிலை மற்றும் நேர முத்திரைகள் இருக்கலாம்."
+        },
+        authentication: {
+          title: "அடையாள அங்கீகாரம்",
+          description: "கூகிள் உள்நுழைவு Firebase அங்கீகாரம் மூலம் கையாளப்படுகிறது. கடவுச்சொற்கள் இந்த பயன்பாட்டால் சேகரிக்கப்படுவதோ சேமிக்கப்படுவதோ இல்லை."
+        },
+        firebase: {
+          title: "Firebase பயன்பாடு",
+          description: "Firestore கணக்கு சுயவிவரத் தகவல், சமர்ப்பிக்கப்பட்ட அறிக்கை விவரங்கள், AI பகுப்பாய்வு முடிவுகள், இருப்பிட விவரங்கள் மற்றும் அறிக்கை நிலை வரலாற்றை சேமிக்கிறது."
+        },
+        location: {
+          title: "இருப்பிட அனுமதிகள்",
+          description: "நீங்கள் அறிக்கையிடும் அம்சங்களைப் பயன்படுத்தும்போது இருப்பிட அணுகல் கோரப்படுகிறது. உங்கள் உலாவியில் எப்போது வேண்டுமானாலும் இதை மாற்றிக்கொள்ளலாம்."
+        },
+        media: {
+          title: "படம் மற்றும் வீடியோ தேர்வு",
+          description: "தேர்ந்தெடுக்கப்பட்ட ஊடகம் AI பகுப்பாய்விற்காக பயன்படுத்தப்படுகிறது. இது அசல் கோப்பை Firestore-இல் சேமிக்காது."
+        },
+        voice: {
+          title: "குரல் தொடர்பு",
+          description: "உரையிலிருந்து பேச்சு மற்றும் பேச்சிலிருந்து உரை ஆகியவை உலாவியின் சொந்த வெப் ஸ்பீச் வசதிகளைப் பயன்படுத்துகின்றன. குரல் பதிவுகள் சேமிக்கப்படுவதில்லை."
+        },
+        cookies: {
+          title: "குக்கீகள் மற்றும் உள்ளூர் சேமிப்பு",
+          description: "Firebase அமர்வை பராமரிக்க குக்கீகளைப் பயன்படுத்தலாம். விளம்பர குக்கீகள் எதுவும் பயன்படுத்தப்படவில்லை."
+        },
+        contact: {
+          title: "தொடர்பு",
+          description: "தனியுரிமை கேள்விகளுக்கு தொடர்பு பக்கத்தை பயன்படுத்தவும். மின்னஞ்சல் தற்போது ஒரு டெமோ முகவரியாகும்."
+        }
+      }
+    },
+    terms: {
+      eyebrow: "திட்ட நிபந்தனைகள்",
+      title: "சேவை விதிமுறைகள்",
+      description: "கமிUsernity ஹீரோ மற்றும் அதன் AI-உதவி அறிக்கையிடலின் பொறுப்பான பயன்பாட்டிற்கான எளிய நிபந்தனைகள்.",
+      updated: "28 ஜூன் 2026",
+      sections: {
+        acceptable_use: {
+          title: "ஏற்கத்தக்க பயன்பாடு",
+          description: "கமிUsernity ஹீரோவை சட்டபூர்வமான குடிமக்கள் புகார்களுக்கு மட்டுமே பயன்படுத்தவும். தவறான அல்லது சட்டவிரோதமான தகவல்களை சமர்ப்பிக்க வேண்டாம்."
+        },
+        user_resp: {
+          title: "பயனர் பொறுப்புகள்",
+          description: "நீங்கள் சமர்ப்பிக்கும் தகவலின் துல்லியத்திற்கு நீங்களே பொறுப்பு. தேவையற்ற தனிப்பட்ட தகவல்களைத் தவிர்க்கவும்."
+        },
+        ownership: {
+          title: "உரிமை",
+          description: "நீங்கள் சமர்ப்பிக்கும் உள்ளடக்கத்தின் உரிமை உங்களுக்கே உரியது. ஆனால் அதை ஆராய திட்டத்திற்கு நீங்கள் அனுமதியளிக்கிறீர்கள்."
+        },
+        disclaimer: {
+          title: "AI உதவி மறுப்பு",
+          description: "AI முடிவுகள் துல்லியமற்றதாக இருக்கலாம். எந்தவொரு முடிவையும் எடுப்பதற்கு முன் அதை மனிதர்கள் சரிபார்க்க வேண்டும்."
+        },
+        notice: {
+          title: "நகராட்சி டெமோ அறிவிப்பு",
+          description: "இது ஒரு தீர்வு சவால் திட்டமாகும். அதிகாரப்பூர்வ அவசர புகார்களுக்கு அரசு வழிகளைப் பயன்படுத்தவும்.",
+          item1: "அவசர தேவைகளுக்கு கமிUsernity ஹீரோவை பயன்படுத்த வேண்டாம்.",
+          item2: "உடனடி ஆபத்து இருந்தால் உள்ளூர் அவசர சேவைகளை அழைக்கவும்.",
+          item3: "காட்டப்படும் அளவீடுகள் மற்றும் குறிகாட்டிகள் விளக்க நோக்கங்களுக்காக மட்டுமே."
+        },
+        liability: {
+          title: "பொறுப்பு வரம்பு",
+          description: "இந்த திட்டம் எந்தவொரு உத்தரவாதமும் இன்றி மதிப்பீட்டு நோக்கங்களுக்காக வழங்கப்படுகிறது."
+        }
+      }
+    },
+    contact: {
+      eyebrow: "தொடர்பு",
+      title: "மிகவும் பதிலளிக்கக்கூடிய சமூகங்களை உருவாக்குவோம்",
+      description: "குடிமக்களும் உள்ளாட்சி அமைப்புகளும் எவ்வாறு எளிதாக இணைந்து செயல்படலாம் என்பதை கமிUsernity ஹீரோ விளக்குகிறது.",
+      challenge: {
+        title: "Google Solution Challenge",
+        desc: "பொறுப்பான AI மூலம் வெளிப்படைத்தன்மை மற்றும் அணுகல்தன்மையை எவ்வாறு மேம்படுத்தலாம் என காட்டுகிறது."
+      },
+      developer: {
+        title: "திட்ட உருவாக்குநர்",
+        name: "ஸ்ரேஸ்தா சுவாமி",
+        degree: "பி.டெக் கணினி அறிவியல் & பொறியியல் (தரவு அறிவியல்)",
+        institution: "SKIT ஜெய்ப்பூர்",
+        focus: "AI • தரவு அறிவியல் • குடிமை தொழில்நுட்பம்"
+      },
+      links: {
+        title: "உருவாக்குநருடன் இணையுங்கள்",
+        github: "GitHub சுயவிவரம்",
+        linkedin: "LinkedIn சுயவிவரம்",
+        note: "ஒத்துழைப்பு மற்றும் குடிமை தொழில்நுட்ப விவாதங்களுக்கு வரவேற்கிறோம்."
+      },
+      form: {
+        successTitle: "செய்தி தயார்",
+        successMessage: "இந்த படிவம் ஒரு டெமோ மட்டுமே. இது தகவல்களை சேமிக்கவோ அனுப்பவோ செய்யாது.",
+        backText: "படிவத்திற்கு திரும்பு",
+        name: "பெயர்",
+        email: "மின்னஞ்சல்",
+        subject: "பொருள்",
+        message: "செய்தி",
+        placeholderName: "ஜான் டோ",
+        placeholderEmail: "john@example.com",
+        placeholderSubject: "நாங்கள் எவ்வாறு உதவலாம்?",
+        placeholderMessage: "மேலும் விவரங்களை கூறவும்...",
+        demoText: "UI டெமோ மட்டுமே—இந்த படிவம் தகவல்களை சேமிக்காது.",
+        submitButton: "செய்தியை தயார் செய்"
+      },
+      faq: {
+        eyebrow: "விரைவான பதில்கள்",
+        title: "அடிக்கடி கேட்கப்படும் கேள்விகள்",
+        q1: "கமிUsernity ஹீரோ ஒரு அதிகாரப்பூர்வ அரசு சேவையா?",
+        a1: "இல்லை. கமிUsernity ஹீரோ தற்போது ஒரு கூகிள் சொல்யூஷன் சேலஞ்ச் திட்டமாகும்."
+      }
+    },
+
     common: {
       loading: "ஏற்றப்படுகிறது...",
       error: "பிழை",
@@ -2860,6 +3865,28 @@ const ta = {
       },
     },
     footer: {
+      about: {
+        title: "கமிஉனிட்டி ஹீரோ பற்றி",
+        desc: "கமிUsernity ஹீரோ ஒரு AI-உதவி நாகரீக அறிக்கையிடல் தளம் ஆகும், இது குடிமக்கள் மற்றும் உள்ளாட்சி அதிகாரிகளுக்கு வெளிப்படையான சிக்கல் அறிக்கையிடல், பன்மொழி அணுகல் மற்றும் நிகழ்நேர முன்னேற்ற கண்காணிப்பு மூலம் ஒத்துழைக்க உதவுகிறது.",
+      },
+      tech: {
+        title: "தொழில்நுட்ப அடுக்கு",
+        items: {
+          nextjs: "Next.js 16",
+          react: "React + TypeScript",
+          firebase: "Firebase + Firestore",
+          ai: "Google AI Studio",
+          maps: "OpenStreetMap + Leaflet",
+          tailwind: "Tailwind CSS",
+        },
+      },
+      quick_links: { title: "விரைவு இணைப்புகள்" },
+      recognition: {
+        title: "அங்கீகாரம்",
+        badge: "Google Solution Challenge 2026",
+        desc: "பொறுப்பான AI, பன்மொழி அணுகல் மற்றும் வெளிப்படையான நாகரீக வர்க்ஃப்ளோக்கள் சமூகங்கள் மற்றும் நகராட்சிகளுக்கிடையே ஒத்துழைப்பை எவ்வாறு மேம்படுத்தலாம் என்பதை நிரூபிக்க வடிவமைக்கப்பட்டது.",
+      },
+      challenge_tag: "Google Solution Challenge-க்காக ❤️ உடன் கட்டமைக்கப்பட்டது",
       privacy: "தனியுரிமை",
       terms: "விதிமுறைகள்",
       contact: "தொடர்பு",
@@ -2908,63 +3935,69 @@ const ta = {
         },
       },
       solution: {
-        eyebrow: "AI தீர்வு",
-        title: "ஒரு குடிமகன் புகாரிலிருந்து சமூகத் தீர்வு வரை",
-        description: "கம்யூனிட்டி ஹீரோ என்பது குடிமை வாழ்விற்கான ஒரு AI இயக்க முறைமையாகும். ஒவ்வொரு புகாரும் புரிந்து கொள்ளும், சரிபார்க்கும், முன்னுரிமை அளிக்கும் மற்றும் ஒருங்கிணைக்கும் சிறப்பு முகவர்கள் வழியாக பாய்கிறது—பின்னர் சமூகத்தை மீண்டும் இணைக்கிறது.",
+        eyebrow: "அறிக்கை பணிப்பாய்வு",
+        title: "அறிக்கையிலிருந்து தீர்வு வரை",
+        description: "கமிஉனிட்டி ஹீரோ ஒவ்வொரு அறிக்கையையும் AI-உதவியுடன் நடத்தும் நாகரீக பணிப்பாய்வு மூலம் வழிநடத்துகிறது, இது குடியிருப்பாளர்கள், உள்ளாட்சி அதிகாரிகள் மற்றும் சமூகங்களை வெளிப்படையான சிக்கல் தீர்வை நோக்கி ஒத்துழைக்க உதவுகிறது.",
         flow: {
           citizen: {
             label: "குடிமகன்",
-            detail: "புகைப்படம் எடுக்கிறார், குரல் குறிப்பை பதிவு செய்கிறார் அல்லது வரைபடத்தில் தட்டுகிறார்",
+            detail: "ஒரு புகைப்படம் எடுக்கிறார், குரல் குறிப்பு பதிவு செய்கிறார், அல்லது வரைபட பின் தட்டுகிறார்",
           },
           agents: {
             label: "AI முகவர்கள்",
-            detail: "ஆறு சிறப்பு முகவர்கள் புகாரை பகுப்பாய்வு செய்து, சரிபார்த்து, வழியமைக்கிறார்கள்",
+            detail: "ஆறு சிறப்பு முகவர்கள் அறிக்கையை பகுப்பாய்வு, சரிபார்ப்பு மற்றும் வழித்திசை செய்கிறார்கள்",
           },
           authorities: {
             label: "அதிகாரிகள்",
-            detail: "வார்டு பொறியாளர்கள் மற்றும் தகுந்த துறைகள் முன்னுரிமை அளிக்கப்பட்ட பணி ஆணைகளைப் பெறுகின்றன",
+            detail: "வார்டு பொறியாளர்கள் மற்றும் துறைகள் முன்னுரிமை பணி உத்தரவுகளைப் பெறுகின்றன",
           },
           community: {
             label: "சமூகம்",
-            detail: "அண்டை வீட்டார் இணைந்து முன்னேற்றத்தைக் கண்காணித்து தீர்வுகளைச் சரிபார்க்கிறார்கள்",
+            detail: "அண்டை வீட்டினர் முன்னேற்றத்தை கண்காணித்து ஒன்றாக சரிசெய்தலை சரிபார்க்கிறார்கள்",
           },
           resolution: {
             label: "தீர்வு",
-            detail: "சான்றுகளுடன் பிரச்சினைகள் தீர்க்கப்படுகின்றன—மேலும் நம்பிக்கை மீண்டும் கட்டியெழுப்பப்படுகிறது",
+            detail: "சிக்கல்கள் ஆதாரத்துடன் மூடப்படுகின்றன—மற்றும் நம்பிக்கை தெரு தெருவாக மீண்டும் கட்டமைக்கப்படுகிறது",
           },
         },
       },
       agents: {
-        eyebrow: "AI முகவர் தடம்",
+        eyebrow: "AI முகவர் பைப்லைன்",
         title: "ஆறு முகவர்கள். ஒரு ஒருங்கிணைந்த பணிப்பாய்வு.",
-        description: "ஒவ்வொரு முகவருக்கும் ஒரு பொறுப்பு உள்ளது. ஒன்றாக அவர்கள் குடிமகனின் உள்ளீட்டைச் செயல் நுண்ணறிவாக மாற்றுகிறார்கள்.",
+        description: "குடிமக்களின் உள்ளீட்டை கட்டமைக்கப்பட்ட குடிமைத் தகவலாக மாற்றுவதில் ஒவ்வொரு திறனும் ஒரு கவனம் செலுத்திய பங்கை வகிக்கிறது, மனிதர்கள் படிக்கக்கூடிய விளக்கங்கள் மற்றும் புத்திசாலித்தனமான உதவியுடன்.",
+        badges: { future_enhancement: "எதிர்கால மேம்பாடு" },
         list: {
-          vision: {
-            title: "விஷன் முகவர்",
-            responsibility: "புகைப்படங்கள் மற்றும் காட்சி ஆதாரங்களை பகுப்பாய்வு செய்கிறார்",
+          vision: { title: "விஷன் முகவர்", responsibility: "குடிமக்கள் அறிக்கைகளிலிருந்து புகைப்படங்கள் மற்றும் காட்சி சான்றுகளை பகுப்பாய்வு செய்கிறது." },
+          geo: { title: "ஜியோ முகவர்", responsibility: "வார்டு எல்லைகள் மற்றும் அடையாளங்களுடன் சிக்கல்களை துல்லியமாக வரைபடமாக்குகிறது." },
+          trust: { title: "வாலிடேஷன் முகவர்", responsibility: "அறிக்கையின் முழுமையை சரிபார்க்கிறது மற்றும் சமர்ப்பிப்பதற்கு முன் நகல் அறிக்கைகளை அடையாளம் காண உதவுகிறது." },
+          priority: { title: "ப்ரயாரிட்டி முகவர்", responsibility: "விரைவான பதிலுக்காக அவசரநிலை மற்றும் சமூக தாக்கத்தை வரிசைப்படுத்துகிறது." },
+          prediction: { title: "எதிர்கால கணிப்பு", responsibility: "வரலாற்று நகராட்சி வடிவங்களைப் பயன்படுத்தி சிக்கல் அதிகரிக்கும் போக்குகளை மதிப்பிடுவதற்காக வடிவமைக்கப்பட்டுள்ளது." },
+          copilot: { title: "குடிமகன் உதவியாளர்", responsibility: "பன்மொழி உதவி மூலம் குடிமக்களுக்கு வழிகாட்டுகிறது, முடிவுகளை விளக்குகிறது மற்றும் சிக்கல் கண்காணிப்பை ஆதரிக்கிறது." },
+        },
+      },
+      credibility: {
+        title: "வெளிப்படையான குடிமக்கள் ஒத்துழைப்புக்காக கட்டமைக்கப்பட்டது",
+        description: "கமிUsernity ஹீரோ, AI-உதவியுடன் கூடிய பணிப்பாய்வுகள், பன்மொழி அணுகல் மற்றும் வெளிப்படையான அறிக்கையிடல் எவ்வாறு குடிமக்கள் மற்றும் உள்ளாட்சி அதிகாரிகளுக்கிடையே ஒத்துழைப்பை வலுப்படுத்துகின்றன என்பதை நிரூபிக்கிறது.",
+        cards: {
+          ai: {
+            title: "AI-உதவி அறிக்கையிடல்",
+            desc: "பார்வை, இடம் மற்றும் பேச்சு பகுப்பாய்வு மூலம் அறிக்கைகளை உடனடியாக வகைப்படுத்துகிறது, சுருக்கமாக்குகிறது மற்றும் முன்னுரிமை அளிக்கிறது.",
           },
-          geo: {
-            title: "ஜியோ முகவர்",
-            responsibility: "வார்டு எல்லைகள் மற்றும் அடையாளங்களுக்கு பிரச்சினைகளை வரைபடமாக்குகிறார்",
+          tracking: {
+            title: "வெளிப்படையான கண்காணிப்பு",
+            desc: "கட்டமைக்கப்பட்ட முன்னேற்ற காலவரிசைகள் மூலம் குடியிருப்பாளர்கள் மற்றும் அதிகாரிகளை நிகழ்நேரத்தில் புதுப்பிக்கிறது.",
           },
-          trust: {
-            title: "டிரஸ்ட் முகவர்",
-            responsibility: "நகல் அல்லது ஸ்பேம் புகார்களைக் கொடிவிடுகிறார்",
+          i18n: {
+            title: "பன்மொழி அணுகல்",
+            desc: "ஒருங்கிணைந்த Speech-to-Text உள்ளீடுகளுடன் இடைமுகத்தை 8 பிராந்திய மொழிகளில் மொழிபெயர்க்கிறது.",
           },
-          priority: {
-            title: "முன்னுரிமை முகவர்",
-            responsibility: "அவசரநிலை மற்றும் சமூக தாக்கத்தை வரிசைப்படுத்துகிறார்",
-          },
-          prediction: {
-            title: "கணிப்பு முகவர்",
-            responsibility: "வரலாற்று வடிவங்களின் அடிப்படையில் தீர்வுக்கான காலக்கெடுவைக் கணிக்கிறார்",
-          },
-          copilot: {
-            title: "சமூக வழிகாட்டி",
-            responsibility: "குடிமக்களுக்கு அவர்களின் மொழியில் வழிகாட்டுகிறார்",
+          verification: {
+            title: "சமூக சரிபார்ப்பு",
+            desc: "சரிபார்க்கப்பட்ட உள்ளூர் ஆயத்தொலைவுகள் மற்றும் பல-அண்டை வீட்டு உறுதிப்படுத்தல்கள் மூலம் நகராட்சி நம்பிக்கையை வளர்க்கிறது.",
           },
         },
       },
+
       live_tracking: {
         eyebrow: "லைவ் ட்ரேக்கிங் முன்னோட்டம்",
         title: "ஒவ்வொரு புகாரும். ஒவ்வொரு நிலையும். நிகழ்நேரத்தில்.",
@@ -3013,35 +4046,41 @@ const ta = {
         },
       },
       google: {
-        eyebrow: "கூகுளில் கட்டமைக்கப்பட்டது",
-        title: "சமூகங்கள் ஏற்கனவே நம்பும் தளங்களால் இயக்கப்படுகிறது",
-        description: "கம்யூனிட்டி ஹீரோ கூகுள் தொழில்நுட்பங்களை தொடக்கம் முதல் முடிவு வரை ஒருங்கிணைக்கிறது.",
+        eyebrow: "தொழில்நுட்ப அடுக்கு",
+        title: "AI மற்றும் திறந்த தரநிலைகளால் இயக்கப்படும் நவீன தொழில்நுட்ப அடுக்கு",
+        description: "பாதுகாப்பான, பன்மொழி, AI-உதவியுடன் கூடிய குடிமை அறிக்கையை வழங்க, கமிUsernity ஹீரோ Google AI, Firebase உள்கட்டமைப்பு மற்றும் திறந்த மூல தொழில்நுட்பங்களை ஒருங்கிணைக்கிறது.",
         technologies: {
           "ai-studio": {
-            title: "கூகுள் AI ஸ்டுடியோ",
-            description: "ஜெமினி ஒவ்வொரு முகவரின் முடிவையும் இயக்குகிறது.",
+            category: "AI தளம்",
+            title: "Google AI Studio",
+            description: "ஜெமினி தளம் முழுவதும் AI-உதவியுடனான பார்வை பகுப்பாய்வு, பன்மொழி புரிதல், புத்திசாலித்தனமான சுருக்கம் மற்றும் சமூக உதவிகளை வழங்குகிறது."
           },
           firebase: {
-            title: "ஃபயர்பேஸ்",
-            description: "சரிபார்ப்பு, நிகழ்நேர தரவு ஒத்திசைவு மற்றும் பாதுகாப்பான சேமிப்பு.",
+            category: "பின்னணி",
+            title: "Firebase",
+            description: "Firebase அங்கீகாரம், Firestore தரவுத்தளம், பாதுகாப்பான சேமிப்பு மற்றும் நிகழ்நேர ஒத்திசைவு ஆகியவை பயன்பாட்டின் பின்னணியை இயக்குகின்றன."
           },
           maps: {
-            title: "கூகுள் மேப்ஸ்",
-            description: "துல்லியமான புவிஇருப்பிடம், வார்டு மேப்பிங் மற்றும் நேரடி பிரச்சினை பின்கள்.",
+            category: "ஊடாடும் வரைபடங்கள்",
+            title: "OpenStreetMap + Leaflet",
+            description: "ஊடாடும் திறந்த மூல வரைபடங்கள் பிரச்சினை இருப்பிடங்கள், வார்டு எல்லைகள் மற்றும் நேரடி புவியியல் காட்சிகளை வழங்குகின்றன."
           },
           speech: {
-            title: "ஸ்பீச் API",
-            description: "குரல்-ஒலி உரை மாற்றம் மற்றும் உரை-குரல் ஒலி மாற்றம்.",
+            category: "உலாவி API",
+            title: "Web Speech API",
+            description: "உலாவியின் சொந்த ஸ்பீச்-டு-டெக்ஸ்ட் மற்றும் டெக்ஸ்ட்-டு-ஸ்பீச் குரல் அடிப்படையிலான அறிக்கை மற்றும் அணுகலை செயல்படுத்துகிறது."
           },
           translate: {
-            title: "கூகுள் மொழியாக்கம்",
-            description: "பன்மொழி ஆதரவு மொழியின் காரணமாக எந்த அண்டை வீட்டாரும் தவிர்க்கப்பட மாட்டார்கள்.",
+            category: "பன்மொழி",
+            title: "AI மூலம் இயங்கும் பன்மொழி மொழிபெயர்ப்பு",
+            description: "ஜெமினி மூலம் இயங்கும் பன்மொழி மொழிபெயர்ப்பு, குடிமக்கள் தங்களுக்கு விருப்பமான மொழியில் கமிUsernity ஹீரோவுடன் தொடர்பு கொள்ள உதவுகிறது."
           },
           analytics: {
-            title: "கூகுள் அனலிட்டிக்ஸ்",
-            description: "பயன்பாடு மற்றும் தாக்க அளவீடுகள்.",
-          },
-        },
+            category: "காட்சிப்படுத்தல்",
+            title: "சமூக பகுப்பாய்வு டாஷ்போர்டு",
+            description: "ஊடாடும் டாஷ்போர்டுகள் பிரச்சினையின் புள்ளிவிவரங்கள், வகை போக்குகள், மறுமொழி காலவரிசைகள், AI நுண்ணறிவு மற்றும் சமூக சுகாதார குறிகாட்டிகளை காட்சிப்படுத்துகின்றன."
+          }
+        }
       },
       impact: {
         eyebrow: "சமூக தாக்கம்",
@@ -3212,6 +4251,13 @@ const ta = {
         description: "சமீபத்திய புதுப்பிப்புகள் காலவரிசை வரிசையில் காட்டப்படுகின்றன.",
       },
       status: {
+        submitted: "குடிமகனால் புகார் சமர்ப்பிக்கப்பட்டது.",
+        assigned: "தொடர்புடைய நகராட்சித் துறைக்கு ஒதுக்கப்பட்டது.",
+        inspectionStarted: "ஆய்வு முடிந்தது, களப்பணி தொடங்கப்பட்டது.",
+        inProgress: "செயல்பாட்டில் உள்ளது",
+        verified: "AI சரிபார்ப்பு முடிந்தது",
+        resolved: "பிரச்சினை தீர்க்கப்பட்டது",
+        closed: "புகார் மூடப்பட்டது",
         Pending: "நிலுவையில்",
         Verified: "சரிபார்க்கப்பட்டது",
         Assigned: "ஒதுக்கப்பட்டது",
@@ -3382,6 +4428,138 @@ const ta = {
 
 const te = {
   translation: {
+    auth: {
+      badge: "కమ్యూనిటీ హీరో • సురక్షిత కార్యస్థలం",
+      title: "కమ్యూనిటీ హీరోకి సురక్షిత ప్రవేశం",
+      description: "పౌర సమస్యలను నివేదించడానికి, రిపోర్ట్ పురోగతిని ట్రాక్ చేయడానికి, మీ సంఘంతో సహకరించడానికి మరియు మీ వ్యక్తిగత డాష్‌బోర్డ్‌ను యాక్సెస్ చేయడానికి మీ గూగుల్ ఖాతాను ఉపయోగించి సురక్షితంగా సైన్ ఇన్ చేయండి.",
+      signInButton: "గూగుల్ తో సైన్ ఇన్ చేయండి",
+      signingIn: "సైన్ ఇన్ అవుతోంది...",
+      backToHome: "హోమ్‌కి తిరిగి వెళ్ళండి",
+      indicators: {
+        secure: "సురక్షిత లాగిన్",
+        tracking: "రియల్ టైమ్ ట్రాకింగ్",
+        ai: "AI సహాయ వర్క్‌ఫ్లో"
+      }
+    },
+    privacy: {
+      eyebrow: "ప్రాజెక్ట్ విధానం",
+      title: "గోప్యతా విధానం",
+      description: "కమ్యూనిటీ హీరో ఉపయోగించే సమాచారం మరియు ఈ డెమో దానిని ఎలా నిర్వహిస్తుందో తెలియజేసే సరళమైన వివరణ.",
+      updated: "28 జూన్ 2026",
+      sections: {
+        data_collection: {
+          title: "డేటా సేకరణ",
+          description: "కమ్యూనిటీ హీరో సివిక్ రిపోర్టింగ్ నిర్వహించడానికి అవసరమైన సమాచారాన్ని సేకరిస్తుంది. ఇందులో మీ గూగుల్ ఖాతా పేరు, ఈమెయిల్, రిపోర్ట్ వివరాలు మరియు సమయం ఉండవచ్చు."
+        },
+        authentication: {
+          title: "ధృవీకరణ",
+          description: "గూగుల్ లాగిన్ Firebase ద్వారా నిర్వహించబడుతుంది. పాస్‌వర్డ్‌లు ఏవీ సేకరించబడవు లేదా నిల్వ చేయబడవు."
+        },
+        firebase: {
+          title: "Firebase వినియోగం",
+          description: "ప్రొఫైల్ సమాచారం, రిపోర్ట్ వివరాలు, AI విశ్లేషణ ఫలితాలు, స్థాన వివరాలు మరియు రిపోర్ట్ స్థితి చరిత్రను Firestore నిల్వ చేస్తుంది."
+        },
+        location: {
+          title: "స్థాన అనుమతులు",
+          description: "రిపోర్ట్ చేసేటప్పుడు బ్రౌజర్ ద్వారా లొకేషన్ యాక్సెస్ కోరబడుతుంది. బ్రౌజర్ సెట్టింగ్స్ లో దీనిని మార్చుకోవచ్చు."
+        },
+        media: {
+          title: "చిత్రాలు మరియు వీడియో ఎంపిక",
+          description: "ఎంచుకున్న మీడియాను AI విశ్లేషణ కోసం ఉపయోగిస్తాము. అసలు ఫైల్స్ Firestore లో స్టోర్ చేయబడవు."
+        },
+        voice: {
+          title: "వాయిస్ పరస్పర చర్య",
+          description: "స్పీచ్-టు-టెక్స్ట్ మరియు టెక్స్ట్-టు-స్పీచ్ బ్రౌజర్ యొక్క వెబ్ స్పీచ్ సౌకర్యాన్ని ఉపయోగిస్తాయి. వాయిస్ రికార్డింగ్‌లు నిల్వ చేయబడవు."
+        },
+        cookies: {
+          title: "కుకీలు మరియు లోకల్ స్టోరేజ్",
+          description: "Firebase లాగిన్ సెషన్ నిర్వహించడానికి బ్రౌజర్ స్టోరేజ్ ఉపయోగించవచ్చు. ఇందులో ఎలాంటి ప్రకటన కుకీలు లేవు."
+        },
+        contact: {
+          title: "సంప్రదించండి",
+          description: "గోప్యతా ప్రశ్నల కోసం సంప్రదింపు పేజీని ఉపయోగించండి. ఇమెయిల్ ప్రస్తుతం కేవలం డెమో మాత్రమే."
+        }
+      }
+    },
+    terms: {
+      eyebrow: "ప్రాజెక్ట్ నిబంధనలు",
+      title: "సేవా నిబంధనలు",
+      description: "కమ్యూనిటీ హీరో మరియు దాని AI-సహాయక రిపోర్టింగ్ ఉపయోగించడానికి ఆచరణాత్మక నిబంధనలు.",
+      updated: "28 జూన్ 2026",
+      sections: {
+        acceptable_use: {
+          title: "అంగీకారయోగ్యమైన ఉపయోగం",
+          description: "కమ్యూనిటీ హీరోని కేవలం చట్టబద్ధమైన పౌర రిపోర్టింగ్ కోసం మాత్రమే ఉపయోగించండి. వేధింపులు లేదా తప్పుడు సమాచారం పంపకండి."
+        },
+        user_resp: {
+          title: "వినియోగదారు బాధ్యతలు",
+          description: "మీరు సమర్పించే సమాచారం యొక్క ఖచ్చితత్వానికి మీరే బాధ్యులు. అనవసరమైన వ్యక్తిగత సమాచారాన్ని నివారించండి."
+        },
+        ownership: {
+          title: "కంటెంట్ యాజమాన్యం",
+          description: "మీరు సృష్టించిన కంటెంట్ యాజమాన్యం మీదే ఉంటుంది. కానీ విశ్లేషణ కోసం ప్రాజెక్ట్ కి అనుమతి ఇస్తున్నారు."
+        },
+        disclaimer: {
+          title: "AI సహాయ నిరాకరణ",
+          description: "AI ఫలితాలు అసంపూర్ణంగా ఉండవచ్చు. ఏదైనా చర్య తీసుకునే ముందు ప్రజలు పరిశీలించాలి."
+        },
+        notice: {
+          title: "మున్సిపల్ డెమో నోటీసు",
+          description: "ఇది కేవలం సొల్యూషన్ ఛాలెంజ్ ప్రాజెక్ట్ డెమో మాత్రమే. అధికారిక అత్యవసర ఛానెల్స్ ని భర్తీ చేయదు.",
+          item1: "అత్యవసర పరిస్థితులకు కమ్యూనిటీ హీరోని ఉపయోగించకండి.",
+          item2: "తక్షణ రక్షణ కోసం స్థానిక అత్యవసర సేవలను సంప్రదించండి.",
+          item3: "చూపించిన గణాంకాలు కేవలం ఉదాహరణలు మాత్రమే."
+        },
+        liability: {
+          title: "బాధ్యత పరిమితి",
+          description: "ఈ ప్రాజెక్ట్ ఎటువంటి హామీ లేకుండా మూల్యాంకనం కోసం అందించబడింది."
+        }
+      }
+    },
+    contact: {
+      eyebrow: "సంప్రదించండి",
+      title: "మరింత స్పందించే సమాజాలను నిర్మిద్దాం",
+      description: "పౌరులు మరియు అధికారులు ఏ విధంగా సులభంగా కలిసి పని చేయవచ్చో కమ్యూనిటీ హీరో వివరిస్తుంది.",
+      challenge: {
+        title: "Google Solution Challenge",
+        desc: "బాధ్యతాయుతమైన AI ద్వారా పారదర్శకత మరియు యాక్సెసిబిలిటీని ఎలా పెంచవచ్చో చూపిస్తుంది."
+      },
+      developer: {
+        title: "ప్రాజెక్ట్ డెవలపర్",
+        name: "శ్రేష్ఠా స్వామి",
+        degree: "బీ.టెక్ కంప్యూటర్ సైన్స్ & ఇంజనీరింగ్ (డేటా సైన్స్)",
+        institution: "SKIT జైపూర్",
+        focus: "AI • డేటా సైన్స్ • సివిక్ టెక్నాలజీ"
+      },
+      links: {
+        title: "డెవలపర్ తో కనెక్ట్ అవ్వండి",
+        github: "GitHub ప్రొఫైల్",
+        linkedin: "LinkedIn ప్రొఫైల్",
+        note: "సహకారం మరియు సివిక్ టెక్నాలజీ చర్చలకు సిద్ధంగా ఉన్నాము."
+      },
+      form: {
+        successTitle: "సందేశం సిద్ధమైంది",
+        successMessage: "ఈ ఫారమ్ కేవలం ప్రదర్శన మాత్రమే. ఇది డేటాను ఎక్కడికీ పంపదు.",
+        backText: "ఫారమ్‌కి తిరిగి వెళ్ళండి",
+        name: "పేరు",
+        email: "ఈమెయिल్",
+        subject: "విషయం",
+        message: "సందేశం",
+        placeholderName: "జాన్ డో",
+        placeholderEmail: "john@example.com",
+        placeholderSubject: "మేము ఏ విధంగా సహాయపడగలం?",
+        placeholderMessage: "మరిన్ని వివరాలు తెలియజేయండి...",
+        demoText: "కేవలం UI డెమో మాత్రమే—ఈ ఫారమ్ సమాచారాన్ని సేవ్ చేయదు.",
+        submitButton: "సందేశాన్ని సిద్ధం చేయి"
+      },
+      faq: {
+        eyebrow: "త్వరిత సమాధానాలు",
+        title: "తరచుగా అడిగే ప్రశ్నలు",
+        q1: "కమ్యూనిటీ హీరో అధికారిక ప్రభుత్వ సేవనా?",
+        a1: "కాదు. కమ్యూనిటీ హీరో ప్రస్తుతం ఒక గూగుల్ సొల్యూషన్ ఛాలెంజ్ ప్రాజెక్ట్ డెమో మాత్రమే."
+      }
+    },
+
     common: {
       loading: "లోడ్ అవుతోంది...",
       error: "లోపం",
@@ -3423,6 +4601,28 @@ const te = {
       },
     },
     footer: {
+      about: {
+        title: "కమ్యూనిటీ హీరో గురించి",
+        desc: "కమ్యూనిటీ హీరో ఒక AI-సహాయంతో కూడిన పౌర రిపోర్టింగ్ ప్లాట్‌ఫారమ్, ఇది పౌరులు మరియు స్థానిక అధికారులను పారదర్శక సమస్య రిపోర్టింగ్, బహుభాషా యాక్సెసిబిలిటీ మరియు రియల్-టైమ్ పురోగతి ట్రాకింగ్ ద్వారా సహకరించడానికి శక్తివంతం చేస్తుంది.",
+      },
+      tech: {
+        title: "టెక్నాలజీ స్టాక్",
+        items: {
+          nextjs: "Next.js 16",
+          react: "React + TypeScript",
+          firebase: "Firebase + Firestore",
+          ai: "Google AI Studio",
+          maps: "OpenStreetMap + Leaflet",
+          tailwind: "Tailwind CSS",
+        },
+      },
+      quick_links: { title: "త్వరిత లింక్‌లు" },
+      recognition: {
+        title: "గుర్తింపు",
+        badge: "Google Solution Challenge 2026",
+        desc: "బాధ్యతాయుతమైన AI, బహుభాషా యాక్సెసిబిలిటీ మరియు పారదర్శక పౌర వర్క్‌ఫ్లోలు సమాజాలు మరియు మున్సిపాలిటీల మధ్య సహకారాన్ని ఎలా బలోపేతం చేయగలవో నిరూపించడానికి రూపొందించబడింది.",
+      },
+      challenge_tag: "Google Solution Challenge కోసం ❤️ తో నిర్మించబడింది",
       privacy: "గోప్యత",
       terms: "నిబంధనలు",
       contact: "సంప్రదించండి",
@@ -3471,63 +4671,69 @@ const te = {
         },
       },
       solution: {
-        eyebrow: "AI పరిష్కారం",
-        title: "ఒక పౌర నివేదిక నుండి సామాజిక పరిష్కారం వరకు",
-        description: "కమ్యూనిటీ హీరో అనేది పౌర జీవితం కోసం ఒక AI ఆపరేటింగ్ సిస్టమ్.",
+        eyebrow: "రిపోర్ట్ వర్క్‌ఫ్లో",
+        title: "రిపోర్ట్ నుండి పరిష్కారం వరకు",
+        description: "కమ్యూనిటీ హీరో ప్రతి రిపోర్ట్‌ను AI-సహాయంతో నడిచే పౌర వర్క్‌ఫ్లో ద్వారా మార్గనిర్దేశం చేస్తుంది, ఇది పౌరులు, స్థానిక అధికారులు మరియు సమాజాలు పారదర్శక సమస్య పరిష్కారానికి సహకరించడంలో సహాయపడుతుంది.",
         flow: {
           citizen: {
             label: "పౌరుడు",
-            detail: "ఫోటో తీస్తారు, వాయిస్ నోట్ రికార్డ్ చేస్తారు లేదా మ్యాప్ పైన నొక్కుతారు",
+            detail: "ఫోటో తీస్తాడు, వాయిస్ నోట్ రికార్డ్ చేస్తాడు, లేదా మ్యాప్ పిన్ నొక్కుతాడు",
           },
           agents: {
             label: "AI ఏజెంట్లు",
-            detail: "ఆరు ప్రత్యేక ఏజెంట్లు నివేదికను విశ్లేషించి, ధృవీకరించి, రూట్ చేస్తారు",
+            detail: "ఆరు ప్రత్యేక ఏజెంట్లు రిపోర్ట్‌ను విశ్లేషించి, ధృవీకరించి, రూట్ చేస్తారు",
           },
           authorities: {
             label: "అధికారులు",
-            detail: "వార్డు ఇంజనీర్లు మరియు విభాగాలు ప్రాధాన్యత కలిగిన పని ఉత్తర్వులను పొందుతారు",
+            detail: "వార్డు ఇంజనీర్లు మరియు విభాగాలు ప్రాధాన్య కార్య ఆదేశాలు అందుకుంటాయి",
           },
           community: {
-            label: "సంఘం",
-            detail: "పొరుగువారు కలిసి పురోగతిని ట్రాక్ చేస్తారు మరియు పరిష్కారాలను ధృవీకరిస్తారు",
+            label: "సమాజం",
+            detail: "పొరుగువారు పురోగతిని ట్రాక్ చేస్తారు మరియు కలిసి మెరుగుదలలను ధృవీకరిస్తారు",
           },
           resolution: {
             label: "పరిష్కారం",
-            detail: "ఆధారాలతో సమస్యలు మూసివేయబడతాయి—మరియు ప్రతి వీధిలో నమ్మకం తిరిగి ఏర్పడుతుంది",
+            detail: "సమస్యలు రుజువుతో మూసివేయబడతాయి—మరియు నమ్మకం బ్లాక్ బ్లాక్‌గా పునర్నిర్మించబడుతుంది",
           },
         },
       },
       agents: {
         eyebrow: "AI ఏజెంట్ పైప్‌లైన్",
-        title: "ఆరుగురు ఏజెంట్లు. ఒక సమన్వయ పనితీరు.",
-        description: "కలిసి వారు పౌరుల ఇన్‌పుట్‌ను కార్యాచరణ మేధస్సుగా మారుస్తారు.",
+        title: "ఆరుగురు ఏజెంట్లు. ఒక సమన్వయ వర్క్‌ఫ్లో.",
+        description: "పౌరుల ఇన్‌పుట్‌ను నిర్మాణాత్మక పౌర సమాచారంగా మార్చడంలో ప్రతి సామర్థ్యం ఒక నిర్దిష్ట పాత్రను కలిగి ఉంటుంది, మానవులు చదవగలిగే వివరణలు మరియు తెలివైన సహాయం అందిస్తుంది.",
+        badges: { future_enhancement: "భవిష్యత్ మెరుగుదల" },
         list: {
-          vision: {
-            title: "విజన్ ఏజెంట్",
-            responsibility: "ఫోటోలు మరియు దృశ్య ఆధారాలను విశ్లేషిస్తారు",
+          vision: { title: "విజన్ ఏజెంట్", responsibility: "పౌరుల నివేదికల నుండి ఫోటోలు మరియు దృశ్య ఆధారాలను విశ్లేషిస్తుంది." },
+          geo: { title: "జియో ఏజెంట్", responsibility: "సమస్యలను ఖచ్చితమైన వార్డు సరిహద్దులు మరియు ల్యాండ్‌మార్క్‌లకు మ్యాప్ చేస్తుంది." },
+          trust: { title: "వాలిడేషన్ ఏజెంట్", responsibility: "నివేదిక పూర్ణతను ధృవీకరిస్తుంది మరియు సమర్పణకు ముందు నకిలీ నివేదికలను గుర్తించడంలో సహాయపడుతుంది." },
+          priority: { title: "ప్రయారిటీ ఏజెంట్", responsibility: "వేగవంతమైన ప్రతిస్పందన కోసం అత్యవసరత మరియు సంఘం ప్రభావాన్ని ర్యాంక్ చేస్తుంది." },
+          prediction: { title: "భవిష్యత్ అంచనా", responsibility: "చారిత్రక పురపాలక నమూనాలను ఉపయోగించి సమస్య తీవ్రమయ్యే ధోరణులను అంచనా వేయడానికి రూపొందించబడింది." },
+          copilot: { title: "సిటిజన్ అసిస్టెంట్", responsibility: "బహుభాషా సహాయం ద్వారా పౌరులకు మార్గనిర్దేశం చేస్తుంది, నిర్ణయాలను వివరిస్తుంది మరియు సమస్యల ట్రాకింగ్‌కు మద్దతు ఇస్తుంది." },
+        },
+      },
+      credibility: {
+        title: "పారదర్శక పౌర సహకారం కోసం నిర్మించబడింది",
+        description: "కమ్యూనిటీ హీరో, AI-సహాయంతో కూడిన వర్క్‌ఫ్లోలు, బహుభాషా యాక్సెసిబిలిటీ మరియు పారదర్శక రిపోర్టింగ్ ఎలా పౌరులు మరియు స్థానిక అధికారుల మధ్య సహకారాన్ని బలోపేతం చేయగలవో నిరూపిస్తుంది.",
+        cards: {
+          ai: {
+            title: "AI-సహాయ రిపోర్టింగ్",
+            desc: "దృష్టి, స్థానం మరియు స్పీచ్ విశ్లేషణతో రిపోర్ట్‌లను తక్షణమే వర్గీకరించి, సారాంశం చేసి, ప్రాధాన్యత ఇస్తుంది.",
           },
-          geo: {
-            title: "జియో ఏజెంట్",
-            responsibility: "వార్డు సరిహద్దులు మరియు ల్యాండ్‌మార్క్‌లకు సమస్యలను మ్యాప్ చేస్తారు",
+          tracking: {
+            title: "పారదర్శక ట్రాకింగ్",
+            desc: "నిర్మాణాత్మక పురోగతి టైమ్‌లైన్‌ల ద్వారా పౌరులు మరియు అధికారులను రియల్ టైమ్‌లో అప్‌డేట్ చేస్తుంది.",
           },
-          trust: {
-            title: "ట్రస్ట్ ఏజెంట్",
-            responsibility: "నిజాయితీని ధృవీకరిస్తారు మరియు నకిలీ లేదా స్పామ్ నివేదికలను ఫ్లాగ్ చేస్తారు",
+          i18n: {
+            title: "బహుభాషా యాక్సెసిబిలిటీ",
+            desc: "ఏకీకృత Speech-to-Text ఇన్‌పుట్‌లతో ఇంటర్‌ఫేస్‌ను 8 ప్రాంతీయ భాషలలోకి అనువదిస్తుంది.",
           },
-          priority: {
-            title: "ప్రాధాన్యత ఏజెంట్",
-            responsibility: "వేగవంతమైన ప్రతిస్పందన కోసం అత్యవసర పరిస్థితిని మరియు సామాజిక ప్రభావాన్ని ర్యాంక్ చేస్తారు",
-          },
-          prediction: {
-            title: "అంచనా ఏజెంట్",
-            responsibility: "చారిత్రక నమూనాల ఆధారంగా పరిష్కార కాలపరిమితిని అంచనా వేస్తారు",
-          },
-          copilot: {
-            title: "కమ్యూనిటీ కోపైలట్",
-            responsibility: "పౌరులకు వారి స్వంత భాషలో మార్గదర్శకత్వం ఇస్తారు",
+          verification: {
+            title: "కమ్యూనిటీ ధృవీకరణ",
+            desc: "ధృవీకరించిన స్థానిక కోఆర్డినేట్‌లు మరియు బహు-పొరుగువారి నిర్ధారణల ద్వారా మునిసిపల్ నమ్మకాన్ని పెంచుతుంది.",
           },
         },
       },
+
       live_tracking: {
         eyebrow: "లైవ్ ట్రాకింగ్ ప్రివ్యూ",
         title: "ప్రతి నివేదిక. ప్రతి స్థితి. నిజ సమయంలో.",
@@ -3576,35 +4782,41 @@ const te = {
         },
       },
       google: {
-        eyebrow: "గూగుల్ ఆధారితం",
-        title: "సంఘాలు ఇప్పటికే విశ్వసించే ప్లాట్‌ఫారమ్‌ల ద్వారా నడపబడుతుంది",
-        description: "కమ్యూనిటీ హీరో గూగుల్ సాంకేతికతలను ప్రారంభం నుండి ముగింపు వరకు అనుసంధానిస్తుంది.",
+        eyebrow: "సాంకేతిక స్టాక్",
+        title: "AI & ఓపెన్ ప్రమాణాలతో నడిచే ఆధునిక సాంకేతిక స్టాక్",
+        description: "కమ్యూనిటీ హీరో సురక్షితమైన, బహుభాషా, AI-సహాయక పౌర నివేదికను అందించడానికి Google AI, Firebase మౌలిక సదుపాయాలు మరియు ఓపెన్-సోర్స్ సాంకేతికతలను మిళితం చేస్తుంది.",
         technologies: {
           "ai-studio": {
-            title: "గూగుల్ AI స్టూడియో",
-            description: "జెమినీ ప్రతి ఏజెంట్ నిర్ణయాన్ని నడిపిస్తుంది.",
+            category: "AI ప్లాట్‌ఫారమ్",
+            title: "Google AI Studio",
+            description: "జెమిని ప్లాట్‌ఫారమ్ అంతటా AI-సహాయక దృష్టి విశ్లేషణ, బహుభాషా అవగాహన, స్మార్ట్ సారాంశం మరియు సమాజ సహాయాన్ని అందిస్తుంది."
           },
           firebase: {
-            title: "ఫైర్‌బేస్",
-            description: "ధృవీకరణ, నిజ-సమయ డేటా సమకాలీకరణ మరియు సురక్షిత నిల్వ.",
+            category: "బ్యాకెండ్",
+            title: "Firebase",
+            description: "Firebase ప్రామాణీకరణ, Firestore డేటాబేస్, సురక్షిత నిల్వ మరియు నిజ-సమయ సమకాలీకరణ అప్లికేషన్ బ్యాకెండ్‌ను నడుపుతాయి."
           },
           maps: {
-            title: "గూగుల్ మ్యాప్స్",
-            description: "ఖచ్చితమైన భౌగోళిక స్థానం, వార్డు మ్యాపింగ్ మరియు ప్రత్యక్ష సమస్య పిన్స్.",
+            category: "ఇంటరాక్టివ్ మ్యాప్స్",
+            title: "OpenStreetMap + Leaflet",
+            description: "ఇంటరాక్టివ్ ఓపెన్-సోర్స్ మ్యాప్‌లు సమస్యల స్థానాలు, వార్డు సరిహద్దులు మరియు ప్రత్యక్ష భౌగోళిక విజువలైజేషన్‌ను అందిస్తాయి."
           },
           speech: {
-            title: "స్పీచ్ API",
-            description: "వాయిస్-టు-టెక్స్ట్ మరియు టెక్స్ట్-టు-స్పీచ్.",
+            category: "బ్రౌజర్ API",
+            title: "Web Speech API",
+            description: "బ్రౌజర్-నేటివ్ స్పీచ్-టు-టెక్స్ట్ మరియు టెక్స్ట్-టు-స్పీచ్ వాయిస్-ఆధారిత నివేదిక మరియు ప్రాప్యతను ప్రారంభిస్తాయి."
           },
           translate: {
-            title: "గూగుల్ అనువాదం",
-            description: "బహుభాషా మద్దతు భాష కారణంగా ఏ పొరుగువారూ నిరాశకు గురికాకుండా చూస్తుంది.",
+            category: "బహుభాషా",
+            title: "AI ఆధారిత బహుభాషా అనువాదం",
+            description: "జెమిని-ఆధారిత బహుభాషా అనువాదం పౌరులు తమకు నచ్చిన భాషలో కమ్యూనిటీ హీరోతో కమ్యూనికేట్ చేయడానికి అనుమతిస్తుంది."
           },
           analytics: {
-            title: "గూగుల్ అనలిటిక్స్",
-            description: "వినియోగం మరియు ప్రభావ కొలతలు.",
-          },
-        },
+            category: "విజువలైజేషన్",
+            title: "కమ్యూనిటీ అనలిటిక్స్ డాష్‌బోర్డ్",
+            description: "ఇంటరాక్టివ్ డాష్‌బోర్డ్‌లు సమస్యల గణాంకాలు, వర్గం ట్రెండ్‌లు, ప్రతిస్పందన కాలక్రమాలు, AI అంతర్దృష్టులు మరియు సమాజ ఆరోగ్య సూచికలను చూపుతాయి."
+          }
+        }
       },
       impact: {
         eyebrow: "సామాజిక ప్రభావం",
@@ -3775,6 +4987,13 @@ const te = {
         description: "ఇటీవలి నవీకరణలు కాలక్రమ వరుసలో చూపబడ్డాయి.",
       },
       status: {
+        submitted: "పౌరుడి ద్వారా నివేదిక సమర్పించబడింది.",
+        assigned: "సంబంధిత మునిసిపల్ విభాగానికి కేటాయించబడింది.",
+        inspectionStarted: "పరిశీలన పూర్తయింది, పనులు ప్రారంభమయ్యాయి.",
+        inProgress: "పని జరుగుతోంది",
+        verified: "AI ధృవీకరణ పూర్తయింది",
+        resolved: "సమస్య పరిష్కరించబడింది",
+        closed: "రిపోర్ట్ మూసివేయబడింది",
         Pending: "పెండింగ్",
         Verified: "ధృవీకరించబడింది",
         Assigned: "కేటాయించబడింది",
@@ -3945,6 +5164,138 @@ const te = {
 
 const kn = {
   translation: {
+    auth: {
+      badge: "ಕಮ್ಯೂನಿಟಿ ಹೀರೋ • ಸುರಕ್ಷಿತ ಕಾರ್ಯಕ್ಷೇತ್ರ",
+      title: "ಕಮ್ಯೂನಿಟಿ ಹೀರೋಗೆ ಸುರಕ್ಷಿತ ಪ್ರವೇಶ",
+      description: "ನಾಗರಿಕ ಸಮಸ್ಯೆಗಳನ್ನು ವರದಿ ಮಾಡಲು, ವರದಿ ಪ್ರಗತಿಯನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡಲು, ನಿಮ್ಮ ಸಮುದಾಯದೊಂದಿಗೆ ಸಹಕರಿಸಲು ಮತ್ತು ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್ ಪ್ರವೇಶಿಸಲು ನಿಮ್ಮ ಗೂಗಲ್ ಖಾತೆಯನ್ನು ಬಳಸಿಕೊಂಡು ಸುರಕ್ಷಿತವಾಗಿ ಸೈನ್ ಇನ್ ಮಾಡಿ.",
+      signInButton: "ಗೂಗಲ್‌ನೊಂದಿಗೆ ಸೈನ್ ಇನ್ ಮಾಡಿ",
+      signingIn: "ಸೈನ್ ಇನ್ ಆಗುತ್ತಿದೆ...",
+      backToHome: "ಮುಖಪುಟಕ್ಕೆ ಹಿಂತಿರುಗಿ",
+      indicators: {
+        secure: "ಸುರಕ್ಷಿತ ಲಾಗಿನ್",
+        tracking: "ರಿಯಲ್-ಟೈಮ್ ಟ್ರ್ಯಾಕಿಂಗ್",
+        ai: "AI ಸಹಾಯಿತ ವರ್ಕ್‌ಫ್ಲೋ"
+      }
+    },
+    privacy: {
+      eyebrow: "ಯೋಜನಾ ನಿಯಮಾವಳಿ",
+      title: "ಗೋಪ್ಯತಾ ನೀತಿ",
+      description: "ಕಮ್ಯೂನಿಟಿ ಹೀರೋ ಬಳಸುವ ಮಾಹಿತಿ ಮತ್ತು ಈ ಡೆಮೊ ಅದನ್ನು ಹೇಗೆ ನಿರ್ವಹಿಸುತ್ತದೆ ಎಂಬುದರ ಸರಳ ವಿವರಣೆ.",
+      updated: "28 ಜೂನ್ 2026",
+      sections: {
+        data_collection: {
+          title: "ಡೇಟಾ ಸಂಗ್ರಹಣೆ",
+          description: "ಕಮ್ಯೂನಿಟಿ ಹೀರೋ ನಾಗರಿಕ ವರದಿ ಪ್ರಕ್ರಿಯೆಗಾಗಿ ಅಗತ್ಯವಿರುವ ಮಾಹಿತಿಯನ್ನು ಸಂಗ್ರಹಿಸುತ್ತದೆ. ಇದರಲ್ಲಿ ನಿಮ್ಮ ಗೂಗಲ್ ಖಾತೆ ಹೆಸರು, ಇಮೇಲ್, ವರದಿ ವಿವರ ಮತ್ತು ಸಮಯ ಇರಬಹುದು."
+        },
+        authentication: {
+          title: "ದೃಢೀಕರಣ",
+          description: "ಗೂಗಲ್ ಸೈನ್-ಇನ್ Firebase ಮೂಲಕ ನಿರ್ವಹಿಸಲ್ಪಡುತ್ತದೆ. ಪಾಸ್ ವರ್ಡ್ ಗಳನ್ನು ಸಂಗ್ರಹಿಸಲಾಗುವುದಿಲ್ಲ."
+        },
+        firebase: {
+          title: "Firebase ಬಳಕೆ",
+          description: "ಪ್ರೊಫೈಲ್ ಮಾಹಿತಿ, ವರದಿ ವಿವರಗಳು, AI ವಿಶ್ಲೇಷಣೆ ಫಲಿತಾಂಶಗಳು, ಸ್ಥಳದ ವಿವರಗಳು ಮತ್ತು ವರದಿ ಇತಿಹಾಸವನ್ನು Firestore ಸಂಗ್ರಹಿಸುತ್ತದೆ."
+        },
+        location: {
+          title: "ಸ್ಥಳದ ಅನುಮತಿಗಳು",
+          description: "ವರದಿ ಮಾಡುವಾಗ ಬ್ರೌಸರ್ ಮೂಲಕ ಸ್ಥಳದ ಅನುಮತಿ ಕೇಳಲಾಗುತ್ತದೆ. ಬ್ರೌಸರ್ ಸೆಟ್ಟಿಂಗ್ಸ್ ನಲ್ಲಿ ಇದನ್ನು ಬದಲಾಯಿಸಬಹುದು."
+        },
+        media: {
+          title: "ಚಿತ್ರ ಮತ್ತು ವಿಡಿಯೋ ಆಯ್ಕೆ",
+          description: "ಆಯ್ಕೆ ಮಾಡಿದ ಮೀಡಿಯಾವನ್ನು AI ವಿಶ್ಲೇಷಣೆಗೆ ಬಳಸಲಾಗುತ್ತದೆ. ಅಸಲಿ ಫೈಲ್ ಅನ್ನು Firestore ನಲ್ಲಿ ಉಳಿಸುವುದಿಲ್ಲ."
+        },
+        voice: {
+          title: "ಧ್ವನಿ ಸಂವಹನ",
+          description: "ವೆಬ್ ಸ್ಪಿಚ್ ಸೌಲಭ್ಯಗಳನ್ನು ಬಳಸಲಾಗುತ್ತದೆ. ಧ್ವನಿ ರೆಕಾರ್ಡಿಂಗ್ ಗಳನ್ನು ಸಂಗ್ರಹಿಸಿಡಲಾಗುವುದಿಲ್ಲ."
+        },
+        cookies: {
+          title: "ಕುಕೀಸ್ ಮತ್ತು ಲೋಕಲ್ ಸ್ಟೋರೇಜ್",
+          description: "Firebase ಸೈನ್-ಇನ್ ಸೆಷನ್ ನಿರ್ವಹಿಸಲು ಇದನ್ನು ಬಳಸಬಹುದು. ಯಾವುದೇ ಜಾಹೀರಾತು ಕುಕೀಗಳನ್ನು ಬಳಸುತ್ತಿಲ್ಲ."
+        },
+        contact: {
+          title: "ಸಂಪರ್ಕಿಸಿ",
+          description: "ಗೋಪ್ಯತೆ ಪ್ರಶ್ನೆಗಳಿಗಾಗಿ ಸಂಪರ್ಕ ಪುಟ ಬಳಸಿ. ಸಾರ್ವಜನಿಕ ಇಮೇಲ್ ಪ್ರಸ್ತುತ ಕೇವಲ ಡೆಮೊ ಆಗಿದೆ."
+        }
+      }
+    },
+    terms: {
+      eyebrow: "ಯೋಜನೆಯ ನಿಯಮಗಳು",
+      title: "ಸೇವಾ ನಿಯಮಗಳು",
+      description: "ಕಮ್ಯೂನಿಟಿ ಹೀರೋ ಮತ್ತು ಅದರ AI-ಸಹಾಯಿತ ವರದಿ ಪ್ರಕ್ರಿಯೆಯ ಜವಾಬ್ದಾರಿಯುತ ಬಳಕೆಗಾಗಿ ನಿಯಮಗಳು.",
+      updated: "28 ಜೂನ್ 2026",
+      sections: {
+        acceptable_use: {
+          title: "ಸ್ವೀಕಾರಾರ್ಹ ಬಳಕೆ",
+          description: "ಕಮ್ಯೂನಿಟಿ ಹೀರೋ ಅನ್ನು ಕಾನೂನುಬದ್ಧ ವರದಿಗಾಗಿ ಮಾತ್ರ ಬಳಸಿ. ಕಿರುಕುಳ ಅಥವಾ ಸುಳ್ಳು ವರದಿಗಳನ್ನು ಸಲ್ಲಿಸಬೇಡಿ."
+        },
+        user_resp: {
+          title: "ಬಳಕೆದಾರರ ಜವಾಬ್ದಾರಿಗಳು",
+          description: "ನೀವು ಸಲ್ಲಿಸುವ ಮಾಹಿತಿಯ ನಿಖರತೆಗೆ ನೀವೇ ಜವಾಬ್ದಾರರು. ಅನಗತ್ಯ ವೈಯಕ್ತಿಕ ವಿವರಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಬೇಡಿ."
+        },
+        ownership: {
+          title: "ವಿಷಯದ ಮಾಲೀಕತ್ವ",
+          description: "ನೀವು ಸಲ್ಲಿಸುವ ವಿಷಯದ ಮಾಲೀಕತ್ವ ನಿಮ್ಮದೇ ಆಗಿರುತ್ತದೆ. ಆದರೆ ಅದನ್ನು ವಿಶ್ಲೇಷಿಸಲು ಯೋಜನೆಗೆ ಅನುಮತಿ ನೀಡುತ್ತೀರಿ."
+        },
+        disclaimer: {
+          title: "AI ಸಹಾಯ ನಿರಾಕರಣೆ",
+          description: "AI ಮಾಹಿತಿ ಅಪೂರ್ಣವಾಗಿರಬಹುದು. ಯಾವುದೇ ನಿರ್ಧಾರಕ್ಕೆ ಮುನ್ನ ಜನರು ಅದನ್ನು ಪರಿಶೀಲಿಸಬೇಕು."
+        },
+        notice: {
+          title: "ಮ್ಯುನಿಸಿಪಲ್ ಡೆಮೊ ನೋಟಿಸ್",
+          description: "ಇದು ಕೇವಲ ಸಲ್ಯೂಷನ್ ಚಾಲೆಂಜ್ ಪ್ರಾಜೆಕ್ಟ್ ಡೆಮೊ ಆಗಿದೆ. ಅಧಿಕೃತ ತುರ್ತು ಸೇವೆಗಳಿಗೆ ಪರ್ಯಾಯವಲ್ಲ.",
+          item1: "ತುರ್ತು ಪರಿಸ್ಥಿತಿಗಳಿಗಾಗಿ ಕಮ್ಯೂನಿಟಿ ಹೀರೋ ಬಳಸಬೇಡಿ.",
+          item2: "ಅಪಾಯವಿದ್ದಾಗ ಸ್ಥಳೀಯ ತುರ್ತು ಸೇವೆಗಳನ್ನು ಸಂಪರ್ಕಿಸಿ.",
+          item3: "ತೋರಿಸಲಾದ ಅಂಕಿ-ಅಂಶಗಳು ವಿವರಣಾತ್ಮಕ ಉದ್ದೇಶಗಳಿಗಾಗಿ ಮಾತ್ರ."
+        },
+        liability: {
+          title: "ಜವಾಬ್ದಾರಿಯ ಮಿತಿ",
+          description: "ಯಾವುದೇ ಖಾತರಿ ಇಲ್ಲದೆ ಮೌಲ್ಯಮಾಪನಕ್ಕಾಗಿ ಈ ಯೋಜನೆಯನ್ನು ಒದಗಿಸಲಾಗಿದೆ."
+        }
+      }
+    },
+    contact: {
+      eyebrow: "ಸಂಪರ್ಕಿಸಿ",
+      title: "ಹೆಚ್ಚು ಸಕ್ರಿಯ ಸಮುದಾಯಗಳನ್ನು ನಿರ್ಮಿಸೋಣ",
+      description: "ನಾಗರಿಕರು ಮತ್ತು ಸ್ಥಳೀಯ ಅಧಿಕಾರಿಗಳು ಒಟ್ಟಾಗಿ ಹೇಗೆ ಕೆಲಸ ಮಾಡಬಹುದು ಎಂಬುದನ್ನು ಕಮ್ಯೂನಿಟಿ ಹೀರೋ ವಿವರಿಸುತ್ತದೆ.",
+      challenge: {
+        title: "Google Solution Challenge",
+        desc: "AI ತಂತ್ರಜ್ಞಾನದಿಂದ ನಾಗರಿಕರು ಮತ್ತು ಸರ್ಕಾರದ ನಡುವಿನ ಸಹಕಾರ ಹೇಗೆ ವೃದ್ಧಿಸಬಹುದು ಎಂದು ತೋರಿಸುತ್ತದೆ."
+      },
+      developer: {
+        title: "ಯೋಜನಾ ಡೆವಲಪರ್",
+        name: "ಶ್ರೇಷ್ಠಾ ಸ್ವಾಮಿ",
+        degree: "ಬಿ.ಟೆಕ್ ಕಂಪ್ಯೂಟರ್ ಸೈನ್ಸ್ & ಎಂಜಿನಿಯರಿಂಗ್ (ಡೇಟಾ ಸೈನ್ಸ್)",
+        institution: "SKIT ಜೈಪುರ",
+        focus: "AI • ಡೇಟಾ ಸೈನ್ಸ್ • ನಾಗರಿಕ ತಂತ್ರಜ್ಞಾನ"
+      },
+      links: {
+        title: "ಡೆವಲಪರ್ ಜೊತೆ ಸಂಪರ್ಕ ಸಾಧಿಸಿ",
+        github: "GitHub ಪ್ರೊಫೈಲ್",
+        linkedin: "LinkedIn ಪ್ರೊಫೈಲ್",
+        note: "ಸಹಕಾರ ಮತ್ತು ನಾಗರಿಕ ತಂತ್ರಜ್ಞಾನ ಚರ್ಚೆಗಳಿಗೆ ಮುಕ್ತವಾಗಿದೆ."
+      },
+      form: {
+        successTitle: "ಸಂದೇಶ ಸಿದ್ಧವಾಗಿದೆ",
+        successMessage: "ಈ ಫಾರಂ ಕೇವಲ ಪ್ರದರ್ಶನಕ್ಕಾಗಿದೆ. ಯಾವುದೇ ಮಾಹಿತಿಯನ್ನು ರವಾನಿಸುವುದಿಲ್ಲ.",
+        backText: "ಫಾರಂಗೆ ಮರಳಿ",
+        name: "ಹೆಸರು",
+        email: "ಇಮೇಲ್",
+        subject: "ವಿಷಯ",
+        message: "ಸಂದೇಶ",
+        placeholderName: "ಜಾನ್ ಡೋ",
+        placeholderEmail: "john@example.com",
+        placeholderSubject: "ನಾವು ಹೇಗೆ ಸಹಾಯ ಮಾಡಬಹುದು?",
+        placeholderMessage: "ಇನ್ನಷ್ಟು ವಿವರಗಳನ್ನು ತಿಳಿಸಿ...",
+        demoText: "ಕೇವಲ UI ಡೆಮೊ ಮಾತ್ರ—ಈ ಫಾರ್ಮ್ ಯಾವುದೇ ಮಾಹಿತಿಯನ್ನು ಸಂಗ್ರಹಿಸುವುದಿಲ್ಲ.",
+        submitButton: "ಸಂದೇಶ ಸಿದ್ಧಪಡಿಸಿ"
+      },
+      faq: {
+        eyebrow: "ತ್ವರಿತ ಉತ್ತರಗಳು",
+        title: "ಪದೇ ಪದೇ ಕೇಳಲಾಗುವ ಪ್ರಶ್ನೆಗಳು",
+        q1: "ಕಮ್ಯೂನಿಟಿ ಹೀರೋ ಅಧಿಕೃತ ಸರ್ಕಾರಿ ಸೇವೆಯೇ?",
+        a1: "ಅಲ್ಲ. ಕಮ್ಯೂನಿಟಿ ಹೀರೋ ಪ್ರಸ್ತುತ ಕೇವಲ ಗೂಗಲ್ ಸಲ್ಯೂಷನ್ ಚಾಲೆಂಜ್ ಯೋಜನೆಯಾಗಿದೆ."
+      }
+    },
+
     common: {
       loading: "ಲೋಡ್ ಆಗುತ್ತಿದೆ...",
       error: "ದೋಷ",
@@ -3986,6 +5337,28 @@ const kn = {
       },
     },
     footer: {
+      about: {
+        title: "ಕಮ್ಯೂನಿಟಿ ಹೀರೋ ಬಗ್ಗೆ",
+        desc: "ಕಮ್ಯೂನಿಟಿ ಹೀರೋ ಒಂದು AI-ಸಹಾಯಿತ ನಾಗರಿಕ ವರದಿ ಪ್ಲಾಟ್‌ಫಾರ್ಮ್ ಆಗಿದ್ದು, ಇದು ನಾಗರಿಕರು ಮತ್ತು ಸ್ಥಳೀಯ ಅಧಿಕಾರಿಗಳಿಗೆ ಪಾರದರ್ಶಕ ಸಮಸ್ಯೆ ವರದಿ, ಬಹುಭಾಷಾ ಪ್ರವೇಶಸಾಧ್ಯತೆ ಮತ್ತು ರಿಯಲ್-ಟೈಮ್ ಪ್ರಗತಿ ಟ್ರ್ಯಾಕಿಂಗ್ ಮೂಲಕ ಸಹಕರಿಸಲು ಅನುವು ಮಾಡಿಕೊಡುತ್ತದೆ.",
+      },
+      tech: {
+        title: "ತಂತ್ರಜ್ಞಾನ ಸ್ಟ್ಯಾಕ್",
+        items: {
+          nextjs: "Next.js 16",
+          react: "React + TypeScript",
+          firebase: "Firebase + Firestore",
+          ai: "Google AI Studio",
+          maps: "OpenStreetMap + Leaflet",
+          tailwind: "Tailwind CSS",
+        },
+      },
+      quick_links: { title: "ತ್ವರಿತ ಲಿಂಕ್‌ಗಳು" },
+      recognition: {
+        title: "ಮಾನ್ಯತೆ",
+        badge: "Google Solution Challenge 2026",
+        desc: "ಜವಾಬ್ದಾರಿಯುತ AI, ಬಹುಭಾಷಾ ಪ್ರವೇಶಸಾಧ್ಯತೆ ಮತ್ತು ಪಾರದರ್ಶಕ ನಾಗರಿಕ ವರ್ಕ್‌ಫ್ಲೋಗಳು ಸಮುದಾಯಗಳು ಮತ್ತು ಮ್ಯುನಿಸಿಪಾಲಿಟಿಗಳ ನಡುವಿನ ಸಹಕಾರವನ್ನು ಹೇಗೆ ಬಲಪಡಿಸಬಹುದು ಎಂಬುದನ್ನು ಪ್ರದರ್ಶಿಸಲು ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ.",
+      },
+      challenge_tag: "Google Solution Challenge ಗಾಗಿ ❤️ ನೊಂದಿಗೆ ನಿರ್ಮಿಸಲಾಗಿದೆ",
       privacy: "ಗೌಪ್ಯತೆ",
       terms: "ನಿಯಮಗಳು",
       contact: "ಸಂಪರ್ಕಿಸಿ",
@@ -4034,63 +5407,69 @@ const kn = {
         },
       },
       solution: {
-        eyebrow: "AI ಪರಿಹಾರ",
-        title: "ಒಂದು ನಾಗರಿಕ ವರದಿಯಿಂದ ಸಮುದಾಯ ಪರಿಹಾರದವರೆಗೆ",
-        description: "ಕಮ್ಯೂನಿಟಿ ಹೀರೋ ನಾಗರಿಕ ಜೀವನಕ್ಕಾಗಿ ಒಂದು AI ಆಪರೇಟಿಂಗ್ ಸಿಸ್ಟಮ್ ಆಗಿದೆ.",
+        eyebrow: "ವರದಿ ವರ್ಕ್‌ಫ್ಲೋ",
+        title: "ವರದಿಯಿಂದ ಪರಿಹಾರದವರೆಗೆ",
+        description: "ಕಮ್ಯೂನಿಟಿ ಹೀರೋ ಪ್ರತಿ ವರದಿಯನ್ನು AI-ಸಹಾಯಿತ ನಾಗರಿಕ ವರ್ಕ್‌ಫ್ಲೋ ಮೂಲಕ ಮಾರ್ಗದರ್ಶನ ನೀಡುತ್ತದೆ, ಇದು ನಿವಾಸಿಗಳು, ಸ್ಥಳೀಯ ಅಧಿಕಾರಿಗಳು ಮತ್ತು ಸಮುದಾಯಗಳು ಪಾರದರ್ಶಕ ಸಮಸ್ಯೆ ಪರಿಹಾರಕ್ಕಾಗಿ ಸಹಕರಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.",
         flow: {
           citizen: {
             label: "ನಾಗರಿಕ",
-            detail: "ಫೋಟೋ ತೆಗೆಯುತ್ತಾರೆ, ಧ್ವನಿ ಟಿಪ್ಪಣಿ ರೆಕಾರ್ಡ್ ಮಾಡುತ್ತಾರೆ ಅಥವಾ ನಕ್ಷೆಯನ್ನು ಟ್ಯಾಪ್ ಮಾಡುತ್ತಾರೆ",
+            detail: "ಫೋಟೋ ತೆಗೆಯುತ್ತಾರೆ, ಧ್ವನಿ ಟಿಪ್ಪಣಿ ರೆಕಾರ್ಡ್ ಮಾಡುತ್ತಾರೆ, ಅಥವಾ ನಕ್ಷೆ ಪಿನ್ ಟ್ಯಾಪ್ ಮಾಡುತ್ತಾರೆ",
           },
           agents: {
             label: "AI ಏಜೆಂಟ್‌ಗಳು",
-            detail: "ಆರು ವಿಶೇಷ ಏಜೆಂಟ್‌ಗಳು ವರದಿಯನ್ನು ವಿಶ್ಲೇಷಿಸಿ, ಪರಿಶೀಲಿಸಿ, ರೂಟ್ ಮಾಡುತ್ತಾರೆ",
+            detail: "ಆರು ವಿಶೇಷ ಏಜೆಂಟ್‌ಗಳು ವರದಿಯನ್ನು ವಿಶ್ಲೇಷಿಸಿ, ಪರಿಶೀಲಿಸಿ ಮತ್ತು ರೂಟ್ ಮಾಡುತ್ತಾರೆ",
           },
           authorities: {
             label: "ಅಧಿಕಾರಿಗಳು",
-            detail: "ವಾರ್ಡ್ ಎಂಜಿನಿಯರ್‌ಗಳು ಮತ್ತು ಇಲಾಖೆಗಳು ಆದ್ಯತೆ ನೀಡಿದ ಕೆಲಸದ ಆದೇಶಗಳನ್ನು ಪಡೆಯುತ್ತವೆ",
+            detail: "ವಾರ್ಡ್ ಎಂಜಿನಿಯರ್‌ಗಳು ಮತ್ತು ಇಲಾಖೆಗಳು ಆದ್ಯತೆಯ ಕೆಲಸದ ಆದೇಶಗಳನ್ನು ಸ್ವೀಕರಿಸುತ್ತವೆ",
           },
           community: {
             label: "ಸಮುದಾಯ",
-            detail: "ನೆರೆಹೊರೆಯವರು ಒಟ್ಟಾಗಿ ಪ್ರಗತಿಯನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡುತ್ತಾರೆ ಮತ್ತು ಪರಿಹಾರಗಳನ್ನು ಪರಿಶೀಲಿಸುತ್ತಾರೆ",
+            detail: "ನೆರೆಹೊರೆಯವರು ಪ್ರಗತಿಯನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡುತ್ತಾರೆ ಮತ್ತು ಒಟ್ಟಾಗಿ ಸರಿಪಡಿಸುವಿಕೆಯನ್ನು ಪರಿಶೀಲಿಸುತ್ತಾರೆ",
           },
           resolution: {
             label: "ಪರಿಹಾರ",
-            detail: "ಆಧಾರಗಳೊಂದಿಗೆ ಸಮಸ್ಯೆಗಳು ಮುಚ್ಚಲ್ಪಡುತ್ತವೆ—ಮತ್ತು ನಂಬಿಕೆಯು ಪ್ರತಿ ಬ್ಲಾಕ್‌ನಲ್ಲೂ ಮರುನಿರ್ಮಾಣಗೊಳ್ಳುತ್ತದೆ",
+            detail: "ಸಮಸ್ಯೆಗಳು ಪುರಾವೆಯೊಂದಿಗೆ ಮುಚ್ಚಲ್ಪಡುತ್ತವೆ—ಮತ್ತು ನಂಬಿಕೆ ಬ್ಲಾಕ್ ಬ್ಲಾಕ್‌ನಿಂದ ಪುನರ್ನಿರ್ಮಾಣಗೊಳ್ಳುತ್ತದೆ",
           },
         },
       },
       agents: {
         eyebrow: "AI ಏಜೆಂಟ್ ಪೈಪ್‌ಲೈನ್",
-        title: "ಆರು ಏಜೆಂಟ್‌ಗಳು. ಒಂದು ಸಂಘಟಿತ ಕಾರ್ಯಪ್ರವಾಹ.",
-        description: "ಕಲಿಶಿ ಅವರು ನಾಗರಿಕರ ಇನ್‌ಪುಟ್ ಅನ್ನು ಕಾರ್ಯಸಾಧ್ಯವಾದ ಬುದ್ಧಿಮತ್ತೆಯಾಗಿ ಪರಿವರ್ತಿಸುತ್ತಾರೆ.",
+        title: "ಆರು ಏಜೆಂಟ್‌ಗಳು. ಒಂದು ಸಂಘಟಿತ ಕೆಲಸದ ಹರಿವು.",
+        description: "ನಾಗರಿಕರ ಇನ್‌ಪುಟ್ ಅನ್ನು ರಚನಾತ್ಮಕ ನಾಗರಿಕ ಮಾಹಿತಿಯಾಗಿ ಪರಿವರ್ತಿಸುವಲ್ಲಿ ಪ್ರತಿಯೊಂದು ಸಾಮರ್ಥ್ಯವು ಕೇಂದ್ರಿತ ಪಾತ್ರವನ್ನು ಹೊಂದಿದೆ, ಮಾನವ-ಓದಬಲ್ಲ ವಿವರಣೆಗಳು ಮತ್ತು ಬುದ್ಧಿವಂತ ಸಹಾಯವನ್ನು ಹೊಂದಿದೆ.",
+        badges: { future_enhancement: "ಭವಿಷ್ಯದ ಸುಧಾರಣೆ" },
         list: {
-          vision: {
-            title: "ವಿಷನ್ ಏಜೆಂಟ್",
-            responsibility: "ಫೋಟೋಗಳು ಮತ್ತು ದೃಶ್ಯ ಪುರಾವೆಗಳನ್ನು ವಿಶ್ಲೇಷಿಸುತ್ತದೆ",
+          vision: { title: "ವಿಷನ್ ಏಜೆಂಟ್", responsibility: "ನಾಗರಿಕರ ವರದಿಗಳಿಂದ ಫೋಟೋಗಳು ಮತ್ತು ದೃಶ್ಯ ಸಾಕ್ಷ್ಯಗಳನ್ನು ವಿಶ್ಲೇಷಿಸುತ್ತದೆ." },
+          geo: { title: "ಜಿಯೋ ಏಜೆಂಟ್", responsibility: "ಸಮಸ್ಯೆಗಳನ್ನು ನಿಖರವಾದ ವಾರ್ಡ್ ಗಡಿಗಳು ಮತ್ತು ಹೆಗ್ಗುರುತುಗಳಿಗೆ ಮ್ಯಾಪ್ ಮಾಡುತ್ತದೆ." },
+          trust: { title: "ವ್ಯಾಲಿಡೇಶನ್ ಏಜೆಂಟ್", responsibility: "ವರದಿಯ ಸಂಪೂರ್ಣತೆಯನ್ನು ಪರಿಶೀಲಿಸುತ್ತದೆ ಮತ್ತು ಸಲ್ಲಿಸುವ ಮೊದಲು ನಕಲಿ ವರದಿಗಳನ್ನು ಗುರುತಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ." },
+          priority: { title: "ಪ್ರಯಾರಿಟಿ ಏಜೆಂಟ್", responsibility: "ತ್ವರಿತ ಪ್ರತಿಕ್ರಿಯೆಗಾಗಿ ತುರ್ತು ಮತ್ತು ಸಮುದಾಯದ ಪ್ರಭಾವವನ್ನು ಶ್ರೇಣೀಕರಿಸುತ್ತದೆ." },
+          prediction: { title: "ಭವಿಷ್ಯದ ಮುನ್ಸೂಚನೆ", responsibility: "ಐತಿಹಾಸಿಕ ಮುನ್ಸಿಪಲ್ ಮಾದರಿಗಳನ್ನು ಬಳಸಿ ಸಮಸ್ಯೆ ಹೆಚ್ಚಾಗುವ ಪ್ರವೃತ್ತಿಗಳನ್ನು ಮೌಲ್ಯಮಾಪನ ಮಾಡಲು ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ." },
+          copilot: { title: "ನಾಗರಿಕ ಸಹಾಯಕ", responsibility: "ಬಹುಭಾಷಾ ಸಹಾಯದ ಮೂಲಕ ನಾಗರಿಕರಿಗೆ ಮಾರ್ಗದರ್ಶನ ನೀಡುತ್ತದೆ, ನಿರ್ಧಾರಗಳನ್ನು ವಿವರಿಸುತ್ತದೆ ಮತ್ತು ಸಮಸ್ಯೆ ಟ್ರ್ಯಾಕಿಂಗ್ ಅನ್ನು ಬೆಂಬಲಿಸುತ್ತದೆ." },
+        },
+      },
+      credibility: {
+        title: "ಪಾರದರ್ಶಕ ನಾಗರಿಕ ಸಹಕಾರಕ್ಕಾಗಿ ನಿರ್ಮಿಸಲಾಗಿದೆ",
+        description: "ಕಮ್ಯೂನಿಟಿ ಹೀರೋ, AI-ಸಹಾಯಿತ ವರ್ಕ್‌ಫ್ಲೋಗಳು, ಬಹುಭಾಷಾ ಪ್ರವೇಶಸಾಧ್ಯತೆ ಮತ್ತು ಪಾರದರ್ಶಕ ವರದಿ ಹೇಗೆ ನಾಗರಿಕರು ಮತ್ತು ಸ್ಥಳೀಯ ಅಧಿಕಾರಿಗಳ ನಡುವಿನ ಸಹಕಾರವನ್ನು ಬಲಪಡಿಸಬಹುದು ಎಂಬುದನ್ನು ಪ್ರದರ್ಶಿಸುತ್ತದೆ.",
+        cards: {
+          ai: {
+            title: "AI-ಸಹಾಯ ವರದಿ",
+            desc: "ದೃಷ್ಟಿ, ಸ್ಥಳ ಮತ್ತು ಭಾಷಣ ವಿಶ್ಲೇಷಣೆಯೊಂದಿಗೆ ವರದಿಗಳನ್ನು ತಕ್ಷಣ ವರ್ಗೀಕರಿಸಿ, ಸಾರಾಂಶ ಮಾಡಿ ಮತ್ತು ಆದ್ಯತೆ ನೀಡುತ್ತದೆ.",
           },
-          geo: {
-            title: "ಜಿಯೋ ಏಜೆಂಟ್",
-            responsibility: "ವಾರ್ಟ್ ಗಡಿಗಳು ಮತ್ತು ಹೆಗ್ಗುರುತುಗಳಿಗೆ ಸಮಸ್ಯೆಗಳನ್ನು ಮ್ಯಾಪ್ ಮಾಡುತ್ತದೆ",
+          tracking: {
+            title: "ಪಾರದರ್ಶಕ ಟ್ರ್ಯಾಕಿಂಗ್",
+            desc: "ರಚನಾತ್ಮಕ ಪ್ರಗತಿ ಕಾಲಮಿತಿಗಳ ಮೂಲಕ ನಿವಾಸಿಗಳು ಮತ್ತು ಅಧಿಕಾರಿಗಳನ್ನು ನೈಜ ಸಮಯದಲ್ಲಿ ಅಪ್‌ಡೇಟ್ ಮಾಡುತ್ತದೆ.",
           },
-          trust: {
-            title: "ಟ್ರಸ್ಟ್ ಏಜೆಂಟ್",
-            responsibility: "ನಕಲಿ ಅಥವಾ ಸ್ಪ್ಯಾಮ್ ವರದಿಗಳನ್ನು ಫ್ಲ್ಯಾಗ್ ಮಾಡುತ್ತದೆ",
+          i18n: {
+            title: "ಬಹುಭಾಷಾ ಪ್ರವೇಶಸಾಧ್ಯತೆ",
+            desc: "ಏಕೀಕೃತ Speech-to-Text ಇನ್‌ಪುಟ್‌ಗಳೊಂದಿಗೆ ಇಂಟರ್‌ಫೇಸ್ ಅನ್ನು 8 ಪ್ರಾದೇಶಿಕ ಭಾಷೆಗಳಿಗೆ ಭಾಷಾಂತರಿಸುತ್ತದೆ.",
           },
-          priority: {
-            title: "ಪ್ರಯಾರಿಟಿ ಏಜೆಂಟ್",
-            responsibility: "ತುರ್ತು ಪರಿಸ್ถಿತಿ ಮತ್ತು ಸಾಮಾಜಿಕ ಪ್ರಭಾವವನ್ನು ಶ್ರೇಣೀಕರಿಸುತ್ತದೆ",
-          },
-          prediction: {
-            title: "ಮುನ್ಸೂಚನೆ ಏಜೆಂಟ್",
-            responsibility: "ವರದಿ ಪರಿಹಾರದ ಸಮಯದ ಚೌಕಟ್ಟನ್ನು ಮುನ್ಸೂಚಿಸುತ್ತದೆ",
-          },
-          copilot: {
-            title: "ಕಮ್ಯೂನಿಟಿ ಕೋಪೈಲಟ್",
-            responsibility: "ನಾಗರಿಕರಿಗೆ ಅವರದೇ ಭಾಷೆಯಲ್ಲಿ ಮಾರ್ಗದರ್ಶನ ನೀಡುತ್ತದೆ",
+          verification: {
+            title: "ಸಮುದಾಯ ಪರಿಶೀಲನೆ",
+            desc: "ಪರಿಶೀಲಿಸಿದ ಸ್ಥಳೀಯ ನಿರ್ದೇಶಾಂಕಗಳು ಮತ್ತು ಬಹು-ನೆರೆಹೊರೆ ದೃಢೀಕರಣಗಳ ಮೂಲಕ ಮ್ಯುನಿಸಿಪಲ್ ನಂಬಿಕೆ ನಿರ್ಮಿಸುತ್ತದೆ.",
           },
         },
       },
+
       live_tracking: {
         eyebrow: "ಲೈವ್ ಟ್ರ್ಯಾಕಿಂಗ್ ಪೂರ್ವವೀಕ್ಷಣೆ",
         title: "ಪ್ರತಿ ವರದಿ. ಪ್ರತಿ ಸ್ಥಿತಿ. ನೈಜ ಸಮಯದಲ್ಲಿ.",
@@ -4139,35 +5518,41 @@ const kn = {
         },
       },
       google: {
-        eyebrow: "ಗೂಗಲ್‌ನಲ್ಲಿ ನಿರ್ಮಿಸಲಾಗಿದೆ",
-        title: "ಸಮುದಾಯಗಳು ಈಗಾಗಲೇ ನಂಬುವ ವೇದಿಕೆಗಳಿಂದ ಚಾಲಿತವಾಗಿದೆ",
-        description: "ಕಮ್ಯೂನಿಟಿ ಹೀರೋ ಗೂಗಲ್ ತಂತ್ರಜ್ಞಾನಗಳನ್ನು ಆರಂಭದಿಂದ ಕೊನೆಯವರೆಗೆ ಸಂಯೋಜಿಸುತ್ತದೆ.",
+        eyebrow: "ತಂತ್ರಜ್ಞಾನ ಸ್ಟ್ಯಾಕ್",
+        title: "AI ಮತ್ತು ಮುಕ್ತ ಮಾನದಂಡಗಳಿಂದ ಚಾಲಿತ ಆಧುನಿಕ ತಂತ್ರಜ್ಞಾನ ಸ್ಟ್ಯಾಕ್",
+        description: "ಕಮ್ಯೂನಿಟಿ ಹೀರೋ ಸುರಕ್ಷಿತ, ಬಹುಭಾಷಾ, AI-ಸಹಾಯಿತ ನಾಗರಿಕ ವರದಿಯನ್ನು ಒದಗಿಸಲು Google AI, Firebase ಮೂಲಸೌಕರ್ಯ ಮತ್ತು ಮುಕ್ತ-ಮೂಲ ತಂತ್ರಜ್ಞಾನಗಳನ್ನು ಸಂಯೋಜಿಸುತ್ತದೆ.",
         technologies: {
           "ai-studio": {
-            title: "ಗೂಗಲ್ AI ಸ್ಟುಡಿಯೋ",
-            description: "ಜೆಮಿನಿ ಪ್ರತಿ ಏಜೆಂಟ್ ನಿರ್ಧಾರವನ್ನು ನಡೆಸುತ್ತದೆ.",
+            category: "AI ಪ್ಲಾಟ್‌ಫಾರ್ಮ್",
+            title: "Google AI Studio",
+            description: "ಜೆಮಿನಿ ಇಡೀ ಪ್ಲಾಟ್‌ಫಾರ್ಮ್‌ನಲ್ಲಿ AI-ಸಹಾಯಿತ ದೃಷ್ಟಿ ವಿಶ್ಲೇಷಣೆ, ಬಹುಭಾಷಾ ತಿಳುವಳಿಕೆ, ಸ್ಮಾರ್ಟ್ ಸಾರಾಂಶ ಮತ್ತು ಸಮುದಾಯ ಸಹಾಯವನ್ನು ಒದಗಿಸುತ್ತದೆ."
           },
           firebase: {
-            title: "ಫೈರ್‌ಬೇಸ್",
-            description: "ಪರಿಶೀಲನೆ, ನೈಜ-ಸಮಯದ ಡೇಟಾ ಸಿಂಕ್ ಮತ್ತು ಸುರಕ್ಷಿತ ಸಂಗ್ರಹಣೆ.",
+            category: "ಬ್ಯಾಕೆಂಡ್",
+            title: "Firebase",
+            description: "Firebase ದೃಢೀಕರಣ, Firestore ಡೇಟಾಬೇಸ್, ಸುರಕ್ಷಿತ ಸಂಗ್ರಹಣೆ ಮತ್ತು ರಿಯಲ್-ಟೈಮ್ ಸಿಂಕ್ರೊನೈಸೇಶನ್ ಅಪ್ಲಿಕೇಶನ್ ಬ್ಯಾಕೆಂಡ್ ಅನ್ನು ಚಾಲನೆ ಮಾಡುತ್ತದೆ."
           },
           maps: {
-            title: "ಗೂಗಲ್ ಮ್ಯಾಪ್ಸ್",
-            description: "ನಿಖರವಾದ ಜಿಯೋಲೋಕಲೈಸೇಶನ್, ವಾರ್ಡ್ ಮ್ಯಾಪಿಂಗ್ ಮತ್ತು ಲೈವ್ ಸಮಸ್ಯೆ ಪಿನ್‌ಗಳು.",
+            category: "ಇಂಟರಾಕ್ಟಿವ್ ನಕ್ಷೆಗಳು",
+            title: "OpenStreetMap + Leaflet",
+            description: "ಇಂಟರಾಕ್ಟಿವ್ ಓಪನ್-ಸೋರ್ಸ್ ನಕ್ಷೆಗಳು ಸಮಸ್ಯೆಗಳ ಸ್ಥಳ, ವಾರ್ಡ್ ಗಡಿಗಳು ಮತ್ತು ಲೈವ್ ಭೌಗೋಳಿಕ ದೃಶ್ಯೀಕರಣವನ್ನು ನೀಡುತ್ತವೆ."
           },
           speech: {
-            title: "ಸ್ಪೀಚ್ API",
-            description: "ಧ್ವನಿ-ಇಂದ-ಪಠ್ಯ ಮತ್ತು ಪಠ್ಯ-ಇಂದ-ಧ್ವನಿ.",
+            category: "ಬ್ರೌಸರ್ API",
+            title: "Web Speech API",
+            description: "ಬ್ರೌಸರ್-ಸ್ಥಳೀಯ ಸ್ಪೀಚ್-ಟು-ಟೆಕ್ಸ್ಟ್ ಮತ್ತು ಟೆಕ್ಸ್ಟ್-ಟು-ಸ್ಪೀಚ್ ಧ್ವನಿ ಆಧಾರಿತ ವರದಿ ಮತ್ತು ಪ್ರವೇಶವನ್ನು ಸಕ್ರಿಯಗೊಳಿಸುತ್ತದೆ."
           },
           translate: {
-            title: "ಗೂಗಲ್ ಅನುವಾದ",
-            description: "ಬಹುವಿಧ ಭಾಷಾ ಬೆಂಬಲ ಭಾಷೆಯ ಕಾರಣದಿಂದಾಗಿ ಯಾರೂ ಹೊರಗುಳಿಯದಂತೆ ನೋಡಿಕೊಳ್ಳುತ್ತದೆ.",
+            category: "ಬಹುಭಾಷಾ",
+            title: "AI ಆಧಾರಿತ ಬಹುಭಾಷಾ ಅನುವಾದ",
+            description: "ಜೆಮಿನಿ-ಚಾಲಿತ ಬಹುಭಾಷಾ ಅನುವಾದವು ನಾಗರಿಕರು ತಮ್ಮ ಆದ್ಯತೆಯ ಭಾಷೆಯಲ್ಲಿ ಕಮ್ಯೂನಿಟಿ ಹೀರೋನೊಂದಿಗೆ ಸಂವಹನ ನಡೆಸಲು ಅನುವು ಮಾಡಿಕೊಡುತ್ತದೆ."
           },
           analytics: {
-            title: "ಗೂಗಲ್ ಅನಾಲಿಟಿಕ್ಸ್",
-            description: "ಬಳಕೆ ಮತ್ತು ಪ್ರಭಾವದ ಮೆಟ್ರಿಕ್‌ಗಳು.",
-          },
-        },
+            category: "ದೃಶ್ಯೀಕರಣ",
+            title: "ಸಮುದಾಯ ಅನಾಲಿಟಿಕ್ಸ್ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+            description: "ಇಂಟರಾಕ್ಟಿವ್ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ಗಳು ಸಮಸ್ಯೆ ಅಂಕಿಅಂಶಗಳು, ವರ್ಗ ಪ್ರವೃತ್ತಿಗಳು, ಪ್ರತಿಕ್ರಿಯೆ ಟೈಮ್‌ಲೈನ್‌ಗಳು, AI ಒಳನೋಟಗಳು ಮತ್ತು ಸಮುದಾಯ ಆರೋಗ್ಯ ಸೂಚಕಗಳನ್ನು ಪ್ರದರ್ಶಿಸುತ್ತವೆ."
+          }
+        }
       },
       impact: {
         eyebrow: "ಸಮುದಾಯ ಪ್ರಭಾವ",
@@ -4338,6 +5723,13 @@ const kn = {
         description: "ಇತ್ತೀಚಿನ ನವೀಕರಣಗಳು ಕಾಲಾನುಕ್ರಮದ ಕ್ರಮದಲ್ಲಿ ತೋರಿಸಲಾಗಿದೆ.",
       },
       status: {
+        submitted: "ನಾಗರಿಕರಿಂದ ವರದಿ ಸಲ್ಲಿಕೆಯಾಗಿದೆ.",
+        assigned: "ಸಂಬಂಧಿತ ಮ್ಯುನಿಸಿಪಲ್ ಇಲಾಖೆಗೆ ನಿಯೋಜಿಸಲಾಗಿದೆ.",
+        inspectionStarted: "ಪರಿಶೀಲನೆ ಪೂರ್ಣಗೊಂಡಿದೆ, ಕೆಲಸ ಪ್ರಾರಂಭವಾಗಿದೆ.",
+        inProgress: "ಕೆಲಸ ಪ್ರಗತಿಯಲ್ಲಿದೆ",
+        verified: "AI ಪರಿಶೀಲನೆ ಪೂರ್ಣಗೊಂಡಿದೆ",
+        resolved: "ಸಮಸ್ಯೆ ಬಗೆಹರಿದಿದೆ",
+        closed: "ವರದಿ ಮುಚ್ಚಲಾಗಿದೆ",
         Pending: "ಬಾಕಿ ಇದೆ",
         Verified: "ಪರಿಶೀಲಿಸಲಾಗಿದೆ",
         Assigned: "ನಿಯೋಜಿಸಲಾಗಿದೆ",

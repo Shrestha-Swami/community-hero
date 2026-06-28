@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import type { Report } from "@/features/report/types";
+import { getTimelineStatusKey } from "@/features/tracking/utils";
+import { formatDepartmentName } from "@/lib/utils";
 
 interface MarkerPopupProps {
   report: Report;
@@ -36,7 +38,7 @@ export function MarkerPopup({ report }: MarkerPopupProps) {
     : "—";
 
   const department = aiAnalysis?.department 
-    ? (t("departments." + aiAnalysis.department) || aiAnalysis.department)
+    ? formatDepartmentName(t("departments." + aiAnalysis.department) || aiAnalysis.department)
     : t("reportDetail.notAssigned");
   const aiSeverity = aiAnalysis?.severity 
     ? (t("severity." + aiAnalysis.severity) || aiAnalysis.severity)
@@ -63,7 +65,7 @@ export function MarkerPopup({ report }: MarkerPopupProps) {
           {t("categories." + category) || category}
         </span>
         <span className={`px-2 py-0.5 rounded-full text-xs font-semibold shrink-0 ${statusClass}`}>
-          {t(`tracking.status.${status}`) || status}
+          {t(`tracking.status.${getTimelineStatusKey(status)}`, { defaultValue: status })}
         </span>
       </div>
 

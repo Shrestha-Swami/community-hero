@@ -21,8 +21,8 @@ export function AiSolutionSection() {
     <SectionShell
       id={AI_SOLUTION.id}
       ariaLabelledby={headingId}
-      variant="gradient"
-    >
+      
+     variant="default">
       <SectionContainer ref={ref}>
         <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
           <SectionHeading

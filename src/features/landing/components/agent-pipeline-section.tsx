@@ -8,7 +8,6 @@ import { useInViewAnimation, useReducedMotionPreference } from "@/features/landi
 import { staggerContainer } from "@/features/landing/utils"
 
 import {
-  AgentPipelineConnector,
   AgentPipelineItem,
 } from "./agent-pipeline-item"
 import { SectionContainer, SectionShell } from "./section-shell"
@@ -24,9 +23,9 @@ export function AgentPipelineSection() {
     <SectionShell
       id={AGENT_PIPELINE.id}
       ariaLabelledby={headingId}
-      variant="default"
+      variant="emerald"
     >
-      <SectionContainer ref={ref}>
+      <SectionContainer ref={ref} className="pt-8 md:pt-10 lg:pt-12">
         <SectionHeading
           id={headingId}
           eyebrow={t("landing.agents.eyebrow")}
@@ -37,10 +36,8 @@ export function AgentPipelineSection() {
         />
 
         <div className="relative">
-          <AgentPipelineConnector />
-
           <motion.ul
-            className="flex gap-6 overflow-x-auto pb-4 lg:grid lg:grid-cols-6 lg:gap-4 lg:overflow-visible lg:pb-0"
+            className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6"
             initial={prefersReducedMotion ? undefined : "hidden"}
             animate={isInView || prefersReducedMotion ? "visible" : "hidden"}
             variants={staggerContainer}
@@ -53,6 +50,7 @@ export function AgentPipelineSection() {
                 title={t(`landing.agents.list.${agent.id}.title`)}
                 responsibility={t(`landing.agents.list.${agent.id}.responsibility`)}
                 index={index}
+                badge={"badge" in agent ? t("landing.agents.badges.future_enhancement", "Future Enhancement") : undefined}
               />
             ))}
           </motion.ul>

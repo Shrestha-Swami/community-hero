@@ -1,51 +1,130 @@
 "use client"
 
 import Link from "next/link"
+import { Sparkles } from "lucide-react"
 import { useTranslation } from "react-i18next"
+
 import { FOOTER_LINKS, SITE } from "@/constants"
 
 export function Footer() {
   const year = new Date().getFullYear()
   const { t } = useTranslation()
 
+  const techItems = [
+    { id: "nextjs", label: t("footer.tech.items.nextjs", "Next.js 16") },
+    { id: "react", label: t("footer.tech.items.react", "React + TypeScript") },
+    { id: "firebase", label: t("footer.tech.items.firebase", "Firebase + Firestore") },
+    { id: "ai", label: t("footer.tech.items.ai", "Google AI Studio") },
+    { id: "maps", label: t("footer.tech.items.maps", "OpenStreetMap + Leaflet") },
+    { id: "tailwind", label: t("footer.tech.items.tailwind", "Tailwind CSS") },
+  ]
+
   const getTranslationKey = (label: string) => {
     switch (label) {
-      case "Privacy": return "footer.privacy"
-      case "Terms": return "footer.terms"
-      case "Contact": return "footer.contact"
-      default: return ""
+      case "Privacy":
+        return "footer.privacy"
+      case "Terms":
+        return "footer.terms"
+      case "Contact":
+        return "footer.contact"
+      default:
+        return ""
     }
   }
 
   return (
-    <footer className="mt-auto border-t border-border/60 bg-muted/30">
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-10 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-          <div className="space-y-2">
-            <p className="text-base font-semibold text-foreground">{SITE.name}</p>
-            <p className="max-w-sm text-sm text-muted-foreground">{SITE.tagline}</p>
+    <footer className="mt-auto border-t border-slate-200 bg-gradient-to-b from-white via-slate-50 to-slate-100">
+      <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+
+          {/* About */}
+          <div>
+            <div className="flex items-center gap-2">
+              <Sparkles className="h-5 w-5 text-emerald-600" />
+              <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-900">
+                {t("footer.about.title", "About Community Hero")}
+              </h3>
+            </div>
+
+            <p className="mt-4 text-sm leading-7 text-slate-600">
+              {t("footer.about.desc", "Community Hero is an AI-assisted civic reporting platform that empowers citizens and local authorities to collaborate through transparent issue reporting, multilingual accessibility, and real-time progress tracking.")}
+            </p>
           </div>
 
-          <ul className="flex flex-wrap gap-x-6 gap-y-2">
-            {FOOTER_LINKS.map((link) => {
-              const translationKey = getTranslationKey(link.label)
-              return (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 rounded-sm"
-                  >
-                    {translationKey ? t(translationKey) : link.label}
-                  </Link>
+          {/* Tech Stack */}
+          <div>
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-slate-900">
+              {t("footer.tech.title", "Technology Stack")}
+            </h3>
+
+            <ul className="space-y-2 text-sm text-slate-600">
+              {techItems.map((tech) => (
+                <li
+                  key={tech.id}
+                  className="block transition-all duration-200 hover:translate-x-1 hover:text-emerald-600"
+                >
+                  {tech.label}
                 </li>
-              )
-            })}
-          </ul>
+              ))}
+            </ul>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-slate-900">
+              {t("footer.quick_links.title", "Quick Links")}
+            </h3>
+
+            <ul className="space-y-3">
+              {FOOTER_LINKS.map((link) => {
+                const translationKey = getTranslationKey(link.label)
+
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="inline-block text-sm text-slate-600 transition-all duration-200 hover:translate-x-1 hover:text-emerald-600"
+                    >
+                      {translationKey ? t(translationKey) : link.label}
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+
+          {/* Recognition */}
+          <div>
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-slate-900">
+              {t("footer.recognition.title", "Recognition")}
+            </h3>
+
+            <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-4">
+              <span className="inline-flex rounded-full bg-emerald-600 px-3 py-1 text-xs font-semibold text-white">
+                {t("footer.recognition.badge", "Google Solution Challenge 2026")}
+              </span>
+
+              <p className="mt-4 text-sm leading-7 text-slate-600">
+                {t("footer.recognition.desc", "Designed to demonstrate how responsible AI, multilingual accessibility, and transparent civic workflows can strengthen collaboration between communities and municipalities.")}
+              </p>
+            </div>
+          </div>
+
         </div>
 
-        <p className="text-xs text-muted-foreground">
-          {t("footer.copyright", { year })}
-        </p>
+        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-slate-200 pt-6 sm:flex-row">
+
+          <p className="text-sm text-slate-500">
+            {t("footer.copyright", { year })}
+          </p>
+
+          <span className="rounded-full bg-slate-200 px-4 py-1 text-xs font-medium text-slate-700">
+            {t("footer.challenge_tag", "Built with ❤️ for Google Solution Challenge")}
+          </span>
+
+        </div>
+
       </div>
     </footer>
   )

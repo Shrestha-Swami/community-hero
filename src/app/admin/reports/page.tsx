@@ -14,7 +14,8 @@ import {
 import { subscribeToAllReports } from "@/features/admin/services/admin.service";
 import { StatusBadge } from "@/features/tracking";
 import type { Report } from "@/features/report/types";
-import { cn } from "@/lib/utils";
+import { getTimelineStatusKey } from "@/features/tracking/utils";
+import { cn, formatDepartmentName } from "@/lib/utils";
 
 const DEPARTMENTS = [
   "All",
@@ -214,7 +215,7 @@ export default function AdminReportsPage() {
           className={selectCls}
         >
           {STATUSES.map((s) => (
-            <option key={s} value={s}>{s === "All" ? t("admin.reports.allStatuses", { defaultValue: "All Statuses" }) : t("tracking.status." + s, { defaultValue: s })}</option>
+            <option key={s} value={s}>{s === "All" ? t("admin.reports.allStatuses", { defaultValue: "All Statuses" }) : t("tracking.status." + getTimelineStatusKey(s), { defaultValue: s })}</option>
           ))}
         </select>
 
@@ -234,7 +235,7 @@ export default function AdminReportsPage() {
           className={selectCls}
         >
           {DEPARTMENTS.map((d) => (
-            <option key={d} value={d}>{d === "All" ? t("admin.reports.allDepartments", { defaultValue: "All Departments" }) : t("departments." + d, { defaultValue: d })}</option>
+            <option key={d} value={d}>{d === "All" ? t("admin.reports.allDepartments", { defaultValue: "All Departments" }) : formatDepartmentName(t("departments." + d, { defaultValue: d }))}</option>
           ))}
         </select>
 
@@ -274,7 +275,7 @@ export default function AdminReportsPage() {
           ))}
         </div>
       ) : paged.length === 0 ? (
-        <div className="flex flex-col items-center justify-center py-16 rounded-3xl border border-dashed border-border bg-muted/20 text-center">
+        <div className="flex flex-col items-center justify-center py-16 md:py-20 lg:py-24 rounded-3xl border border-dashed border-border bg-muted/20 text-center">
           <p className="text-lg font-semibold text-foreground">
             {t("admin.reports.empty", { defaultValue: "No reports found" })}
           </p>
@@ -327,7 +328,7 @@ export default function AdminReportsPage() {
                       </td>
                       <td className="px-4 py-3 whitespace-nowrap text-xs text-muted-foreground">
                         {report.aiAnalysis?.department
-                          ? t("departments." + report.aiAnalysis.department, { defaultValue: report.aiAnalysis.department })
+                          ? formatDepartmentName(t("departments." + report.aiAnalysis.department, { defaultValue: report.aiAnalysis.department }))
                           : "—"}
                       </td>
                       <td className={cn("px-4 py-3 text-center text-xs", priorColor)}>
@@ -367,7 +368,7 @@ export default function AdminReportsPage() {
             {paged.map((report) => (
               <div
                 key={report.id}
-                className="rounded-2xl border border-border bg-card p-4 shadow-xs space-y-3"
+                className="p-4 space-y-3 rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
@@ -382,7 +383,7 @@ export default function AdminReportsPage() {
                   <span>
                     Dept:{" "}
                     {report.aiAnalysis?.department
-                      ? t("departments." + report.aiAnalysis.department, { defaultValue: report.aiAnalysis.department })
+                      ? formatDepartmentName(t("departments." + report.aiAnalysis.department, { defaultValue: report.aiAnalysis.department }))
                       : "—"}
                   </span>
                   {report.aiAnalysis?.priorityScore !== undefined && (

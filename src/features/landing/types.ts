@@ -21,7 +21,7 @@ export type SectionShellProps = {
   ariaLabelledby?: string
   children: ReactNode
   className?: string
-  variant?: "default" | "soft" | "gradient"
+  variant?: "default" | "soft" | "gradient" | "emerald" | "indigo" | "teal"
 }
 
 export type SectionHeadingProps = {
@@ -54,6 +54,7 @@ export type AgentPipelineItemProps = {
   responsibility: string
   index: number
   isLast: boolean
+  badge?: string
 }
 
 export type ScoreCardProps = {
@@ -66,6 +67,8 @@ export type ScoreCardProps = {
 export type TechCardProps = {
   icon: LucideIcon
   title: string
+  category: string
+  categoryLabel: string
   description: string
   index?: number
 }

@@ -16,7 +16,7 @@ export function HeroCtaGroup({ primary, secondary, className }: HeroCtaGroupProp
       <Button
         asChild
         size="lg"
-        className="h-12 rounded-full px-6 text-base shadow-[0_4px_24px_rgba(15,23,42,0.12)]"
+        className="h-12 rounded-2xl px-6 text-base shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
       >
         <Link href={primary.href}>
           {primary.label}
@@ -28,7 +28,7 @@ export function HeroCtaGroup({ primary, secondary, className }: HeroCtaGroupProp
         asChild
         variant="outline"
         size="lg"
-        className="h-12 rounded-full border-white/80 bg-white/40 px-6 text-base backdrop-blur-md hover:bg-white/70"
+        className="h-12 px-6 text-base rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
       >
         <Link href={secondary.href}>
           <Map className="size-4" />

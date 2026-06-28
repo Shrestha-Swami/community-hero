@@ -18,7 +18,7 @@ const LiveMap = dynamic(
       // Inline use of hook would fail here, but translation dictionary is loaded, we can use a basic translation or text.
       // Better to return a simple loading indicator that is translated inside the page component, but for the loader:
       return (
-        <div className="h-[400px] sm:h-[550px] w-full rounded-[2rem] bg-muted/20 animate-pulse flex items-center justify-center border border-border">
+        <div className="flex h-[400px] w-full animate-pulse items-center justify-center sm:h-[550px] rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
           <p className="text-muted-foreground text-sm font-medium">Loading interactive map…</p>
         </div>
       );
@@ -41,7 +41,8 @@ export default function MapPage() {
   } = useLiveMap();
 
   return (
-    <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8 w-full">
+    <main className="w-full bg-gradient-to-b from-white via-indigo-50/20 to-slate-50">
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-16 md:py-20 lg:py-24 lg:px-8">
       <SectionTitle
         title={t("liveMap.title")}
         subtitle={t("liveMap.subtitle")}
@@ -65,7 +66,7 @@ export default function MapPage() {
         ) : (
           <div className="mt-6 space-y-6">
             {/* Filter and Legend Row */}
-            <div className="flex flex-col md:flex-row gap-4 items-start md:items-center md:justify-between">
+            <div className="surface-card flex flex-col items-start gap-4 p-4 md:flex-row md:items-center md:justify-between">
               <MapFilters
                 selectedCategory={selectedCategory}
                 selectedStatus={selectedStatus}
@@ -77,11 +78,11 @@ export default function MapPage() {
 
             {/* Map Container */}
             {loading ? (
-              <div className="h-[400px] sm:h-[550px] w-full rounded-[2rem] bg-muted/20 animate-pulse flex items-center justify-center border border-border">
+              <div className="flex h-[400px] w-full animate-pulse items-center justify-center sm:h-[550px] rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                 <p className="text-muted-foreground text-sm font-medium">{t("liveMap.connecting")}</p>
               </div>
             ) : filteredReports.length === 0 ? (
-              <div className="h-[400px] sm:h-[550px] w-full rounded-[2rem] border border-dashed border-muted bg-slate-950/5 dark:bg-white/5 p-6 flex items-center justify-center text-center">
+              <div className="flex h-[400px] w-full items-center justify-center p-6 text-center sm:h-[550px] rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                 <div className="max-w-md space-y-3">
                   <p className="text-lg font-semibold text-foreground">{t("liveMap.empty.title")}</p>
                   <p className="text-sm text-muted-foreground leading-relaxed">
@@ -94,6 +95,7 @@ export default function MapPage() {
             )}
           </div>
         )}
+      </div>
       </div>
     </main>
   );

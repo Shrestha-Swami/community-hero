@@ -17,12 +17,12 @@ export function SectionTitle({
       )}
     >
       {subtitle ? (
-        <p className="text-sm font-medium uppercase tracking-wider text-primary">
+        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-700">
           {subtitle}
         </p>
       ) : null}
 
-      <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+      <h1 className="text-5xl lg:text-6xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
         {title}
       </h1>
 

@@ -25,7 +25,7 @@ export function ScoreCard({ label, score, trend, index = 0 }: ScoreCardProps) {
 
   return (
     <motion.div variants={fadeInUp} transition={{ delay: index * 0.06 }}>
-      <GlassPanel className="flex flex-col items-center p-6 text-center sm:p-8">
+      <GlassPanel className="flex h-full flex-col items-center rounded-3xl border-slate-200 p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-8">
         <div className="relative mb-4 size-24">
           <svg
             className="size-full -rotate-90"

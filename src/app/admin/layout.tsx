@@ -7,10 +7,12 @@ import { AdminGuard } from "@/features/auth/guards/admin-guard";
 import { AuthGuard } from "@/components/auth/AuthGuard";
 import { LayoutDashboard, FileText, Users, BarChart3 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { motion, useReducedMotion } from "framer-motion";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const { t } = useTranslation();
+  const prefersReducedMotion = useReducedMotion();
 
   const links = [
     { href: "/admin", label: t("admin.menu.dashboard", { defaultValue: "Dashboard" }), icon: LayoutDashboard, exact: true },
@@ -27,7 +29,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             {/* Sub Nav / Admin Header */}
             <div className="mb-8 flex flex-col gap-4 border-b border-border/60 pb-5 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
                   {t("admin.title", { defaultValue: "Municipal Authority Panel" })}
                 </h1>
                 <p className="text-sm text-muted-foreground">
@@ -61,7 +63,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               </nav>
             </div>
 
-            {children}
+            <motion.div
+              key={pathname}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.45 }}
+            >
+              {children}
+            </motion.div>
           </div>
         </div>
       </AdminGuard>

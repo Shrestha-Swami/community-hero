@@ -22,8 +22,8 @@ export function CommunityImpactSection() {
     <SectionShell
       id={COMMUNITY_IMPACT.id}
       ariaLabelledby={headingId}
-      variant="soft"
-    >
+      
+     variant="indigo">
       <SectionContainer ref={ref}>
         <SectionHeading
           id={headingId}
@@ -34,7 +34,7 @@ export function CommunityImpactSection() {
           className="mx-auto"
         />
 
-        <p className="mb-10 text-center text-xs font-medium uppercase tracking-wider text-amber-600">
+        <p className="mx-auto mb-8 w-fit rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-center text-xs font-semibold text-amber-700">
           {t("landing.impact.demoLabel")}
         </p>
 

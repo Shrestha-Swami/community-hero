@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
     }
 
     const ai = getGeminiClient();
-    
+
     // Map of language code to full language name for Gemini context clarity
     const langMap: Record<string, string> = {
       en: "English",

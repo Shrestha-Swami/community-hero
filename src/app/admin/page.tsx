@@ -126,7 +126,7 @@ export default function AdminDashboard() {
         {Array.from({ length: 8 }).map((_, i) => (
           <div
             key={i}
-            className="animate-pulse rounded-3xl border border-border bg-card p-6 shadow-sm"
+            className="animate-pulse p-6 rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
           >
             <div className="h-4 w-24 rounded bg-muted" />
             <div className="mt-4 h-8 w-16 rounded bg-muted" />
@@ -147,7 +147,7 @@ export default function AdminDashboard() {
           return (
             <div
               key={i}
-              className={`rounded-3xl border bg-card p-6 shadow-xs transition-all hover:shadow-md ${card.color}`}
+              className={`p-6 ${card.color} rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl`}
             >
               <div className="flex items-center justify-between">
                 <span className="text-sm font-semibold text-muted-foreground">
@@ -155,7 +155,7 @@ export default function AdminDashboard() {
                 </span>
                 <Icon className="h-5 w-5" />
               </div>
-              <p className="mt-4 text-3xl font-bold tracking-tight text-foreground">
+              <p className="mt-4 text-3xl lg:text-4xl font-bold tracking-tight text-foreground">
                 {card.value}
               </p>
             </div>
@@ -166,7 +166,7 @@ export default function AdminDashboard() {
       {/* Main Content Area */}
       <div className="grid gap-6 grid-cols-1 lg:grid-cols-3">
         {/* Recent Reports List */}
-        <div className="lg:col-span-2 rounded-3xl border border-border bg-card p-6 shadow-xs">
+        <div className="lg:col-span-2 p-6 rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
           <div className="mb-6 flex items-center justify-between">
             <h2 className="text-lg font-bold text-foreground">
               {t("admin.dashboard.recentTitle", { defaultValue: "Recent Activity" })}
@@ -212,7 +212,7 @@ export default function AdminDashboard() {
         </div>
 
         {/* Info / Quick Links Panel */}
-        <div className="rounded-3xl border border-border bg-card p-6 shadow-xs space-y-6">
+        <div className="p-6 space-y-6 rounded-3xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
           <h2 className="text-lg font-bold text-foreground">
             {t("admin.dashboard.quickActions", { defaultValue: "Quick Links" })}
           </h2>
