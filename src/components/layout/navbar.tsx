@@ -14,6 +14,8 @@ import { AuthControls } from "@/features/auth/components/auth-controls"
 import { useAuth } from "@/features/auth/hooks/use-auth"
 import { db } from "@/firebase"
 
+import Image from "next/image";
+
 function LanguageSelector() {
   const { i18n } = useTranslation()
   const { user } = useAuth()
@@ -77,9 +79,16 @@ export function Navbar() {
       >
         <Link
           href="/"
-          className="text-lg font-semibold tracking-tight text-foreground transition-colors hover:text-foreground/80"
+          className="flex items-center transition-transform duration-300 hover:scale-[1.02]"
         >
-          {SITE.name}
+          <Image
+            src="/logo.png"
+            alt="Community Hero"
+            width={320}
+            height={90}
+            priority
+            className="h-18 w-auto md:h-11 lg:h-12"
+          />
         </Link>
 
         <ul className="hidden items-center gap-1 md:flex">

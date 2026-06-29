@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image";
 import Link from "next/link"
 import { Sparkles } from "lucide-react"
 import { useTranslation } from "react-i18next"
@@ -40,11 +41,14 @@ export function Footer() {
 
           {/* About */}
           <div>
-            <div className="flex items-center gap-2">
-              <Sparkles className="h-5 w-5 text-emerald-600" />
-              <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-900">
-                {t("footer.about.title", "About Community Hero")}
-              </h3>
+            <div className="flex items-center">
+              <Image
+                src="/logo.png"
+                alt="Community Hero"
+                width={320}
+                height={90}
+                className="h-20 w-auto"
+              />
             </div>
 
             <p className="mt-4 text-sm leading-7 text-slate-600">
@@ -108,6 +112,25 @@ export function Footer() {
               <p className="mt-4 text-sm leading-7 text-slate-600">
                 {t("footer.recognition.desc", "Designed to demonstrate how responsible AI, multilingual accessibility, and transparent civic workflows can strengthen collaboration between communities and municipalities.")}
               </p>
+
+              <div className="mt-5 border-t border-emerald-200 pt-4">
+                <p className="text-xs uppercase tracking-[0.25em] text-slate-500">
+                  Created By
+                </p>
+
+                <p className="mt-2 font-semibold text-slate-900">
+                  Shrestha Swami
+                </p>
+
+                <a
+                  href="https://www.linkedin.com/in/shrestha-swami/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-flex text-sm font-medium text-emerald-600 transition-colors hover:text-emerald-700"
+                >
+                  LinkedIn →
+                </a>
+              </div>
             </div>
           </div>
 
