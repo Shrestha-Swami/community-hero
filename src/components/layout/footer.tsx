@@ -143,7 +143,7 @@ export function Footer() {
           </p>
 
           <span className="rounded-full bg-slate-200 px-4 py-1 text-xs font-medium text-slate-700">
-            {t("footer.challenge_tag", "Built with ❤️ for Vibe2Ship CodingNinjas X Google for Developers Challenge 2026")}
+            {t("footer.challenge_tag", "Built with ❤️ for Google Solution Challenge")}
           </span>
 
         </div>
