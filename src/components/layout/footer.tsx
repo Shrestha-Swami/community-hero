@@ -106,7 +106,7 @@ export function Footer() {
 
             <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-4">
               <span className="inline-flex rounded-full bg-emerald-600 px-3 py-1 text-xs font-semibold text-white">
-                {t("footer.recognition.badge", "Google Solution Challenge 2026")}
+                {t("footer.recognition.badge", "Vibe2Ship CodingNinjas X Google for Developers Challenge 2026")}
               </span>
 
               <p className="mt-4 text-sm leading-7 text-slate-600">
@@ -143,7 +143,7 @@ export function Footer() {
           </p>
 
           <span className="rounded-full bg-slate-200 px-4 py-1 text-xs font-medium text-slate-700">
-            {t("footer.challenge_tag", "Built with ❤️ for Google Solution Challenge")}
+            {t("footer.challenge_tag", "Built with ❤️ for Vibe2Ship CodingNinjas X Google for Developers Challenge 2026")}
           </span>
 
         </div>
